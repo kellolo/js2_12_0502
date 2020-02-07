@@ -1,0 +1,16 @@
+{
+  "name": "wp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+		"build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
