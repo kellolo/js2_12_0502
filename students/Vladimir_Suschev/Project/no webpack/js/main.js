@@ -71,7 +71,9 @@ function renderProducts () {
     for (item of list) {
         arr.push(item.createTemplate())
     }
-    document.querySelector('.products').innerHTML = arr.join();
+      document.querySelector('.products').innerHTML = arr.join('');  
+      // кавычки как атрибут .join убирают запятые между элементами массива в выводимой строке
+
 }
 
 renderProducts ();
