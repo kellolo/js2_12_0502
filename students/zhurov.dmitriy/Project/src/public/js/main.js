@@ -8,7 +8,7 @@ const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 var userCart = [];
-var list = fetchData ();
+var list = fetchData ()
 
 //кнопка скрытия и показа корзины
 document.querySelector('.btn-cart').addEventListener('click', () => {
@@ -19,13 +19,13 @@ document.querySelector('.cart-block').addEventListener ('click', (evt) => {
     if (evt.target.classList.contains ('del-btn')) {
         removeProduct (evt.target);
     }
-});
+})
 //кнопки покупки товара (добавляется один раз)
 document.querySelector('.products').addEventListener ('click', (evt) => {
     if (evt.target.classList.contains ('buy-btn')) {
         addProduct (evt.target);
     }
-});
+})
 
 //создание массива объектов - имитация загрузки данных с сервера
 function fetchData () {
@@ -34,7 +34,7 @@ function fetchData () {
         arr.push (createProduct (i));
     }
     return arr
-}
+};
 
 //создание товара
 function createProduct (i) {
@@ -63,7 +63,7 @@ function createProduct (i) {
             this.quantity++
         }
     }
-}
+};
 
 //рендер списка товаров (каталога)
 function renderProducts () {
@@ -74,11 +74,20 @@ function renderProducts () {
     document.querySelector('.products').innerHTML = arr.join("");
 }
 
-renderProducts ();
+
+
+
+function init () {
+    console.log ('init start')
+    list = fetchData ();
+    renderProducts ();
+}
+
+init ()
 
 //CART
 
-// Добавление продуктов в корзину
+//Добавление продуктов в корзину
 function addProduct (product) {
     let productId = +product.dataset['id'];
     let find = userCart.find (element => element.id === productId);
