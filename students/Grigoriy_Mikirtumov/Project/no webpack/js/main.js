@@ -128,6 +128,5 @@ function renderCart () {
                             </div>
                         </div>`
     }
-
     document.querySelector(`.cart-block`).innerHTML = allProducts;
 }
