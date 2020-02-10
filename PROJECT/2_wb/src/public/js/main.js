@@ -8,7 +8,7 @@ const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 // var userCart = [];
-var list = fetchData ()
+var list 
 
 //кнопка скрытия и показа корзины
 // document.querySelector('.btn-cart').addEventListener('click', () => {
