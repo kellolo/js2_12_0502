@@ -1,84 +1,96 @@
 //заглушки (имитация базы данных)
-const image = 'https://placehold.it/200x150';
+
 const cartImage = 'https://placehold.it/100x80';
-const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+var list;
+
+const goods = [
+    {id:1, title: 'Notebook', price: 1000, img:'https://via.placeholder.com/200x150'},
+    {id:2, title: 'Display', price: 200, img:'https://via.placeholder.com/200x150' },
+    {id:3, title: 'Keyboard', price: 20, img:'https://via.placeholder.com/200x150' },
+    {id:4, title: 'Mouse', price: 10, img:'https://via.placeholder.com/200x150' },
+    {id:5, title: 'Phones', price: 25, img:'https://via.placeholder.com/200x150'},
+    {id:6, title: 'Router', price: 30, img:'https://via.placeholder.com/200x150' },
+    {id:7, title: 'USB-camera', price: 18, img:'https://via.placeholder.com/200x150' },
+    {id:8, title: 'Gamepad', price: 24, img:'https://via.placeholder.com/200x150' },
+]
+
+// //кнопка скрытия и показа корзины
+// document.querySelector('.btn-cart').addEventListener('click', () => {
+//     document.querySelector('.cart-block').classList.toggle('invisible');
+// });
+// //кнопки удаления товара (добавляется один раз)
+// document.querySelector('.cart-block').addEventListener ('click', (evt) => {
+//     if (evt.target.classList.contains ('del-btn')) {
+//         removeProduct (evt.target);
+//     }
+// })
+// //кнопки покупки товара (добавляется один раз)
+// document.querySelector('.products').addEventListener ('click', (evt) => {
+//     if (evt.target.classList.contains ('buy-btn')) {
+//         addProduct (evt.target);
+//     }
+// })
 
 
-//глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
-var userCart = [];
-var list = fetchData ();
+// товар
+class GoodsItem {
+    constructor(id,title, price, img) {
+      this.id = id;
+      this.title = title;
+      this.price = price;
+      this.img = img;
 
-//кнопка скрытия и показа корзины
-document.querySelector('.btn-cart').addEventListener('click', () => {
-    document.querySelector('.cart-block').classList.toggle('invisible');
-});
-//кнопки удаления товара (добавляется один раз)
-document.querySelector('.cart-block').addEventListener ('click', (evt) => {
-    if (evt.target.classList.contains ('del-btn')) {
-        removeProduct (evt.target);
     }
-})
-//кнопки покупки товара (добавляется один раз)
-document.querySelector('.products').addEventListener ('click', (evt) => {
-    if (evt.target.classList.contains ('buy-btn')) {
-        addProduct (evt.target);
+    render() {
+        return `<div class="product-item" data-id="${this.id}">
+        <img src="${this.img}" alt="Some img">
+          <div class="desc">
+                <h3>${this.title}</h3>
+                <p>${this.price} $</p>
+                <button class="buy-btn" 
+                data-id="${this.id}"
+                data-name="${this.title}"
+                data-image="${this.img}"
+                data-price="${this.price}">Купить</button>
+            </div>
+        </div>`
     }
-})
+  }
 
-//создание массива объектов - имитация загрузки данных с сервера
-function fetchData () {
-    let arr = [];
-    for (let i = 0; i < items.length; i++) {
-        arr.push (createProduct (i));
+  // список товаров
+  class GoodsList {
+    constructor() {
+      this.goods = [];
     }
-    return arr
-};
+    fetchGoods() {
+        this.goods = goods;
+    }  
 
-//создание товара
-function createProduct (i) {
-    return {
-        id: ids[i],
-        name: items[i],
-        price: prices[i],
-        img: image,
-        quantity: 0,
-        createTemplate: function () {
-            return `<div class="product-item" data-id="${this.id}">
-                        <img src="${this.img}" alt="Some img">
-                        <div class="desc">
-                            <h3>${this.name}</h3>
-                            <p>${this.price} $</p>
-                            <button class="buy-btn" 
-                            data-id="${this.id}"
-                            data-name="${this.name}"
-                            data-image="${this.img}"
-                            data-price="${this.price}">Купить</button>
-                        </div>
-                    </div>`
-        },
-
-        add: function() {
-            this.quantity++
-        }
+    render () {
+        let listHtml = '';
+        this.goods.forEach(good => {
+          const goodItem = new GoodsItem(good.id, good.title, good.price, good.img);
+          listHtml += goodItem.render();
+        });
+        document.querySelector('.products').innerHTML = listHtml;
     }
-};
+  }
 
-//рендер списка товаров (каталога)
-function renderProducts () {
-    let arr = [];
-    for (item of list) {
-        arr.push(item.createTemplate())
-    }
-    document.querySelector('.products').innerHTML = arr.join();
+
+function init () {
+    console.log ('init start')
+  //  list = fetchData ();
+  //  renderProducts ();
+  const products = new GoodsList();
+  products.fetchGoods();
+  products.render();
 }
 
-renderProducts ();
+init ()
 
 //CART
 
-// Добавление продуктов в корзину
+/* // Добавление продуктов в корзину
 function addProduct (product) {
     let productId = +product.dataset['id'];
     let find = userCart.find (element => element.id === productId);
@@ -131,3 +143,4 @@ function renderCart () {
 
     document.querySelector(`.cart-block`).innerHTML = allProducts;
 }
+ */
