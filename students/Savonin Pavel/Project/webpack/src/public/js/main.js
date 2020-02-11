@@ -5,7 +5,6 @@ const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', '
 const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
 const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
-
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 // var userCart = [];
 var list
@@ -187,6 +186,7 @@ class GoodsList {
         let total = 0;
         this.goods.forEach(good => {
             total += +good.price
+            return total
         })
     }
 }
