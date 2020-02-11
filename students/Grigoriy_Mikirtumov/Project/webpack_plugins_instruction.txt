@@ -1,0 +1,2 @@
+1) npm i css-loader -D // плагин для обработки css файлов
+2) npm i mini-css-extract-plugin -D
