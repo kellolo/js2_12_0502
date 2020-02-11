@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const goods = [
+            { title: 'Shirt', price: 150 },
+            { title: 'Socks', price: 50 },
+            { title: 'Jacket', price: 350 },
+            { title: 'Shoes', price: 250 },
+        ]
+
+        class Catalog {
+            constructor (container) {
+                this.items = []
+                this.container = container //'#app'
+                this._init ()
+            }
+
+            _init () {
+                this.items = goods
+                this._render ()
+            }
+
+            _render () {
+                let str = ''
+                this.items.forEach (el => {
+                    str += `<div class="goods-item"><h3>${el.title}</h3><p>${el.price}</p></div>`
+                })
+                document.querySelector (this.container).innerHTML = str
+            }
+        }
+        // class Human {
+        //     constructor (n, a, g) {
+        //         this.name = n
+        //         this.age = a
+        //         this.gender = g ? g : 'male'
+        //         this._init ()
+        //     }
+
+        //     _init () {
+        //         console.log (this.name + ' has appeared.')
+        //     }
+
+        //     goWork () {
+        //         console.log (this.name + ' goes work.')
+        //     }
+        // }
+
+        // class Male extends Human {}
+        // let oleg = new Male ('Oleg', 25)
+
+        // class Female extends Human {
+        //     constructor (name, age, gender = 'female') {
+        //         super (name, age, gender)
+        //         this.children = 0
+        //     }
+
+        //     getChild () {
+        //         this.children++
+        //         console.log (`now ${this.name} has ${this.children} children`)
+        //     }
+        // }
+        // let olga = new Female ('Olga', 24)
+    </script>
+</body>
+</html>
