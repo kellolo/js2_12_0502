@@ -84,7 +84,7 @@ function addProduct (product) {
     let find = userCart.find (element => element.id === productId);
     if (!find) {
         userCart.push ({
-            name: product.dataset ['name'],
+            name: product.dataset['name'],
             id: productId,
             img: cartImage,
             price: +product.dataset['price'],
