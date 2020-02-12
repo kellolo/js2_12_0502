@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger</title>
+  <style>
+    form {
+      width: 650px;
+      margin: 0 auto;
+    }
+
+    p {
+      display: block;
+      margin: 20px;
+    }
+
+    .chek {
+      display: flex;
+      border: 1 black solid;
+    }
+
+    .chekIn {
+      display: block;
+      width: 100%;
+      min-height: 20px;
+      font-size: 18;
+      margin: 10px auto;
+      border: solid black 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="#">
+    <fieldset>
+      <p> Выберите размер Гамбургера:</p>
+      <p><input type="radio" name="burger" value="Большой" data-pay="50" data-cals="20">Большой (50 рублей, 20 калорий)
+        <br>
+        <input type="radio" name="burger" value="Маленький" data-pay="100" data-cals="40">Маленький (100 рублей, 40
+        калорий)</p>
+
+
+    </fieldset>
+    <fieldset>
+      <p>Гамбургер может быть с одним из нескольких видов начинок (дополнительно):</p>
+      <p>
+        <input type="radio" name="fill" value="С сыром" data-pay="10" data-cals="20">С сыром (+10 рублей,
+        +20 калорий) <br>
+        <input type="radio" name="fill" value="С салатом" data-pay="20" data-cals="5">С салатом (+20 рублей, +5
+        калорий) <br>
+        <input type="radio" name="fill" value="С картофелем" data-pay="15" data-cals="10">С картофелем (+15
+        рублей, +10 калорий)</p>
+      <p>
+        <input type="checkbox" name="stuff" value="peper" data-pay="15" data-cals="0"><span>поперчить</span> (+15
+        рублей, +0 калорий)
+      </p>
+      <p>
+        <input type="checkbox" name="stuff" value="masic" data-pay="20" data-cals="5"><span>майонез</span> (+20 рублей,
+        +5 калорий).
+      </p>
+    </fieldset>
+    <fieldset>
+      <button id="chekAll">ИТОГ</button>
+      <div class="chekIn"></div>
+      <button id="chekOut">Добавить в заказ</button>
+    </fieldset>
+  </form>
+
+  <script>
+    // document.getElementById('chekAll').onclick = function () {
+    //   let size = document.getElementById('size');
+    //   function() {
+    //     let i = size.selectedIndex
+    //     console.log(size[i])
+    //     console.log(size[i].dataset.cals);
+    //   }
+
+    //   let fill = document.getElementById('fill');
+    //   console.log(fill)
+    //   let stuff
+    // }
+
+    document.getElementById('chekAll').onclick = function () {
+      let inp = document.getElementsByTagName('input.checked');
+      console.log(inp);
+    }
+    // class Burger {
+    //   constructor(size, fill, stuff) {
+
+
+    //     getSize() {
+
+    //     }
+    //     getFill() {
+
+    //     }
+    //     getStuff() {
+
+    //     }
+    //     calcPay() {
+
+    //     }
+    //     calcCals() {
+
+    //     }
+    //   }
+    // }
+
+  </script>
+
+
+  </div>
+</body>
+
+</html>

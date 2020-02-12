@@ -8,19 +8,19 @@ const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 // var userCart = [];
-var list = fetchData();
+var list = fetchData ()
 
-// //кнопка скрытия и показа корзины
+//кнопка скрытия и показа корзины
 // document.querySelector('.btn-cart').addEventListener('click', () => {
 //     document.querySelector('.cart-block').classList.toggle('invisible');
 // });
-// //кнопки удаления товара (добавляется один раз)
+//кнопки удаления товара (добавляется один раз)
 // document.querySelector('.cart-block').addEventListener ('click', (evt) => {
 //     if (evt.target.classList.contains ('del-btn')) {
 //         removeProduct (evt.target);
 //     }
 // })
-// //кнопки покупки товара (добавляется один раз)
+//кнопки покупки товара (добавляется один раз)
 // document.querySelector('.products').addEventListener ('click', (evt) => {
 //     if (evt.target.classList.contains ('buy-btn')) {
 //         addProduct (evt.target);
@@ -28,82 +28,66 @@ var list = fetchData();
 // })
 
 //создание массива объектов - имитация загрузки данных с сервера
-function fetchData() {
+function fetchData () {
     let arr = [];
     for (let i = 0; i < items.length; i++) {
-        arr.push(createProduct(i));
+        arr.push (createProduct (i));
     }
     return arr
 };
 
 //создание товара
+function createProduct (i) {
+    return {
+        id: ids[i],
+        name: items[i],
+        price: prices[i],
+        img: image,
+        quantity: 0,
+        createTemplate: function () {
+            return `<div class="product-item" data-id="${this.id}">
+                        <img src="${this.img}" alt="Some img">
+                        <div class="desc">
+                            <h3>${this.name}</h3>
+                            <p>${this.price} $</p>
+                            <button class="buy-btn" 
+                            data-id="${this.id}"
+                            data-name="${this.name}"
+                            data-image="${this.img}"
+                            data-price="${this.price}">Купить</button>
+                        </div>
+                    </div>`
+        },
 
-class Prod {
-    constructor(idn, name, price) {
-        this.idnp = idn
-        this.namep = name
-        this.pricep = price
-        image = 
+        add: function() {
+            this.quantity++
+        }
     }
-    makeTpl() {
-        return `<div class="product-item" data-id="${this.id}">
-                                 <img src="${this.img}" alt="Some img">
-                                 <div class="desc">
-                                     <h3>${this.name}</h3>
-                                     <p>${this.price} $</p>
-                                     <button class="buy-btn" 
-                                     data-id="${this.id}"
-                                     data-name="${this.name}"
-                                     data-image="${this.img}"
-                                     data-price="${this.price}">Купить</button>
-                                 </div>
-                             </div>`
-    }
-}
-// function createProduct (i) {
-//     return {
-//         id: ids[i],
-//         name: items[i],
-//         price: prices[i],
-//         img: image,
-//         quantity: 0,
-//         createTemplate: function () {
-//             return `<div class="product-item" data-id="${this.id}">
-//                         <img src="${this.img}" alt="Some img">
-//                         <div class="desc">
-//                             <h3>${this.name}</h3>
-//                             <p>${this.price} $</p>
-//                             <button class="buy-btn" 
-//                             data-id="${this.id}"
-//                             data-name="${this.name}"
-//                             data-image="${this.img}"
-//                             data-price="${this.price}">Купить</button>
-//                         </div>
-//                     </div>`
-//         },
-
-//         add: function() {
-//             this.quantity++
-//         }
-//     }
-// };
+};
 
 //рендер списка товаров (каталога)
-function renderProducts() {
+function renderProducts () {
     let arr = [];
     for (item of list) {
         arr.push(item.createTemplate())
     }
     document.querySelector('.products').innerHTML = arr.join('');
-    // кавычки как атрибут .join убирают запятые между элементами массива в выводимой строке
-
 }
 
-renderProducts();
 
-// //CART
 
-// // Добавление продуктов в корзину
+
+function init () {
+    console.log ('init start')
+    list = fetchData ();
+    renderProducts ();
+}
+
+init ()
+
+//CART
+
+// Добавление продуктов в корзину
 // function addProduct (product) {
 //     let productId = +product.dataset['id'];
 //     let find = userCart.find (element => element.id === productId);
