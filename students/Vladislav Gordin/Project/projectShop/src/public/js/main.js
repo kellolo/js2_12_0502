@@ -84,6 +84,17 @@ function init () {
 init()
 //CART
 
+//класс корзины товаров
+class cart {
+    constructor () {
+        this.items = []
+    }
+    //добавляем товар в корзину
+    addPosCart (cartItem) {
+        this.items.push (cartItem)
+    }
+}
+
 // Добавление продуктов в корзину
 function addProduct (product) {
     let productId = +product.dataset['id'];
