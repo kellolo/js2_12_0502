@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Burgers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="#" id="app">
+        <fieldset>
+            <legend>Выбери размер:</legend>
+            <label>
+                <input type="radio" name="size" value="small" data-cost="50" data-calory="20" checked> маленький (50
+                рублей, 20 калорий)
+            </label>
+            <label>
+                <input type="radio" name="size" value="big" data-cost="100" data-calory="40"> большой (100 рублей, 40
+                калорий)
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Выбери начинку:</legend>
+            <label>
+                <input type="radio" name="stuffings" value="cheese" data-cost="10" data-calory="20" checked> с сыром
+                (+10 рублей, +20 калорий)
+            </label>
+            <label>
+                <input type="radio" name="stuffings" value="salad" data-cost="20" data-calory="5"> с салатом (+20
+                рублей, +5 калорий)
+            </label>
+            <label>
+                <input type="radio" name="stuffings" value="potato" data-cost="15" data-calory="10"> с картофелем (+15
+                рублей, +10 калорий)
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Выбери дополнительно:</legend>
+            <label>
+                <input type="checkbox" name="additions" value="condiment" data-cost="15" data-calory="0"> посыпать
+                приправой (+15 рублей, +0 калорий)
+            </label>
+            <label>
+                <input type="checkbox" name="additions" value="mayo" data-cost="20" data-calory="5"> полить майонезом
+                (+20 рублей, +5 калорий)
+            </label>
+        </fieldset>
+    </form>
+    <button id="okBtn">Создать бургер</button>
+    <button id="checkBtn">Посчитать бургеры</button>
+    <div id="burgers"></div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
