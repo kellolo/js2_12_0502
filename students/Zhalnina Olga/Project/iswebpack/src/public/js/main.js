@@ -5,10 +5,83 @@ const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', '
 const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
 const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
+//каталог товаров
+class GoodsList {
+    constructor() {
+        this.goods = [];
+    }
+    fetchData () {
+        this.goods = [
+            { title: 'Shirt', price: 150 },
+            { title: 'Socks', price: 50 },
+            { title: 'Jacket', price: 350 },
+            { title: 'Shoes', price: 250 },
+        ];
+    }
+    render() {
+        let listHtml = '';
+        this.goods.forEach(good => {
+          const goodItem = new GoodsItem(good.title, good.price);
+          listHtml += goodItem.render();
+        });
+        document.querySelector('.products').innerHTML = listHtml;
+    }
+    totalSumGoods () {
+        let goodsSum = 0;
+        this.goods.forEach(good => {
+            goodsSum += good.price;
+        });
+        document.querySelector('.products-sum').textContent = `Стоимость всех товаров: ${goodsSum} $`;
+    }
+}
+
+//товар каталога
+class GoodsItem {
+    constructor(title, price) {        
+        this.title = title;
+        this.price = price;
+    }
+    render() {
+        return  `<div class="product-item" data-id="${this.id}">
+                    <img src="${this.img}" alt="Some img">
+                    <div class="desc">
+                        <h3>${this.title}</h3>
+                        <p>${this.price} $</p>
+                        <button class="buy-btn" 
+                        data-id="${this.id}"
+                        data-title="${this.title}"
+                        data-image="${this.img}"
+                        data-price="${this.price}">Купить</button>
+                    </div>
+                </div>`
+    }    
+}
+
+
+const list = new GoodsList();
+list.fetchGoods();
+list.render();
+list.totalSumGoods();
+
+
+//корзина товаров
+class Cart {
+    constructor () {
+
+    }
+}
+
+//товары корзины
+class CartProduct {
+    constructor () {
+
+    }
+
+}
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 // var userCart = [];
-var list = fetchData ()
+//var list = fetchData ()
 
 //кнопка скрытия и показа корзины
 // document.querySelector('.btn-cart').addEventListener('click', () => {
