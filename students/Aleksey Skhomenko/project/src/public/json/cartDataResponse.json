@@ -1,6 +1,6 @@
 {
     "price": 64,
-    "stacks": 3,
+    "quantity": 3,
     "items": [{
         "product_name": "Warcraft 3: Reforged",
         "price": 25,
