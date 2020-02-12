@@ -1,55 +1,80 @@
 #app {
     width: 350px
 }
+
 #app label {
     display: block;
     margin-bottom: 10px;
 }
+
 #okBtn {
     margin: 20px 20px 0 20px;
 }
+
 .burger {
-font-weight: bold;
-position: relative;
-float: left;
-height: 100%;
-width: 955px;
-overflow: hidden;
--webkit-animation: reveal 3s ease;
--webkit-animation-fill-mode: backwards;
+    font-weight: bold;
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 955px;
+    overflow: hidden;
+    -webkit-animation: reveal 3s ease backwards;
+    animation: reveal 3s ease backwards;
 }
-.big img{
+
+.big img {
     transform: scale(1.4);
     filter: drop-shadow(2px 4px 7px orange);
 }
-.small img{
-    transform: scale(0.9));
+
+.small img {
+    transform: scale(0.9);
 }
+
 .cost {
-position: relative;
-left: -193px;
-bottom: 240px;
+    position: relative;
+    left: -193px;
+    bottom: 240px;
 }
+
 .cost::before {
     content: "Цена: "
 }
+
 .cost::after {
     content: "$"
 }
+
 .calories {
-position: relative;
-left: -272px;
-bottom: 220px;
+    position: relative;
+    left: -272px;
+    bottom: 220px;
 }
+
 .calories::before {
     content: "Калории: "
 }
-   
+
 @-webkit-keyframes reveal {
-0%   {opacity: 0; transform: scale(0.7)}
-100% {opacity: 1; transform: scale(1)}
+    0% {
+        opacity: 0;
+        transform: scale(0.7)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
 }
+
 @keyframes reveal {
-0%   {opacity: 0; transform: scale(0.7)}
-100% {opacity: 1; transform: scale(1)}
+    0% {
+        opacity: 0;
+        transform: scale(0.7)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
 }
