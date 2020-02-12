@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 - async
+        // let a = 0 //undefined
+
+        // setTimeout(() => {
+        //     a ++
+        //     console.log (a)
+        // }, 500)
+
+        // setTimeout(() => {
+        //     a ++
+        //     console.log (a)
+        // }, 1500)
+
+        // console.log ('main ' + a) //undefined !!!!!!!!
+
+
+        // callback
+
+        // let a = 0
+
+        // function asyncCallback1 (callback, cb2) {
+        //     setTimeout (() => {
+        //         a ++
+        //         console.log ('1st')
+        //         callback ()
+        //         cb2(callback)
+        //     }, 1500)
+        // }
+
+        // function asyncCallback2 (callback) {
+        //     setTimeout (() => {
+        //         a ++
+        //         console.log ('2nd')
+        //         callback ()
+        //     }, 1500)
+        // }
+
+        // function main () {
+        //     console.log ('main ' + a)
+        // }
+
+        // asyncCallback1 (main, asyncCallback2)
+
+        // PROMISES
+
+        // let a = 0
+
+        // function prAsync () {
+        //     return new Promise ((res, rej) => {
+        //         setTimeout(() => {
+        //             a++
+        //             res(a)
+        //         }, 1500)
+        //     })
+        // }
+
+        // prAsync().then((resolvedData) => {
+        //     console.log ('main 1 ' + resolvedData)
+        // }).then(() => {
+        //     prAsync().then((resolvedData) => {
+        //         console.log ('main 2 ' + resolvedData)
+        //     })
+        // })
+
+        // Запрос данных
+        let URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json'
+        let a = []
+
+        function makeGETRequest(url, resolve, reject) {
+            let xhr = new XMLHttpRequest()
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                //callback(xhr.responseText); //то, что должно быть ПОСЛЕ окончания асинх запроса
+                    if (xhr.status === 200) {
+                        resolve (xhr.responseText)
+                    } else {
+                        reject ('error')
+                    }
+                }
+            }
+
+            xhr.open('GET', url, true)
+            xhr.send()
+        }
+
+
+        function promiseReq (url) {
+            return new Promise ((res, rej) => {
+                makeGETRequest(url, res, rej)
+            })
+        }
+
+        promiseReq (URL)
+            .then (dataJSON => {
+                console.log (dataJSON) // String
+                console.log (a) // []
+                return JSON.parse(dataJSON)
+            })
+            .then (dataParsedFromJSON => {
+                console.log (dataParsedFromJSON) //Object/Array
+                a = dataParsedFromJSON
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR')
+            })
+            .finally (() => {
+                console.log (a) // catch+ -> [] / -catch -> [{}, {}]
+            })
+
+            // MDN -> 'fetch'
+    </script>
+</body>
+</html>
