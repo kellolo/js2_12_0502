@@ -50,7 +50,7 @@ class Burger {
     _init () {
         console.log("Создан бургер:")
         console.log(this)
-        this.template = `<div class="burger" onclick="var elm = this;var newone = elm.cloneNode(true); elm.parentNode.replaceChild(newone, elm);">
+        this.template = `<div class="burger ${this.size.name}">
                             <img src="https://mverissimo.github.io/tweenslideshow/dist/assets/images/burger.png" width="300" height="300">
                             <span class="cost">${this.cost}</span>
                             <span class="calories">${this.calories}</span>

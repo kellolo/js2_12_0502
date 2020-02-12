@@ -9,7 +9,6 @@
     margin: 20px 20px 0 20px;
 }
 .burger {
-    /* display:none; */
 font-weight: bold;
 position: relative;
 float: left;
@@ -19,10 +18,17 @@ overflow: hidden;
 -webkit-animation: reveal 3s ease;
 -webkit-animation-fill-mode: backwards;
 }
+.big img{
+    transform: scale(1.4);
+    filter: drop-shadow(2px 4px 7px orange);
+}
+.small img{
+    transform: scale(0.9));
+}
 .cost {
 position: relative;
 left: -193px;
-bottom: 230px;
+bottom: 240px;
 }
 .cost::before {
     content: "Цена: "
@@ -33,7 +39,7 @@ bottom: 230px;
 .calories {
 position: relative;
 left: -272px;
-bottom: 210px;
+bottom: 220px;
 }
 .calories::before {
     content: "Калории: "
