@@ -1,3 +1,4 @@
+
 //Общий класс для единицы товара
 class Item {
     constructor(id, name, price, img, cartImage) {
