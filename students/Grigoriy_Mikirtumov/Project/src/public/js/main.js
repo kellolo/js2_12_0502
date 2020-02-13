@@ -68,6 +68,7 @@ class GoodList  {
         this.initListeners()
         this.totalCost()
     }
+    
 }
 
 
