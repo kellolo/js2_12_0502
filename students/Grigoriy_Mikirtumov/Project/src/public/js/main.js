@@ -30,7 +30,7 @@ class GoodItem {
         this.id = good.id_product;
         this.title = good.product_name;
         this.price = good.price;
-        this.img = good.img
+        this.img = good.img;
     }
     render(){
         return `<div class="product-item">
