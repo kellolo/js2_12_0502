@@ -4,7 +4,6 @@ const cartImage = 'https://placehold.it/100x80';
 const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
 const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
 const ids = [1, 2, 3, 4, 5, 6, 7, 8];
-let totalSum = 0;
 
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
@@ -13,7 +12,7 @@ var list = fetchData ();
 
 //кнопка скрытия и показа корзины
 document.querySelector('.btn-cart').addEventListener('click', () => {
-    document.querySelector('.cart-block-wrapper').classList.toggle('invisible');
+    document.querySelector('.cart-block').classList.toggle('invisible');
 });
 //кнопки удаления товара (добавляется один раз)
 document.querySelector('.cart-block').addEventListener ('click', (evt) => {
@@ -26,25 +25,7 @@ document.querySelector('.products').addEventListener ('click', (evt) => {
     if (evt.target.classList.contains ('buy-btn')) {
         addProduct (evt.target);
     }
-
 })
-
-// Увеличение общей суммы товаров
-function increaseTotalSum(sum) {
-    totalSum += sum ;
-    return document.querySelector('.total-sum').innerText = `Total price: ${totalSum} $`;
-}
-
-// Уменьшение общей суммы товаров
-function reduceTotalSum(sum) {
-    totalSum -= sum ;
-    if (totalSum == 0) {
-        return document.querySelector('.total-sum').innerText = `Total price: ${totalSum}`;
-    } else {
-    return document.querySelector('.total-sum').innerText = `Total price: ${totalSum} $`;
-    }
-    
-}
 
 //создание массива объектов - имитация загрузки данных с сервера
 function fetchData () {
@@ -90,7 +71,7 @@ function renderProducts () {
     for (item of list) {
         arr.push(item.createTemplate())
     }
-    document.querySelector('.products').innerHTML = arr.join('');
+    document.querySelector('.products').innerHTML = arr.join();
 }
 
 renderProducts ();
@@ -112,7 +93,6 @@ function addProduct (product) {
     }  else {
         find.quantity++
     }
-    increaseTotalSum(+product.dataset['price'])
     renderCart ()
 }
 
@@ -126,7 +106,6 @@ function removeProduct (product) {
         userCart.splice(userCart.indexOf(find), 1);
         document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
     }
-    reduceTotalSum(+find.price);
     renderCart ();
 }
 
