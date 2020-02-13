@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+<!--    <link href="style/normalize.css" rel="stylesheet">-->
+<!--    <link href="style/style.css" rel="stylesheet">-->
+<link href="css/main.css" rel="stylesheet"></head>
+<body>
+    <header>
+        <div class="logo"><i class="fas fa-cat"></i></div>
+        <div class="cart">
+            <form action="#" class="search-form">
+                <input type="text" class="search-field">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button class="btn-cart" type="button"><span class="items-count"></span>Корзина</button>
+            <div class="cart-block invisible">
+                <p class="total-cost">Cart is empty!</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="products" class="products"></div>
+    </main>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+            integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+            crossorigin="anonymous"></script>
+<!--    <script src="js/main.js"></script>-->
+<script type="text/javascript" src="main.js"></script></body>
+</html>
