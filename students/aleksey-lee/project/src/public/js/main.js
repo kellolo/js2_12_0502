@@ -65,7 +65,7 @@ class CartItem extends Item {
     render() {
       return `<div class="cart-item" data-id="${this.id}">
                     <div class="product-bio">
-                        <img src="${this.img}" alt="Some image">
+                        <img src="${this.cartImage}" alt="Some image">
                         <div class="product-desc">
                             <p class="product-title">${this.name}</p>
                             <p class="product-quantity">Quantity: ${this.quantity}</p>
@@ -90,7 +90,7 @@ class List{
     //Вывод каталога
     render() {
         this.container.innerHTML = this.goods.map(product => {
-            const productItem = new GoodsItem(product.id, product.name, product.price, product.img, product.cartImage);
+            const productItem = new GoodsItem(product.id_product, product.product_name, product.price, product.img, product.cartImage);
             return productItem.render();
         }).join('');
     }
@@ -123,13 +123,16 @@ class Cart extends List {
     constructor(container){
         super(container);
 
+        this.totalPrice = 0;
+        this.countGoods = 0;
+
         this._bindHandlers();
     }
 
     //Вывод корзины
     render() {
         this.container.innerHTML = this.goods.map(product => {
-            const productItem = new CartItem(product.id, product.name, product.price, product.img, product.cartImage, product.quantity);
+            const productItem = new CartItem(product.id_product, product.product_name, product.price, product.img, product.cartImage, product.quantity);
             return productItem.render();
         }).join('');
     }
@@ -143,21 +146,25 @@ class Cart extends List {
             .then( basket => {
                 console.log(basket)
                 this.goods = basket.contents
-                this.render() 
+                this.totalPrice = basket.amount
+                this.countGoods = basket.countGoods
+                this.render()
+                this._renderTotalWrap()
             })
     }
 
     // Добавление продуктов в корзину
     addProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.goods.find(element => element.id === productId);
+        let find = this.goods.find(element => element.id_product === productId);
 
         
         if (!find) {
             this.goods.push ({
-                name: product.dataset['name'],
-                id: productId,
-                img: product.dataset['cartimage'],
+                product_name: product.dataset['name'],
+                id_product: productId,
+                img: product.dataset['image'],
+                cartImage: product.dataset['cartimage'],
                 price: +product.dataset['price'],
                 quantity: 1
             })
@@ -166,23 +173,41 @@ class Cart extends List {
         }
 
         this.render()
+        this._renderFooterCart()
     }
 
     //удаление товаров
     removeProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.goods.find (element => element.id === productId);
+        let find = this.goods.find (element => element.id_product === productId);
         if (find.quantity > 1) {
             find.quantity--;
         } else {
             this.goods.splice(this.goods.indexOf(find), 1);
         }
         this.render ();
+        this._renderFooterCart()
+    }
+
+    _renderFooterCart(){
+        this.getTotalPrice()
+        this.getCountGoods()
+        this._renderTotalWrap()
     }
 
     //Общая цена товаров в корзине
     getTotalPrice(){
-        return this.goods.reduce((sum, product) => sum + (product.price * product.quantity), 0)
+        this.totalPrice =  this.goods.reduce((sum, product) => sum + (product.price * product.quantity), 0)
+    }
+
+    //Общая количество товаров в корзине
+    getCountGoods(){
+        this.countGoods = this.goods.reduce((sum, product) => sum + product.quantity, 0)
+    }
+
+    _renderTotalWrap() {
+        this.container.innerHTML += `<p>Общая сумма товаров: ${this.totalPrice} $</p>
+                                     <p>Всего товаров: ${this.countGoods}</p>`
     }
 
     _bindHandlers(){
