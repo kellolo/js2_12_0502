@@ -30,24 +30,55 @@ class Catalog {
     }
 
     init() {
-        this.goodsList = [  {name: 'Notebook',price: 1000,id: 1,image: 'https://placehold.it/200x150',},
-                            {name: 'Display',price: 200,id: 2,image: 'https://placehold.it/200x150',},
-                            {name: 'Keyboard',price: 20,id: 3,image: 'https://placehold.it/200x150',},
-                            {name: 'Mouse',price: 10,id: 4,image: 'https://placehold.it/200x150',},
-                            {name: 'Phones',price: 25,id: 5,image: 'https://placehold.it/200x150',},
-                            {name: 'Router',price: 30,id: 6,image: 'https://placehold.it/200x150',},
-                            {name: 'USB-camera',price: 18,id: 7,image: 'https://placehold.it/200x150',},
-                            {name: 'Gamepad',price: 24,id: 8,image: 'https://placehold.it/200x150',},
-];
-        this._render();
+        this._fetchData();
+       
     }
     _fetchData() {
-        
+        let url = 'https://raw.githubusercontent.com/Diger134/js2_12_0502/master/students/Denis%20Gadzhibalaev/Project/webpack/src/db/catalogData.json';
+        this.goodsList = [];
+        this._promiseReq (url)
+            .then (dataJSON => {
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+                this.goodsList = dataParsedFromJSON;
+                this._render();
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log('Catalog:');
+                console.log (this.goodsList);
+            })
     }
+
+    _makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve (xhr.responseText);
+                } else {
+                    reject ('error');
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+
+    _promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this._makeGETRequest(url, res, rej);
+        });
+    }
+
     _render() {
         let goodItem = '';
         this.goodsList.forEach(el => {
-            goodItem += new GoodItem(el.name, el.price, el.id, el.image).render();
+            goodItem += new GoodItem(el.product_name, el.price, el.id_product, el.image).render();
         });
         document.querySelector(this.container).innerHTML = goodItem;
     }
@@ -87,14 +118,57 @@ class Basket {
         this._controlModalWindow();
     }
     init() {
-        this.basketList = [];
+        this._fetchData();
         this._addProductToBasket();
         this._removeProductFromBasket();
     }
+
+    _fetchData() {
+        let url = 'https://raw.githubusercontent.com/Diger134/js2_12_0502/master/students/Denis%20Gadzhibalaev/Project/webpack/src/db/getBasket.json';
+        this.basketList = [];
+        this._promiseReq (url)
+            .then (dataJSON => {
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+                this.basketList = dataParsedFromJSON;
+                this._render();
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log('Basket:');
+                console.log (this.basketList.contents);
+            })
+    }
+
+    _makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve (xhr.responseText);
+                } else {
+                    reject ('error');
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+
+    _promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this._makeGETRequest(url, res, rej);
+        });
+    }
+
     _render() {
         let basketItem = '';
-        this.basketList.forEach(el => {
-            basketItem += new BasketItem(el.name, el.price, el.id, el.image, el.quantity).render();
+        this.basketList.contents.forEach(el => {
+            basketItem += new BasketItem(el.product_name, el.price, el.id_product, el.image, el.quantity).render();
         });
         document.querySelector(this.container).innerHTML = basketItem;
     }
@@ -126,11 +200,11 @@ class Basket {
 
     _addProduct(product) {
         let productId = +product.dataset['id'];
-        let find = this.basketList.find(element => element.id === productId);
+        let find = this.basketList.contents.find(element => element.id_product === productId);
         if (!find) {
-            this.basketList.push({
-                name: product.dataset['name'],
-                id: productId,
+            this.basketList.contents.push({
+                product_name: product.dataset['name'],
+                id_product: productId,
                 image: product.dataset['image'],
                 price: +product.dataset['price'],
                 quantity: 1
@@ -143,11 +217,11 @@ class Basket {
     }
     _removeProduct(product) {
         let productId = +product.dataset['id'];
-        let find = this.basketList.find(element => element.id === productId);
+        let find = this.basketList.contents.find(element => element.id_product === productId);
         if (find.quantity > 1) {
             find.quantity--;
         } else {
-            this.basketList.splice(this.basketList.indexOf(find), 1);
+            this.basketList.contents.splice(this.basketList.contents.indexOf(find), 1);
             document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
         }
         this._reduceTotalSum(+find.price);
