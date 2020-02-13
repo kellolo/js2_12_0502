@@ -1,3 +1,26 @@
+// Запрос к серверу
+function makeGETRequest(url, resolve, reject) {
+    var xhr;
+  
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { 
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                resolve (xhr.responseText)
+            } else {
+                reject ('error')
+            }
+        }
+    }
+  
+    xhr.open('GET', url, true);
+    xhr.send();
+}
 
 //Общий класс для единицы товара
 class Item {
@@ -72,40 +95,26 @@ class List{
         }).join('');
     }
 
-    // Запрос к серверу
-    makeGETRequest(url, callback) {
-        var xhr;
-      
-        if (window.XMLHttpRequest) {
-          xhr = new XMLHttpRequest();
-        } else if (window.ActiveXObject) { 
-          xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-      
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-            callback(xhr.responseText);
-          }
-        }
-      
-        xhr.open('GET', url, true);
-        xhr.send();
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            makeGETRequest(url, res, rej)
+        })
     }
+
 }
 
 //Класс каталога
 class GoodsList extends List {
     fetchGoods() {
-        this.goods = [
-        { id: 1, name: 'Notebook', price: 1000, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 2, name: 'Display', price: 200, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 3, name: 'Keyboard', price: 20, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 4, name: 'Mouse', price: 10, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 5, name: 'Phones', price: 25, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 6, name: 'Router', price: 30, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 7, name: 'USB-camera', price: 18, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 8, name: 'Gamepad', price: 24, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        ];
+        let response = this.promiseReq('https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/src/public/json/catalog.json')
+        response
+            .then(dataJSON => {
+                return JSON.parse(dataJSON);
+            })
+            .then( goods => {
+                this.goods = goods
+                this.render() 
+            })
     }
 }
 
@@ -123,6 +132,19 @@ class Cart extends List {
             const productItem = new CartItem(product.id, product.name, product.price, product.img, product.cartImage, product.quantity);
             return productItem.render();
         }).join('');
+    }
+
+    fetchGoods() {
+        let response = this.promiseReq('https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/src/public/json/getBasket.json')
+        response
+            .then(dataJSON => {
+                return JSON.parse(dataJSON);
+            })
+            .then( basket => {
+                console.log(basket)
+                this.goods = basket.contents
+                this.render() 
+            })
     }
 
     // Добавление продуктов в корзину
@@ -190,10 +212,8 @@ class Cart extends List {
 
 
 const list = new GoodsList('#goods-list');
-list.fetchGoods();
-list.render();
-
+list.fetchGoods()
 
 const userCart = new Cart('#cart-block');
-
+userCart.fetchGoods()
 
