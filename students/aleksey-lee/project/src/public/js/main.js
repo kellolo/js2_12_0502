@@ -31,41 +31,6 @@ class GoodsItem extends Item {
     }
 }
 
-//Класс каталога
-class GoodsList {
-    constructor(container) {
-        this.goods = [];
-        this.container = document.querySelector(container);
-    }
-    fetchGoods() {
-        this.goods = [
-        { id: 1, name: 'Notebook', price: 1000, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 2, name: 'Display', price: 200, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 3, name: 'Keyboard', price: 20, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 4, name: 'Mouse', price: 10, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 5, name: 'Phones', price: 25, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 6, name: 'Router', price: 30, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 7, name: 'USB-camera', price: 18, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        { id: 8, name: 'Gamepad', price: 24, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
-        ];
-    }
-
-    //Вывод каталога
-    render() {
-        let listHtml = '';
-        this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.id, good.name, good.price, good.img, good.cartImage);
-            listHtml += goodItem.render();
-        });
-        this.container.innerHTML = listHtml;
-    }
-
-    //метод, определяющий суммарную стоимость всех товаров (из ДЗ)
-    getTotalPrice(){
-        return this.goods.reduce((sum, good) => sum + good.price, 0)
-    }
-}
-
 //Класс вывода единицы товара в корзине
 class CartItem extends Item {
     constructor(id, name, price, img, cartImage, quantity) {
@@ -92,34 +57,82 @@ class CartItem extends Item {
     }
 }
 
-//Класс корзины
-class Cart {
-    constructor(container){
-        this.products = [];
+//Общий класс для списка товаров
+class List{
+    constructor(container) {
+        this.goods = [];
         this.container = document.querySelector(container);
+    }
+
+    //Вывод каталога
+    render() {
+        this.container.innerHTML = this.goods.map(product => {
+            const productItem = new GoodsItem(product.id, product.name, product.price, product.img, product.cartImage);
+            return productItem.render();
+        }).join('');
+    }
+
+    // Запрос к серверу
+    makeGETRequest(url, callback) {
+        var xhr;
+      
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { 
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+      
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            callback(xhr.responseText);
+          }
+        }
+      
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+}
+
+//Класс каталога
+class GoodsList extends List {
+    fetchGoods() {
+        this.goods = [
+        { id: 1, name: 'Notebook', price: 1000, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 2, name: 'Display', price: 200, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 3, name: 'Keyboard', price: 20, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 4, name: 'Mouse', price: 10, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 5, name: 'Phones', price: 25, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 6, name: 'Router', price: 30, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 7, name: 'USB-camera', price: 18, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        { id: 8, name: 'Gamepad', price: 24, img: 'https://placehold.it/200x150', cartImage: 'https://placehold.it/100x80' },
+        ];
+    }
+}
+
+//Класс корзины
+class Cart extends List {
+    constructor(container){
+        super(container);
 
         this._bindHandlers();
     }
 
     //Вывод корзины
     render() {
-        let listHtml = '';
-        this.products.forEach(product => {
+        this.container.innerHTML = this.goods.map(product => {
             const productItem = new CartItem(product.id, product.name, product.price, product.img, product.cartImage, product.quantity);
-            listHtml += productItem.render();
-        });
-        listHtml += `<div>Total price: ${this.getTotalPrice()} $</div>`;
-        this.container.innerHTML = listHtml;
+            return productItem.render();
+        }).join('');
     }
 
     // Добавление продуктов в корзину
     addProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.products.find(element => element.id === productId);
+        let find = this.goods.find(element => element.id === productId);
 
         
         if (!find) {
-            this.products.push ({
+            this.goods.push ({
                 name: product.dataset['name'],
                 id: productId,
                 img: product.dataset['cartimage'],
@@ -136,18 +149,18 @@ class Cart {
     //удаление товаров
     removeProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.products.find (element => element.id === productId);
+        let find = this.goods.find (element => element.id === productId);
         if (find.quantity > 1) {
             find.quantity--;
         } else {
-            this.products.splice(this.products.indexOf(find), 1);
+            this.goods.splice(this.goods.indexOf(find), 1);
         }
         this.render ();
     }
 
     //Общая цена товаров в корзине
     getTotalPrice(){
-        return this.products.reduce((sum, product) => sum + (product.price * product.quantity), 0)
+        return this.goods.reduce((sum, product) => sum + (product.price * product.quantity), 0)
     }
 
     _bindHandlers(){
@@ -180,7 +193,6 @@ const list = new GoodsList('#goods-list');
 list.fetchGoods();
 list.render();
 
-console.log(list.getTotalPrice());
 
 const userCart = new Cart('#cart-block');
 
