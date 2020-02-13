@@ -10,10 +10,35 @@ class ItemList {
     _init() {
         return false
     }
-    getData(url) {
-        return fetch(url)
-            .then(d => d.json())
+    
+    ////////////////////////// модерн вариант запроса данных через fetch - 4 строчки
+    // getData(url) {
+    //     return fetch(url)
+    //         .then(d => {d.json()})
+    // }
+
+    ////////////////////////// запрос данных с использованием new Promise - 19 строк (начало вставки)
+    getData (url) {
+        return new Promise ((res, rej) => {this.makeGETRequest(url, res, rej)})
+            .then(d => JSON.parse(d))
     }
+
+    makeGETRequest(url, resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve (xhr.responseText)
+                } else {
+                    reject (Error('xhr.status: '+xhr.status))
+                }
+            }
+        }
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+    ////////////////////////// (конец вставки)
+
     _render() {
         let DOM_target = document.querySelector(this.container)
         let htmlString = ''
@@ -47,6 +72,7 @@ class Catalog extends ItemList {
         this.getData(API + this.url)
             .then(parsedData => { this.items = parsedData })
             .then(() => { this._render() })
+            .catch(console.log.bind(console))
             .finally(() => { this._addListeners() })
     }
 
@@ -76,6 +102,7 @@ class Cart extends ItemList {
                 this.quantity = parsedData.quantity
             })
             .then(() => { this._render() })
+            .catch(console.log.bind(console))
             .finally(() => {
                 this._addListeners()
             })
@@ -120,6 +147,7 @@ class Cart extends ItemList {
         let find = this.items.find(item => item.product_id === prod.dataset.id)
         if (all || find.quantity <= 1) {
             this.items.splice(this.items.indexOf(find), 1)
+            console.log(`${find.product_name} удалён из корзины.`)
         } else {
             find.quantity--
         }
@@ -228,4 +256,4 @@ let proto = {
 let cart = new Cart()
 let catalog = new Catalog(cart)
 
-console.timeEnd('Loading')
+window.onload = console.timeEnd('Loading')
