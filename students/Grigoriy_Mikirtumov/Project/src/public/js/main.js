@@ -1,17 +1,34 @@
+let URL = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/online-store-api/catalogData.json'
+// Запрос к бд
 
-// Имитация запроса
-const goods = [
-    {id:1, title: 'Shirt', price: 150, img:'https://via.placeholder.com/200x150'},
-    {id:2, title: 'Socks', price: 50, img:'https://via.placeholder.com/200x150' },
-    {id:3, title: 'Jacket', price: 350, img:'https://via.placeholder.com/200x150' },
-    {id:4, title: 'Shoes', price: 250, img:'https://via.placeholder.com/200x150' },
-]
+function makeGetRequest(url){
+    return new Promise((resolve, reject)=>{
+       let xhr;
+       if(window.XMLHttpRequest){
+           xhr = new window.XMLHttpRequest();
+       }else{
+           xhr = new window.ActiveXObject("Microsoft.XMLHTTP");
+       };
+       xhr.onreadystatechange = function(){ //Ловим момент ответа от сервера
+           if(xhr.readyState===4){ // В redystate хранится статус запроса, цифра 4, означает что запрос выполнен
+               if(xhr.status!==200){
+                   reject(xhr.responseText)
+               }
+               let body = JSON.parse(xhr.responseText)
+               resolve(body) //responseText возвращает строковое значение, содержащее ответ на запрос в виде текста, или null, если запрос был неудачным или еще не был отправлен.
+           } 
+       };
+       xhr.open('GET', url);
+       xhr.send();
+    })
+    
+}
 
 //Общий класс для единицы товара
 class GoodItem {
     constructor(good){
-        this.id = good.id;
-        this.title = good.title;
+        this.id = good.id_product;
+        this.title = good.product_name;
         this.price = good.price;
         this.img = good.img
     }
@@ -56,8 +73,10 @@ class GoodList  {
     }
     
     fetchData(){
-        this.goods = goods;
-        this.render()
+        makeGetRequest(URL).then((datajson)=>{
+           this.goods = datajson
+           this.render()
+        });
     }
     render(){
         let listHtml=''
@@ -88,8 +107,8 @@ catalog.fetchData();
 
 class GoodItemCart {
     constructor(good){
-        this.id = good.id;
-        this.title = good.title;
+        this.id = good.id_product;
+        this.title = good.product_name;
         this.price = good.price;
         this.img = good.img;
         this.quantity =good.quantity;
