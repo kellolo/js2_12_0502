@@ -41,7 +41,9 @@ class Catalog {
 ];
         this._render();
     }
-
+    _fetchData() {
+        
+    }
     _render() {
         let goodItem = '';
         this.goodsList.forEach(el => {
