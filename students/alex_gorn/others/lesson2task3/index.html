@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta UTF -->
+    <meta charset="UTF-8">
+    <!-- Header -->
+    <title>Некая сеть фастфудов</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+    <!-- JS -->
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <!-- Форма которая умеет считать -->
+    <form name="" action="" id="form">
+        <fieldset>
+            <legend>Create Hamburger</legend>
+            <div class="row">
+                <p>Размер</p>
+                <div class="radio-variant">
+                    <input type="radio" name="size" id="small" value="small" checked/>
+                    <label for="small">Поменьше</label>
+                </div>
+                <div class="radio-variant">
+                    <input type="radio" name="size" id="large" value="large" />
+                    <label for="large">Побольше</label>
+                </div>
+            </div>
+            <div class="row additions">
+                <p>Additions</p>
+                <div class="checkbox-variant">
+                    <input type="checkbox" name="add" id="cheese" value="cheese"/>
+                    <label for="cheese">Сыр</label>
+                </div>
+                <div class="checkbox-variant">
+                    <input type="checkbox" name="add" id="salad" value="salad"/>
+                    <label for="salad">Салат</label>
+                </div>
+                <div class="checkbox-variant">
+                    <input type="checkbox" name="add" id="potato" value="potato"/>
+                    <label for="potato">Картошка</label>
+                </div>
+                <div class="checkbox-variant">
+                    <input type="checkbox" name="add" id="onion" value="onion"/>
+                    <label for="onion">Лучок</label>
+                </div>
+                <div class="checkbox-variant">
+                    <input type="checkbox" name="add" id="ketchup" value="ketchup"/>
+                    <label for="ketchup">Кетчуп</label>
+                </div>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Ай, ну давай" onclick="makealertonclick()"/>
+            </div>
+        </fieldset>
+        <br />
+        <div id="result">
+            <div><b>Стоимость:</b> <span id="price">0</span> русских деревянных</div>
+            <div><b>Калорийность:</b> <span id="calories">0</span> кКал</div>
+        </div>
+    </form>
+</body>
+</html>
