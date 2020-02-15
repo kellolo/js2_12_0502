@@ -125,6 +125,8 @@ img {
 .cart-item img{
     align-self: flex-start;
     margin-right: 15px;
+    width: 100px;
+    height: 80px
 }
 .product-single-price{
     color: #474747;
@@ -169,6 +171,7 @@ img {
     border: none;
     border-bottom: 2px solid #fafafa;
 }
+
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 

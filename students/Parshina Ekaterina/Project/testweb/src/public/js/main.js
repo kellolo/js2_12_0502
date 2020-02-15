@@ -1,12 +1,44 @@
 var list 
 
+const cartImage = 'https://placehold.it/100x80';
+
+//путь к нашим данным на гите
+let URL_CATALOG = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/catalogData.json'
+let URL_CART = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/getBasket.json'
+
+// Запрос данных
+function makeGETRequest(url, resolve, reject) {
+    let xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if(xhr.status === 200) {
+                resolve (xhr.responseText)
+            } else {
+                reject ('error')
+            }
+        }
+    }
+
+    xhr.open('GET', url, true)
+    xhr.send()
+}
+
+function promiseReq (url) {
+    return new Promise ((res, rej) => {
+        makeGETRequest(url, res, rej)
+    })
+}
+
+
+
 // Имитация запроса
-const goods = [
-    {id:1, title: 'Shirt', price: 150, img:'https://via.placeholder.com/200x150'},
-    {id:2, title: 'Socks', price: 50, img:'https://via.placeholder.com/200x150' },
-    {id:3, title: 'Jacket', price: 350, img:'https://via.placeholder.com/200x150' },
-    {id:4, title: 'Shoes', price: 250, img:'https://via.placeholder.com/200x150' },
-]
+//const goods = [
+//    {id:1, title: 'Shirt', price: 150, img:'https://via.placeholder.com/200x150'},
+//    {id:2, title: 'Socks', price: 50, img:'https://via.placeholder.com/200x150' },
+//    {id:3, title: 'Jacket', price: 350, img:'https://via.placeholder.com/200x150' },
+//    {id:4, title: 'Shoes', price: 250, img:'https://via.placeholder.com/200x150' },
+//]
 
 //Общий класс для единицы товара
 class GoodItem {
@@ -33,6 +65,19 @@ class GoodList  {
     constructor(container){
         this.container = document.querySelector(container); 
         this.goods=[];
+        this._init()
+    }
+    _init(){
+        promiseReq (URL_CATALOG)
+        .then (dataJSON => { 
+            this.goods = JSON.parse(dataJSON)
+            })
+        .then (() => {
+            this.render()
+        })
+        .catch (dataError => {
+            console.log(dataError)
+            })
     }
     initListeners(){//лиснер для каталога и корзины
         const buttons = [...this.container.querySelectorAll('button')];
@@ -55,10 +100,6 @@ class GoodList  {
         return sum
     }
 
-    fetchData(){
-        this.goods = goods;
-        this.render()
-    }
     render(){
         let listHtml=''
         this.goods.forEach((good)=>{
@@ -78,7 +119,6 @@ class GoodCatalog extends GoodList{
 }
 // Создаём каталог товара на базе класса GoodCatalog
 const catalog = new GoodCatalog('.products')
-catalog.fetchData();
 
 class GoodItemCart {
     constructor(good){
@@ -109,6 +149,18 @@ class GoodItemCart {
     class GoodCart extends GoodList {
         constructor(...attrs){ //Собираем все элементы родительского конструктора
             super(attrs);      //Передаём все элементы в новый конструктор
+        }
+        _init() {
+            promiseReq (URL_CART)
+                .then (dataJSON => {
+                    this.goods = JSON.parse(dataJSON)
+                })
+                .then (() => {
+                    this.render()
+                })
+                .catch (dataError => {
+                    console.log(dataError)
+                })
         }
         checkQuantity(goodItem){ 
             if(this.findElement(goodItem.id)){
