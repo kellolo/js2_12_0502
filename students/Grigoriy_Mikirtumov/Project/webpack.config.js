@@ -4,6 +4,12 @@ let HtmlWebpackPlugin = require ('html-webpack-plugin')
 
 module.exports ={
     module: {
+        rules:[
+          {
+            test: /\.js$/i,
+            exclude
+          }
+        ],
         rules: [
           {
             test: /\.css$/i,
