@@ -6,7 +6,7 @@ const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
 const ids = [1, 2, 3, 4, 5, 6, 7, 8];
 
 let products = [];
-let urlProducts = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json';
+let urlProducts = 'https://raw.githubusercontent.com/AlyonaCh/js2_12_0502/master/students/ChernyaevaAlyona/Others/bd_project/index.json';
 
 class GoodsItem {
     constructor(title, price, id, img, quantity) {
