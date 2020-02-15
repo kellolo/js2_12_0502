@@ -1,6 +1,8 @@
-let URL = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/online-store-api/catalogData.json'
-
 // Запрос к бд
+
+const URL_CATALOG = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/catalogData.json'
+const URL_CART = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/getBasket.json'
+
 
 function makeGetRequest(url){
     return new Promise((resolve, reject)=>{
@@ -65,7 +67,7 @@ class GoodList  {
         })
     }
     findElement(goodId){
-       return this.goods.find(el=>el.id===goodId)  
+       return this.goods.find(el=>el.id_product===goodId)  
     }
     totalCost(){
         let sum = 0;
@@ -73,20 +75,20 @@ class GoodList  {
         return sum
     }
     
-    fetchData(){
-        makeGetRequest(URL).then((datajson)=>{
-           this.goods = datajson
-           this.render()
+    fetchData(url){
+        makeGetRequest(url).then((datajson)=>{
+           this.goods = datajson;
+           this.render();
         });
     }
     render(){
-        let listHtml=''
+        let listHtml='';
         this.goods.forEach((good)=>{
             listHtml+=new GoodItem(good).render()
-        })
+        });
         this.container.innerHTML = listHtml;
-        this.initListeners()
-        this.totalCost()
+        this.initListeners();
+        this.totalCost();
     }
     
 }
@@ -95,14 +97,14 @@ class GoodList  {
 //Наследуемся от класса GoodList
 class GoodCatalog extends GoodList{
     addToCart(goodElem){//Здесь данные должны отправлятся на сервак, но т.к мы этого делать ещё не умеем пусть будет так
-        cart.checkQuantity(goodElem)
+        cart.checkQuantity(goodElem);
     }
-}
+};
 
 
 // Создаём каталог товара на базе класса GoodCatalog
-const catalog = new GoodCatalog('.products')
-catalog.fetchData();
+const catalog = new GoodCatalog('.products');
+catalog.fetchData(URL_CATALOG);
 
 
 
@@ -129,45 +131,55 @@ class GoodItemCart {
                         <button class="del-btn" data-id="${this.id}" data-value="removeToCart">&times;</button>
                     </div>
                 </div>`
-    }
+    };
 }
 
 
 //Наследуемся от класса GoodList
 class GoodCart extends GoodList {
     constructor(...attrs){ //Собираем все элементы родительского конструктора
-        super(attrs);      //Передаём все элементы в новый конструктор
+        super(attrs); //Передаём все элементы в новый конструктор
+        
     }
     checkQuantity(goodItem){ // Пока нет backand пусть будет так
-        if(this.findElement(goodItem.id)){
-            this.goods[this.findIndexGood(goodItem)].quantity++
-            this.render()
+        if(this.findElement(goodItem.id_product)){
+            this.goods[this.findIndexGood(goodItem)].quantity++;
+            this.render();
         }else{
-            goodItem.quantity=1
-            this.goods.push(goodItem)
-            this.render()
+            goodItem.quantity=1;
+            this.goods.push(goodItem);
+            this.render();
         }
+    }
+    fetchData(url){
+        makeGetRequest(url).then((datajson)=>{
+            console.log(datajson.contents)
+           this.goods = datajson.contents
+
+           this.render();
+        });
     }
     findIndexGood(good){
         return this.goods.findIndex(el=>el===good)
     }
-    incQuantity(){}
-    decQuantity(){}
+    incQuantity(){};
+    decQuantity(){};
     deleteGood(goodRemoveId){
-        this.goods.splice(this.findIndexGood(goodRemoveId), 1)
-        this.render()
+        this.goods.splice(this.findIndexGood(goodRemoveId), 1);
+        this.render();
     }
     render(){
-        let listHtml=''
+        let listHtml='';
         this.goods.forEach((good)=>{
-            listHtml+=new GoodItemCart(good).render()
+            listHtml+=new GoodItemCart(good).render();
         })
         this.container.innerHTML = listHtml;
-        this.initListeners()
+        this.initListeners();
     }
 }
 //Создаём корзину на базе класса GoodCart
 const cart = new GoodCart('.cart-block');
+cart.fetchData(URL_CART);
 
 document.querySelector('.btn-cart').addEventListener('click', () => {
     document.querySelector('.cart-block').classList.toggle('invisible');
