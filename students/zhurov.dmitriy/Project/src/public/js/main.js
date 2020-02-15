@@ -1,8 +1,27 @@
-const image = 'https://placehold.it/200x150';
-const cartImage = 'https://placehold.it/100x80';
-const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+let url = {
+    catalog: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/db/catalogData.json',
+    basket: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/db/getBasket.json'
+};
+
+let data = {
+    catalog: [],
+    basket: []
+};
+
+function pRequest(url) {
+    return new Promise((res, rej) => {
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                xhr.status === 200 ? res(xhr.responseText) : rej('error');
+            }
+        };
+
+        xhr.open('GET', url, true);
+        xhr.send()
+    })
+}
 
 document.querySelector('.btn-cart').addEventListener('click', () => {
     document.querySelector('.cart-block').classList.toggle('invisible');
@@ -16,20 +35,12 @@ document.querySelector('.products').addEventListener('click', (evt) => {
     if (evt.target.classList.contains('buy-btn')) userCart.add(evt.target);
 });
 
-function fetchData() {
-    let arr = [];
-    items.forEach(el => {
-        arr.push(new CatalogItem(items.indexOf(el)));
-    });
-    return arr;
-}
-
 class CatalogItem {
     constructor(i) {
-        this.id = ids[i];
-        this.name = items[i];
-        this.price = prices[i];
-        this.img = image;
+        this.id = data.catalog[i].id_product;
+        this.name = data.catalog[i].product_name;
+        this.img = data.catalog[i].img;
+        this.price = data.catalog[i].price;
         this.quantity = 0;
     }
 
@@ -56,9 +67,23 @@ class Catalog {
         this._init();
     }
 
+    _fetchData() {
+        let arr = [];
+        data.catalog.forEach(el => {
+            arr.push(new CatalogItem(data.catalog.indexOf(el)));
+        });
+        return arr;
+    }
+
     _init() {
-        this.items = fetchData();
-        this._render();
+        pRequest(url.catalog)
+            .then(dataJSON => {
+                data.catalog = JSON.parse(dataJSON);
+            })
+            .finally(() => {
+                this.items = this._fetchData();
+                this._render();
+            });
     }
 
     _render() {
@@ -77,7 +102,7 @@ class CartItem {
         this.id = +product.dataset['id'];
         this.name = product.dataset ['name'];
         this.price = +product.dataset['price'];
-        this.img = cartImage;
+        this.img = "https://placehold.it/100x80";
         this.quantity = 1;
     }
 
