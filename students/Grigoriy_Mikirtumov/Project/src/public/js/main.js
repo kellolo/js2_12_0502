@@ -3,7 +3,7 @@
 const URL_CATALOG = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/catalogData.json'
 const URL_CART = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/getBasket.json'
 
-
+/*
 function makeGetRequest(url){
     return new Promise((resolve, reject)=>{
        let xhr;
@@ -26,7 +26,7 @@ function makeGetRequest(url){
     })
     
 }
-
+*/
 //Общий класс для единицы товара
 class GoodItem {
     constructor(good){
@@ -72,15 +72,10 @@ class GoodList  {
     totalCost(){
         let sum = 0;
         this.goods.forEach(good=>sum += good.price)
-        return sum
+        this.amount = sum;
     }
     
-    fetchData(url){
-        makeGetRequest(url).then((datajson)=>{
-           this.goods = datajson;
-           this.render();
-        });
-    }
+    
     render(){
         let listHtml='';
         this.goods.forEach((good)=>{
@@ -98,6 +93,12 @@ class GoodList  {
 class GoodCatalog extends GoodList{
     addToCart(goodElem){//Здесь данные должны отправлятся на сервак, но т.к мы этого делать ещё не умеем пусть будет так
         cart.checkQuantity(goodElem);
+    }
+    async fetchData(url){
+        let response = await fetch(url);
+        let datajson = await response.json();
+        this.goods = datajson;
+        this.render();
     }
 };
 
@@ -139,7 +140,8 @@ class GoodItemCart {
 class GoodCart extends GoodList {
     constructor(...attrs){ //Собираем все элементы родительского конструктора
         super(attrs); //Передаём все элементы в новый конструктор
-        
+        this.amount = 0;
+        this.countGoods = 0;
     }
     checkQuantity(goodItem){ // Пока нет backand пусть будет так
         if(this.findElement(goodItem.id_product)){
@@ -149,15 +151,16 @@ class GoodCart extends GoodList {
             goodItem.quantity=1;
             this.goods.push(goodItem);
             this.render();
+            this.countGoods++
         }
     }
-    fetchData(url){
-        makeGetRequest(url).then((datajson)=>{
-            console.log(datajson.contents)
-           this.goods = datajson.contents
-
-           this.render();
-        });
+    async fetchData(url){
+        let response = await fetch(url);
+        let dataJson = await response.json();
+        this.goods = dataJson.contents;
+        this.amount = dataJson.amount;
+        this.countGoods = dataJson.countGoods
+        this.render();
     }
     findIndexGood(good){
         return this.goods.findIndex(el=>el===good)
@@ -167,6 +170,7 @@ class GoodCart extends GoodList {
     deleteGood(goodRemoveId){
         this.goods.splice(this.findIndexGood(goodRemoveId), 1);
         this.render();
+        this.countGoods--
     }
     render(){
         let listHtml='';
@@ -175,6 +179,7 @@ class GoodCart extends GoodList {
         })
         this.container.innerHTML = listHtml;
         this.initListeners();
+        this.totalCost();
     }
 }
 //Создаём корзину на базе класса GoodCart
