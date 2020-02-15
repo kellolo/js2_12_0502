@@ -1,5 +1,8 @@
 
 
+
+
+
 class ItemBasket{
     constructor(name, id, img, price, count){       
         this.name = name;
@@ -30,9 +33,11 @@ class ItemBasket{
 
 class Basket {
     constructor() {
-        this.userCart = [];
+        this.userCarts = [];
+        this.URL ="https://raw.githubusercontent.com/amaremshaova/data_db/master/getBasket.json";
         this._init();
-        this.renderCart();
+        this.getData();
+        //this.renderCart();
         this.activateDelBtn(); 
     }
 
@@ -41,6 +46,50 @@ class Basket {
                 document.querySelector('.cart-block').classList.toggle('invisible');
             });
     }
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                   // console.log(xhr.responseText); 
+                    resolve (xhr.responseText)
+                } else {
+                    reject ('error')
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    }
+
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej)
+        })
+    }
+
+    getData(){
+        this.promiseReq (this.URL)
+            .then (dataJSON => {
+                console.log (dataJSON); // String
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+               // console.log (dataParsedFromJSON); //Object/Array
+                this.userCarts = dataParsedFromJSON;
+                this.renderCart();
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log (this.userCarts); // catch+ -> [] / -catch -> [{}, {}]
+            });
+    }
+
 
      //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
      totalCostGoods(){
@@ -55,10 +104,12 @@ class Basket {
     renderCart() {
         let allProductsHtml = '';
         let el; 
-        for ( el of this.userCart) {
-        let itemBasket = new ItemBasket(el.name, el.id, el.img, el.price, el.quantity); 
+        //for (let product in this.userCarts['contents']) {
+        this.userCarts['contents'].forEach(function(product, index, array) {
+                console.log(product, index);
+        let itemBasket = new ItemBasket(product['product_name'], product['product_id'], product['image'], product['price'], product['quantity']); 
             allProductsHtml += itemBasket.render(); 
-        }
+        }); 
 
 
         document.querySelector(`.cart-block`).innerHTML = allProductsHtml;
@@ -104,11 +155,10 @@ class Basket {
 
 
 class Item {
-    constructor(name, price, img, cartImage, id) {
+    constructor(name, price, img, id) {
         this.name = name;
         this.price = price;
         this.img = img;
-        this.cartImage = cartImage; 
         this.id = id;
 
     }
@@ -122,7 +172,7 @@ class Item {
           <button class="buy-btn" 
           data-id="${this.id}"
           data-name="${this.name}"
-          data-cartImage ="${this.cartImage}"
+          data-cartImage ="${this.img}"
           data-image="${this.img}"
           data-price="${this.price}">Купить</button>
       </div>
@@ -132,30 +182,66 @@ class Item {
 
 class Catalog {
     constructor() {
-        this.prices = [];
-        this.image = '';
-        this.cartImage = '';
-        this.names = [];
-        this.ids = [];
-        this.fetchGoods();
-        this.render(); 
+        this.items =[];
+        this.URL = 'https://raw.githubusercontent.com/amaremshaova/data_db/master/catalogData.json';
+        this.getData(); 
         this.activateBuyBtn();
         this.basket = new Basket(); 
+
+
     }
 
-    fetchGoods() {
-        this.image = 'https://placehold.it/200x150';
-        this.cartImage = 'https://placehold.it/100x80';
-        this.names = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-        this.prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-        this.ids = [1, 2, 3, 4, 5, 6, 7, 8];
-  }
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                   // console.log(xhr.responseText); 
+                    resolve (xhr.responseText)
+                } else {
+                    reject ('error')
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    }
+
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej)
+        })
+    }
+
+    getData(){
+        this.promiseReq (this.URL)
+            .then (dataJSON => {
+                console.log (dataJSON); // String
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+               // console.log (dataParsedFromJSON); //Object/Array
+                this.items = dataParsedFromJSON;
+                this.render();
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log (this.items); // catch+ -> [] / -catch -> [{}, {}]
+            });
+    }
+
 
     render() {
         let listHtml = [];
+        let product;
 
-        for (let i = 0; i < this.names.length; i++) {
-            const item = new Item(this.names[i], this.prices[i], this.image, this.cartImage, this.ids[i]);
+        for (let i = 0; i < this.items.length; i++) {
+            const item = new Item(this.items[i]['product_name'], this.items[i]['price'], this.items[i]['image'], this.items[i]['id_product']);
             listHtml.push(item.render());
         }
         document.querySelector('.products').innerHTML = listHtml.join();
@@ -170,6 +256,8 @@ class Catalog {
             }
         });
     }
+
+
 
    
 }
