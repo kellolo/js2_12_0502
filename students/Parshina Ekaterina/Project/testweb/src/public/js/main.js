@@ -100,10 +100,6 @@ class GoodList  {
         return sum
     }
 
-    fetchData(){
-        this.goods = goods;
-        this.render()
-    }
     render(){
         let listHtml=''
         this.goods.forEach((good)=>{
@@ -123,7 +119,6 @@ class GoodCatalog extends GoodList{
 }
 // Создаём каталог товара на базе класса GoodCatalog
 const catalog = new GoodCatalog('.products')
-catalog.fetchData();
 
 class GoodItemCart {
     constructor(good){
