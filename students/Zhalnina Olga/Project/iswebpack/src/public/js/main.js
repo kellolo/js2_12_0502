@@ -34,16 +34,15 @@ class GoodsList {
         const buttons = document.querySelectorAll('.buy-btn');
         buttons.forEach((button)=>{
             button.addEventListener('click', (evt)=>{
-                if (evt.target.dataset.value === 'addToCart'){
-                    this.addToCart (this.findElement(parseInt(evt.target.dataset.id, 10)))
-                } else if (evt.target.dataset.value === 'removeToCart'){
-                    this.deleteGood(this.findElement(parseInt(evt.target.dataset.id, 10)))
-                }
+                this.addToCart (this.findElement(parseInt(evt.target.dataset.id, 10)))
             })
         })
     }
+    findElement(goodId){
+        return this.goods.find(el=>el.id===goodId)  
+     }
     //Добавление продуктов в корзину
-    addProduct (product) {
+    addToCart (product) {
         let productId = +product.dataset['id'];
         let find = userCart.find (element => element.id === productId);
         if (!find) {
