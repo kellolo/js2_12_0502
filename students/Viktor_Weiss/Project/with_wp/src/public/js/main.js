@@ -1,5 +1,5 @@
 // Имитация запроса
-let URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json'
+let URL = 'https://raw.githubusercontent.com/EdwardLeks/database/master/goodsData.json'
 let goods = []
 
 function makeGETRequest(url, resolve, reject) {
