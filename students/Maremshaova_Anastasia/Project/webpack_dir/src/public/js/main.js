@@ -1,10 +1,8 @@
-
-
 class ItemBasket{
     constructor(name, id, img, price, count){       
         this.name = name;
         this.price = price;
-        this.img = img;
+        this.image = img;
         this.id = id;
         this.quantity = count;
     }
@@ -12,11 +10,12 @@ class ItemBasket{
     render(){
         return `<div class="cart-item" data-id="${this.id}">
         <div class="product-bio">
-            <img src="${this.img}" alt="Some image">
+            <img src="${this.image}" alt="Some image">
             <div class="product-desc">
                 <p class="product-title">${this.name}</p>
                 <p class="product-quantity">Quantity: ${this.quantity}</p>
-                <p class="product-single-price">$${this.price} each</p>
+                <p class="product-single-price"> 	
+                Р ${this.price} each</p>
              </div>
         </div>
         <div class="right-block">
@@ -30,10 +29,12 @@ class ItemBasket{
 
 class Basket {
     constructor() {
-        this.userCart = [];
+        this.userCarts = [];
+        this.URL ="https://raw.githubusercontent.com/amaremshaova/data_db/master/getBasket.json";
         this._init();
-        this.renderCart();
-        this.activateDelBtn(); 
+        this.getData();
+        //this.renderCart();
+       
     }
 
     _init() {
@@ -42,23 +43,38 @@ class Basket {
             });
     }
 
-     //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
-     totalCostGoods(){
-        let totalCost = 0; 
-        let el; 
-        for ( el of this.userCart) {
-            totalCost += el.price * el.quantity; 
+
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                   // console.log(xhr.responseText); 
+                    resolve (xhr.responseText)
+                } else {
+                    reject ('error')
+                }
+            }
         }
-        return totalCost; 
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    }
+
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej)
+        })
     }
 
     renderCart() {
         let allProductsHtml = '';
-        let el; 
-        for ( el of this.userCart) {
-        let itemBasket = new ItemBasket(el.name, el.id, el.img, el.price, el.quantity); 
+        this.userCarts.forEach(function(product, index, array) {
+        let itemBasket = new ItemBasket(product['name'], product['id'], product['image'], product['price'], product['quantity']); 
             allProductsHtml += itemBasket.render(); 
-        }
+        }); 
 
 
         document.querySelector(`.cart-block`).innerHTML = allProductsHtml;
@@ -68,12 +84,40 @@ class Basket {
         document.querySelector(`.cart-block`).appendChild(totalCost);
     }
 
+    getData(){
+        this.promiseReq (this.URL)
+            .then (dataJSON => {
+                console.log (dataJSON); // String
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+                this.userCarts = dataParsedFromJSON['contents']
+                this.renderCart();
+            })
+            .then( this.activateDelBtn())
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log (this.userCarts_tmp); // catch+ -> [] / -catch -> [{}, {}]
+            });
+    }
+
+     //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
+     totalCostGoods(){
+        let totalCost = 0; 
+        let el; 
+        for ( el of this.userCarts) {
+            totalCost += el.price * el.quantity; 
+        }
+        return totalCost; 
+    }
 
     addProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.userCart.find (element => element.id === productId);
+        let find = this.userCarts.find (element => element.id === productId);
         if (!find) {
-            this.userCart.push (new ItemBasket(product.dataset ['name'], productId, product.dataset ['cartimage'], +product.dataset['price'], 1)); 
+            this.userCarts.push (new ItemBasket(product.dataset ['name'], productId, product.dataset['image'], +product.dataset['price'], 1)); 
         }  else {
             find.quantity++
         }
@@ -82,11 +126,11 @@ class Basket {
     
     removeProduct (product) {
             let productId = +product.dataset['id'];
-            let find = this.userCart.find (element => element.id === productId);
+            let find = this.userCarts.find (element => element.id === productId);
             if (find.quantity > 1) {
                 find.quantity--;
             } else {
-                this.userCart.splice(this.userCart.indexOf(find), 1);
+                this.userCarts.splice(this.userCarts.indexOf(find), 1);
                 document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
             }
             this.renderCart ();
@@ -104,26 +148,24 @@ class Basket {
 
 
 class Item {
-    constructor(name, price, img, cartImage, id) {
+    constructor(name, price, img, id) {
         this.name = name;
         this.price = price;
-        this.img = img;
-        this.cartImage = cartImage; 
+        this.image = img;
         this.id = id;
 
     }
 
     render() {
         return `<div class="product-item" data-id="${this.id}">
-      <img src="${this.img}" alt="Some img">
+      <img src="${this.image}" alt="Some img">
       <div class="desc">
           <h3>${this.name}</h3>
-          <p>${this.price} $</p>
+          <p>${this.price} Р </p>
           <button class="buy-btn" 
           data-id="${this.id}"
           data-name="${this.name}"
-          data-cartImage ="${this.cartImage}"
-          data-image="${this.img}"
+          data-image="${this.image}"
           data-price="${this.price}">Купить</button>
       </div>
   </div>`;
@@ -132,30 +174,64 @@ class Item {
 
 class Catalog {
     constructor() {
-        this.prices = [];
-        this.image = '';
-        this.cartImage = '';
-        this.names = [];
-        this.ids = [];
-        this.fetchGoods();
-        this.render(); 
+        this.items =[];
+        this.URL = 'https://raw.githubusercontent.com/amaremshaova/data_db/master/catalogData.json';
+        this.getData(); 
         this.activateBuyBtn();
         this.basket = new Basket(); 
     }
 
-    fetchGoods() {
-        this.image = 'https://placehold.it/200x150';
-        this.cartImage = 'https://placehold.it/100x80';
-        this.names = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-        this.prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-        this.ids = [1, 2, 3, 4, 5, 6, 7, 8];
-  }
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                   // console.log(xhr.responseText); 
+                    resolve (xhr.responseText)
+                } else {
+                    reject ('error')
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    }
+
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej)
+        })
+    }
+
+    getData(){
+        this.promiseReq (this.URL)
+            .then (dataJSON => {
+                console.log (dataJSON); // String
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+               // console.log (dataParsedFromJSON); //Object/Array
+                this.items = dataParsedFromJSON;
+                this.render();
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log (this.items); // catch+ -> [] / -catch -> [{}, {}]
+            });
+    }
+
 
     render() {
         let listHtml = [];
+        let product;
 
-        for (let i = 0; i < this.names.length; i++) {
-            const item = new Item(this.names[i], this.prices[i], this.image, this.cartImage, this.ids[i]);
+        for (let i = 0; i < this.items.length; i++) {
+            const item = new Item(this.items[i]['name'], this.items[i]['price'], this.items[i]['image'], this.items[i]['id']);
             listHtml.push(item.render());
         }
         document.querySelector('.products').innerHTML = listHtml.join();
@@ -170,6 +246,8 @@ class Catalog {
             }
         });
     }
+
+
 
    
 }
