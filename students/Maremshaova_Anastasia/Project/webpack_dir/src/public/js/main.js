@@ -1,13 +1,8 @@
-
-
-
-
-
 class ItemBasket{
     constructor(name, id, img, price, count){       
         this.name = name;
         this.price = price;
-        this.img = img;
+        this.image = img;
         this.id = id;
         this.quantity = count;
     }
@@ -15,11 +10,12 @@ class ItemBasket{
     render(){
         return `<div class="cart-item" data-id="${this.id}">
         <div class="product-bio">
-            <img src="${this.img}" alt="Some image">
+            <img src="${this.image}" alt="Some image">
             <div class="product-desc">
                 <p class="product-title">${this.name}</p>
                 <p class="product-quantity">Quantity: ${this.quantity}</p>
-                <p class="product-single-price">$${this.price} each</p>
+                <p class="product-single-price"> 	
+                Р ${this.price} each</p>
              </div>
         </div>
         <div class="right-block">
@@ -38,7 +34,7 @@ class Basket {
         this._init();
         this.getData();
         //this.renderCart();
-        this.activateDelBtn(); 
+       
     }
 
     _init() {
@@ -46,6 +42,8 @@ class Basket {
                 document.querySelector('.cart-block').classList.toggle('invisible');
             });
     }
+
+
     makeGETRequest(url, resolve, reject) {
         let xhr = new XMLHttpRequest()
 
@@ -71,43 +69,10 @@ class Basket {
         })
     }
 
-    getData(){
-        this.promiseReq (this.URL)
-            .then (dataJSON => {
-                console.log (dataJSON); // String
-                return JSON.parse(dataJSON);
-            })
-            .then (dataParsedFromJSON => {
-               // console.log (dataParsedFromJSON); //Object/Array
-                this.userCarts = dataParsedFromJSON;
-                this.renderCart();
-            })
-            .catch (errorData => {
-                console.log (errorData + ' ERROR');
-            })
-            .finally (() => {
-                console.log (this.userCarts); // catch+ -> [] / -catch -> [{}, {}]
-            });
-    }
-
-
-     //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
-     totalCostGoods(){
-        let totalCost = 0; 
-        let el; 
-        for ( el of this.userCart) {
-            totalCost += el.price * el.quantity; 
-        }
-        return totalCost; 
-    }
-
     renderCart() {
         let allProductsHtml = '';
-        let el; 
-        //for (let product in this.userCarts['contents']) {
-        this.userCarts['contents'].forEach(function(product, index, array) {
-                console.log(product, index);
-        let itemBasket = new ItemBasket(product['product_name'], product['product_id'], product['image'], product['price'], product['quantity']); 
+        this.userCarts.forEach(function(product, index, array) {
+        let itemBasket = new ItemBasket(product['name'], product['id'], product['image'], product['price'], product['quantity']); 
             allProductsHtml += itemBasket.render(); 
         }); 
 
@@ -119,12 +84,40 @@ class Basket {
         document.querySelector(`.cart-block`).appendChild(totalCost);
     }
 
+    getData(){
+        this.promiseReq (this.URL)
+            .then (dataJSON => {
+                console.log (dataJSON); // String
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+                this.userCarts = dataParsedFromJSON['contents']
+                this.renderCart();
+            })
+            .then( this.activateDelBtn())
+            .catch (errorData => {
+                console.log (errorData + ' ERROR');
+            })
+            .finally (() => {
+                console.log (this.userCarts_tmp); // catch+ -> [] / -catch -> [{}, {}]
+            });
+    }
+
+     //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
+     totalCostGoods(){
+        let totalCost = 0; 
+        let el; 
+        for ( el of this.userCarts) {
+            totalCost += el.price * el.quantity; 
+        }
+        return totalCost; 
+    }
 
     addProduct (product) {
         let productId = +product.dataset['id'];
-        let find = this.userCart.find (element => element.id === productId);
+        let find = this.userCarts.find (element => element.id === productId);
         if (!find) {
-            this.userCart.push (new ItemBasket(product.dataset ['name'], productId, product.dataset ['cartimage'], +product.dataset['price'], 1)); 
+            this.userCarts.push (new ItemBasket(product.dataset ['name'], productId, product.dataset['image'], +product.dataset['price'], 1)); 
         }  else {
             find.quantity++
         }
@@ -133,11 +126,11 @@ class Basket {
     
     removeProduct (product) {
             let productId = +product.dataset['id'];
-            let find = this.userCart.find (element => element.id === productId);
+            let find = this.userCarts.find (element => element.id === productId);
             if (find.quantity > 1) {
                 find.quantity--;
             } else {
-                this.userCart.splice(this.userCart.indexOf(find), 1);
+                this.userCarts.splice(this.userCarts.indexOf(find), 1);
                 document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
             }
             this.renderCart ();
@@ -158,22 +151,21 @@ class Item {
     constructor(name, price, img, id) {
         this.name = name;
         this.price = price;
-        this.img = img;
+        this.image = img;
         this.id = id;
 
     }
 
     render() {
         return `<div class="product-item" data-id="${this.id}">
-      <img src="${this.img}" alt="Some img">
+      <img src="${this.image}" alt="Some img">
       <div class="desc">
           <h3>${this.name}</h3>
-          <p>${this.price} $</p>
+          <p>${this.price} Р </p>
           <button class="buy-btn" 
           data-id="${this.id}"
           data-name="${this.name}"
-          data-cartImage ="${this.img}"
-          data-image="${this.img}"
+          data-image="${this.image}"
           data-price="${this.price}">Купить</button>
       </div>
   </div>`;
@@ -187,8 +179,6 @@ class Catalog {
         this.getData(); 
         this.activateBuyBtn();
         this.basket = new Basket(); 
-
-
     }
 
     makeGETRequest(url, resolve, reject) {
@@ -241,7 +231,7 @@ class Catalog {
         let product;
 
         for (let i = 0; i < this.items.length; i++) {
-            const item = new Item(this.items[i]['product_name'], this.items[i]['price'], this.items[i]['image'], this.items[i]['id_product']);
+            const item = new Item(this.items[i]['name'], this.items[i]['price'], this.items[i]['image'], this.items[i]['id']);
             listHtml.push(item.render());
         }
         document.querySelector('.products').innerHTML = listHtml.join();
