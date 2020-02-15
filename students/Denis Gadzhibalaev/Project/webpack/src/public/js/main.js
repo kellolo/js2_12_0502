@@ -114,7 +114,6 @@ class Basket {
     constructor(container) {
         this.basketList = [];
         this.container = container;
-        this.totalSum = 0;
         this._controlModalWindow();
     }
     init() {
@@ -128,11 +127,10 @@ class Basket {
         this.basketList = [];
         this._promiseReq (url)
             .then (dataJSON => {
-                return JSON.parse(dataJSON);
-            })
-            .then (dataParsedFromJSON => {
-                this.basketList = dataParsedFromJSON;
-                this._render();
+                this.basketList =  JSON.parse(dataJSON);
+                this.totalSum = this.basketList.amount;
+                document.querySelector('.total-sum').innerText = `Total price: ${this.totalSum} $`;
+                this._render();    
             })
             .catch (errorData => {
                 console.log (errorData + ' ERROR');
@@ -209,9 +207,10 @@ class Basket {
                 price: +product.dataset['price'],
                 quantity: 1
             });
+            this.basketList.countGoods += 1;
         } else {
             find.quantity++
-
+            this.basketList.countGoods += 1;
         }
         this._increaseTotalSum(+product.dataset['price']);
     }
@@ -220,8 +219,10 @@ class Basket {
         let find = this.basketList.contents.find(element => element.id_product === productId);
         if (find.quantity > 1) {
             find.quantity--;
+            this.basketList.countGoods -= 1;
         } else {
             this.basketList.contents.splice(this.basketList.contents.indexOf(find), 1);
+            this.basketList.countGoods -= 1;
             document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
         }
         this._reduceTotalSum(+find.price);
@@ -229,13 +230,15 @@ class Basket {
 
     _increaseTotalSum(sum) {
         this.totalSum += sum;
+        this.basketList.amount = this.totalSum;
         return document.querySelector('.total-sum').innerText = `Total price: ${this.totalSum} $`;
     }
 
     _reduceTotalSum(sum) {
         this.totalSum -= sum ;
+        this.basketList.amount = this.totalSum;
         if (this.totalSum == 0) {
-            return document.querySelector('.total-sum').innerText = `Total price: ${this.totalSum}`;
+            return document.querySelector('.total-sum').innerText = ``;
         } else {
         return document.querySelector('.total-sum').innerText = `Total price: ${this.totalSum} $`;
         }
