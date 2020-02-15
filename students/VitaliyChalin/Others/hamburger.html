@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- saved from url=(0100)https://d2xzmw6cctk25h.cloudfront.net/asset/1645006/attachment/553a606081ac6a878cbbda4f7a4ca8a3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>гамбургер</title>
+    <style>
+        form {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #okBtn {
+            margin-bottom: 20px;
+        }
+        .price__total.invis,
+        .calory__total.invis {
+            display: none;
+        }
+        .price__total,
+        .calory__total {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        .price__total span,
+        .calory__total span {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="nimbus-is-editor">
+    <form action="#" id="uForm">
+        <fieldset>
+            <legend>Выберите размер гамбургера</legend>
+            <label>
+                <input type="radio" name="size" value="small" data-price="50" data-calory="20"> Маленький
+            </label>
+            <label>
+                <input type="radio" name="size" value="big" data-price="100" data-calory="40" checked> Большой
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Выберите начинку</legend>
+            <label>
+                <input type="radio" name="stuffing" value="cheese" data-price="10" data-calory="20"> С сыром
+            </label>
+            <label>
+                <input type="radio" name="stuffing" value="salad" data-price="20" data-calory="5" checked> С салатом
+            </label>
+            <label>
+                <input type="radio" name="stuffing" value="potato" data-price="15" data-calory="10"> С картофелем
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Добавки?</legend>
+            <label>
+                <input type="checkbox" name="additives" value="flavor" data-price="15" data-calory="0" checked> Приправа
+            </label>
+            <label>
+                <input type="checkbox" name="additives" value="mayo" data-price="20" data-calory="5" checked> Майонез
+            </label>
+        </fieldset>
+    </form>
+
+    <button id="okBtn">Рассчитать</button>
+
+    <div class="price__total invis">Стоимость гамбургера: <span class="price__total--num"></span></div>
+    <div class="calory__total invis">Калорийность: <span class="calory__total--num"></span></div>
+    <script>
+        let form = document.querySelector ('#uForm');
+        let btn = document.querySelector ('#okBtn');
+        let hamburger = [];
+
+        btn.addEventListener('click', calcHamb);
+
+        function calcHamb () {
+            let newHamb = new Hamburger ('size', 'stuffing', 'additives');
+        }
+
+        class Hamburger {
+            constructor (size, stuffing, additives) {
+                this.size = this._checkSize (size);
+                this.stuffing = this._checkStuff (stuffing);
+                this.additives = this._getArray (additives);
+                this._calc ();
+            }
+
+            _checkSize (attrName) {
+                let obj = document.querySelector (`input[name=${attrName}]:checked`);
+                return obj.value;
+            }
+            _checkStuff (attrName) {
+                let obj = document.querySelector (`input[name=${attrName}]:checked`);
+                return obj.value;
+            }
+            _getArray (attrName) {
+                let objArr = [...document.querySelectorAll (`input[name=${attrName}]:checked`)];
+                let arr = [];
+                objArr.forEach (el => {
+                    arr.push (el.value);
+                })
+                return arr;
+            }
+            _calc () {
+                let data = {
+                    'small': [50, 20],
+                    'big': [100, 40],
+                    'cheese': [10, 20],
+                    'salad': [20, 5],
+                    'potato': [15, 10],
+                    'flavor': [15, 0],
+                    'mayo': [20, 5]
+                };
+
+                let calcPrice = 0;
+                let calcCalory = 0;
+
+                for ( let k in data ) {
+                    (k == this.size) ? calcPrice += data[k][0] : 0;
+                    (k == this.size) ? calcCalory += data[k][1] : 0;
+                    (k == this.stuffing) ? calcPrice += data[k][0] : 0;
+                    (k == this.stuffing) ? calcCalory += data[k][1] : 0;
+                    (k == this.additives[0]) ? calcPrice += data[k][0] : 0;
+                    (k == this.additives[0]) ? calcCalory += data[k][0] : 0;
+                    (k == this.additives[1]) ? calcPrice += data[k][0] : 0;
+                    (k == this.additives[1]) ? calcCalory += data[k][0] : 0;
+                }
+
+                let totalWrp = document.querySelector('.price__total--num');
+                let caloryWrp = document.querySelector('.calory__total--num');
+
+                totalWrp.innerHTML = calcPrice;
+                caloryWrp.innerHTML = calcCalory;
+                totalWrp.parentElement.classList.remove('invis');
+                caloryWrp.parentElement.classList.remove('invis');
+            }
+        }
+    </script>
+
+</body>
+</html>
