@@ -1,4 +1,5 @@
 let URL = 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/online-store-api/catalogData.json'
+
 // Запрос к бд
 
 function makeGetRequest(url){
