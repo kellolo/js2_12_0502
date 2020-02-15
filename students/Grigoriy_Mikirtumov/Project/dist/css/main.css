@@ -125,6 +125,7 @@ img {
 .cart-item img{
     align-self: flex-start;
     margin-right: 15px;
+    width: 50%;
 }
 .product-single-price{
     color: #474747;
