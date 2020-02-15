@@ -1,56 +1,56 @@
 [
     {
-      "id_product": 1,
-      "product_name": "Вилка, серебро",
+      "id": 1,
+      "title": "Вилка, серебро",
       "price": 2000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 2,
-      "product_name": "Вилка, золото",
+      "id": 2,
+      "title": "Вилка, золото",
       "price": 10000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 3,
-      "product_name": "Ложка, серебро",
+      "id": 3,
+      "title": "Ложка, серебро",
       "price": 2000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 4,
-      "product_name": "Ложка, золото",
+      "id": 4,
+      "title": "Ложка, золото",
       "price": 10000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 5,
-      "product_name": "Комплект на 6 персон - ложки и вилки, серебро",
+      "id": 5,
+      "title": "Комплект на 6 персон - ложки и вилки, серебро",
       "price": 20000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 6,
-      "product_name": "Комплект на 6 персон - ложки и вилки, золото",
+      "id": 6,
+      "title": "Комплект на 6 персон - ложки и вилки, золото",
       "price": 50000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 7,
-      "product_name": "Комплект на 12 персон - ложки и вилки, серебро",
+      "id": 7,
+      "title": "Комплект на 12 персон - ложки и вилки, серебро",
       "price": 30000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 8,
-      "product_name": "Комплект на 12 персон - ложки и вилки, золото",
+      "id": 8,
+      "title": "Комплект на 12 персон - ложки и вилки, золото",
       "price": 80000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     },
     {
-      "id_product": 9,
-      "product_name": "Комплект на 12 персон - ложки и вилки, серебро и золото",
+      "id": 9,
+      "title": "Комплект на 12 персон - ложки и вилки, серебро и золото",
       "price": 100000,
-      "image": "https://via.placeholder.com/200x150"
+      "img": "https://via.placeholder.com/200x150"
     }
   ]

@@ -3,8 +3,8 @@ var list
 const cartImage = 'https://placehold.it/100x80';
 
 //путь к нашим данным на гите
-let URL_CATALOG = 'https://raw.githubusercontent.com'
-let URL_CART = 'https://raw.githubusercontent.com'
+let URL_CATALOG = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/catalogData.json'
+let URL_CART = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/getBasket.json'
 
 // Запрос данных
 function makeGETRequest(url, resolve, reject) {
