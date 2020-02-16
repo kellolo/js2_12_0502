@@ -4,11 +4,11 @@ const cartImage = 'https://placehold.it/100x80';
 const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
 const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
 const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
 // var userCart = [];
-var list
-
+//var list
 //кнопка скрытия и показа корзины
 // document.querySelector('.btn-cart').addEventListener('click', () => {
 //     document.querySelector('.cart-block').classList.toggle('invisible');
@@ -139,13 +139,57 @@ init()
 
 //     document.querySelector(`.cart-block`).innerHTML = allProducts;
 // }
+
+/* function makeGETRequest(url, callback) {
+   var xhr;
+ 
+   if (window.XMLHttpRequest) {
+     xhr = new XMLHttpRequest();
+   } else if (window.ActiveXObject) { 
+     xhr = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+ 
+   xhr.onreadystatechange = function () {
+     if (xhr.readyState === 4) {
+       callback(xhr.responseText);
+     }
+   }
+ 
+   xhr.open('GET', url, true);
+   xhr.send();
+
+ } */
+
+function makeGETRequest(url, resolve, reject) {
+    let xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                resolve(xhr.responseText)
+            } else {
+                reject('error')
+            }
+        }
+    }
+
+    xhr.open('GET', url, true)
+    xhr.send()
+}
+
+function promiseReq(url) {
+    return new Promise((res, rej) => {
+        makeGETRequest(url, res, rej)
+    })
+}
+
 class GoodsItem {
-    constructor(title, price) {
-        this.title = title;
+    constructor(product_name, price) {
+        this.product_name = product_name;
         this.price = price;
     }
     render() {
-        return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
+        return `<div class="goods-item"><h3>${this.product_name}</h3><p>${this.price}</p></div>`;
     }
 }
 
@@ -153,34 +197,40 @@ class GoodsList {
     constructor() {
         this.goods = [];
     }
-    fetchGoods() {
-        this.goods = [{
-                title: 'Shirt',
-                price: 150
-            },
-            {
-                title: 'Socks',
-                price: 50
-            },
-            {
-                title: 'Jacket',
-                price: 350
-            },
-            {
-                title: 'Shoes',
-                price: 250
-            },
-        ];
-    }
+    /* fetchGoods(cb) {
+        makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
+          this.goods = JSON.parse(goods);
+          cb();
+        })
+      } */
 
     render() {
         let listHtml = '';
         this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.title, good.price);
+            const goodItem = new GoodsItem(good.product_name, good.price);
             listHtml += goodItem.render();
         });
-        document.querySelector('.goods-list').innerHTML = listHtml;
+        //document.querySelector('.goods-list').innerHTML = listHtml;
+        document.querySelector('.products').innerHTML = listHtml;
     }
+    fetchGoods(cb) {
+        let fetchPromise = new Promise((resolve, reject) => {
+            makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
+                this.goods = JSON.parse(goods);
+                resolve(this.goods)
+            })
+
+        });
+        fetchPromise
+            .then(
+                result => {
+                    cb = result;
+                    this.render()
+                },
+            );
+
+    }
+
 
     totalPrice() {
         let total = 0;
@@ -191,23 +241,28 @@ class GoodsList {
     }
 }
 
-const goods = [{
-        title: 'Shirt',
-        price: 150
-    },
-    {
-        title: 'Socks',
-        price: 50
-    },
-    {
-        title: 'Jacket',
-        price: 350
-    },
-    {
-        title: 'Shoes',
-        price: 250
-    },
-]
+list = new GoodsList();
+list.fetchGoods(() => {
+    list.render();
+});
+
+// const goods = [{
+//        title: 'Shirt',
+//        price: 150
+//    },
+//    {
+//        title: 'Socks',
+//        price: 50
+//    },
+//    {
+//        title: 'Jacket',
+//        price: 350
+//   },
+//    {
+//        title: 'Shoes',
+//        price: 250
+//    },
+//]
 
 class Catalog {
     constructor(container) {
@@ -228,9 +283,4 @@ class Catalog {
         })
         document.querySelector(this.container).innerHTML = str
     }
-}
-
-class Cart {
-    constructor() {}
-    _render()
 }

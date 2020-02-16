@@ -1,9 +1,82 @@
-//заглушки (имитация базы данных)
-const image = 'https://placehold.it/200x150';
-const cartImage = 'https://placehold.it/100x80';
-const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+//https://raw.githubusercontent.com/Siellph/JSshop_DB/master/db/catalogData.json
+//https://raw.githubusercontent.com/Siellph/JSshop_DB/master/db/getBasket.json
+//Каталог товаров в репозитории гитхаб
+const DB_URL = 'https://raw.githubusercontent.com/Siellph/JSshop_DB/master/db'
+
+
+//const cartImage = 'https://placehold.it/100x80';
+
+
+
+
+
+
+
+
+
+
+//Отображение одной единицы товара
+class GoodItem {
+    constructor(good) {
+        this.id_product = good.id_product
+        this.product_name = good.product_name
+        this.price = good.price
+        this.image = good.image
+    }
+    render() {
+        return `<div class="product_item">
+                    <img src="${this.image}" alt="placeholder"
+                    <div class="desc">
+                        <h3>${this.product_name}</h3>
+                        <p>${this.price}</p>
+                        <button class="buy_btn" data_value="add_to_cart" data_id="${this.id_product}">Купить</butoon>
+                    </div>
+                </div>`
+    }
+}
+
+//Полный список товаров
+class GoodList {
+    constructor (container) {
+        this.container = document.querySelector(container)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
