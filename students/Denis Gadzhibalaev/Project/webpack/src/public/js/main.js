@@ -1,4 +1,10 @@
 'use strict';
+
+
+
+
+
+
 class GoodItem {
     constructor(name, price, id, image) {
         this.name = name;
