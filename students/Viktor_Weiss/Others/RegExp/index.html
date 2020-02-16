@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ReGexp</title>
+</head>
+<body>
+	<script>
+		let reg = /\B'/g
+		let str = ` Him: 'Hello! How are you ?' \n Her: 'Hi! I'm fine !' \n Him: 'Can you'r son help me ?' \n Her: 'No he can't, he's not home right now.'`
+		console.log('Original \n' + str)
+		console.log('New \n' + str.replace(reg, '"' ))
+	</script>
+</body>
+</html>
