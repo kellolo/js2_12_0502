@@ -1,10 +1,11 @@
 'use strict'
 
 class Validate {
-  constructor(form, inputsClass = '.valid'){
+  constructor(form, inputsClassSelector = '.valid'){
     this.form = form
-    this.inputsClass = inputsClass
-    this.inputs = this.form.querySelectorAll(this.inputsClass)
+    this.inputsClassSelector = inputsClassSelector
+    this.inputsClassName = this.inputsClassSelector.slice(1)
+    this.inputs = this.form.querySelectorAll(this.inputsClassSelector)
 
     this.regName = /^[a-zA-Zа-яА-Я]+$/;  //регулярка для имени
     this.regPhone = /^\+7\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/i;  //регулярка для телефона формат +7(000)000-0000
@@ -14,6 +15,7 @@ class Validate {
     this._validateForm()
   }
 
+  //Вешаем валидацию на событие отправки формы
   _validateForm() {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -26,9 +28,9 @@ class Validate {
     })
   }
 
+  //Валидация инпута
   _validInput(input, reg) {
     let value = input.value
-    // console.log(value);
     let isSending = false;
     if ( reg.test(value) ) {
       this._addRemoveError(input)
@@ -39,11 +41,11 @@ class Validate {
     return isSending
   }
 
+  //Валидация всех инпутов
   _validateInputs() {
     let inputsValid = [];
 
     this.inputs.forEach( input => {
-      // console.log((this.inputsClass+'-text').slice(1))
       if( input.classList.contains( this._getClassName('name') ) ){
         inputsValid.push( this._validInput(input, this.regName) ? true : false )
       } else if( input.classList.contains( this._getClassName('phone') ) ){
@@ -58,21 +60,29 @@ class Validate {
     return inputsValid.every(res => res )
   }
 
+  /**
+   * Получаем название класса, по которому происходит валидация
+   * *-text, *-name, *-phone, *-email
+   * @param {string} text 
+   */
   _getClassName(text) {
-    return (this.inputsClass+'-'+text).slice(1)
+    return (this.inputsClassName+'-'+text)
   }
 
-  // _removeClassErr(){
-  //   this.inputs.forEach( input => {
-  //     input.classList.remove(this.inputsClass+'-error')
-  // }
-
+  /**
+   * Удаляем класс *-error у инпута
+   * @param {dom-element} input 
+   */
   _addRemoveError(input){
-    input.classList.remove( (this.inputsClass+'-error').slice(1) )
+    input.classList.remove( (this.inputsClassName+'-error') )
   }
 
+  /**
+   * Добавляем класс *-error инпуту
+   * @param {dom-element} input 
+   */
   _addClassError(input){
-    input.classList.add( (this.inputsClass+'-error').slice(1) )
+    input.classList.add( (this.inputsClassName+'-error') )
   }
 }
 
