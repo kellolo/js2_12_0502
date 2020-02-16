@@ -1,0 +1,23 @@
+{
+    "price": 64,
+    "quantity": 3,
+    "items": [{
+        "product_name": "Warcraft 3: Reforged",
+        "price": 25,
+        "product_id": "0",
+        "img": "https://i.playground.ru/e/YNCtBoZigQh3r0BdVeBMLg.jpeg",
+        "quantity": 2
+    }, {
+        "product_name": "Half-Life 2",
+        "price": 10,
+        "product_id": "2",
+        "img": "https://i.playground.ru/e/T4l7p0eVZeOBAFQOy8BIpQ.jpeg",
+        "quantity": 1
+    }, {
+        "product_name": "Quake 3 Arena",
+        "price": 4,
+        "product_id": "5",
+        "img": "https://i.playground.ru/e/g0W9dvjAF8w3HhHIjFk6pw.jpeg",
+        "quantity": 1
+    }]
+}
