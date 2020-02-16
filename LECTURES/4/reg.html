@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let reg = new RegExp ('abc', 'ig') // let reg = /abc/ig
+        let str = 'AbC abc ABC qwq'
+
+        // from str
+        console.log(str.search (reg)) //index / false
+        console.log(str.match (reg)) // [{}] / ['AbC', 'abc', 'ABC']
+
+        // from reg
+        console.log(reg.test (str)) // true/false
+    </script>
+</body>
+</html>
