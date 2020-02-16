@@ -47,8 +47,11 @@ class Validator {
               evt.preventDefault();
               evt.stopPropagation();
             }
-            // когда кнопку сабмит нажмут первый раз - вешаем еще один слушатель на изменение данных в форме
-            if (!this.checking) this.form.addEventListener('input', evt => {this.check()})
+            //когда кнопку сабмит нажмут первый раз - вешаем еще один слушатель на изменение данных в форме
+            if (!this.checking) {
+                this.checking = true
+                this.form.addEventListener('input', () => {this.check()})
+            }
         });
         
     }
