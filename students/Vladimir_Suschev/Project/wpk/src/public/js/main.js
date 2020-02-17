@@ -1,7 +1,7 @@
 //заглушки (имитация базы данных)
 const image = 'https://placehold.it/200x150'
 const cartImage = 'https://placehold.it/100x80'
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+const API = 'https://raw.githubusercontent.com/azazel87/js2_12_0502/master/students/Vladimir_Suschev/Project/wpk/src/server'
 //parents abstract
 class List { 
     constructor (url, container) {

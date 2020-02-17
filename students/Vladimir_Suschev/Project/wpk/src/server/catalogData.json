@@ -8,5 +8,35 @@
     "id_product": 456,
     "product_name": "Мышка",
     "price": 1000
+  },
+  {
+    "id_product": 789,
+    "product_name": "Дисплей",
+    "price": 25600
+  },
+  {
+    "id_product": 987,
+    "product_name": "Клавиатура",
+    "price": 1000
+  },
+  {
+    "id_product": 654,
+    "product_name": "USB-камера",
+    "price": 550
+  },
+  {
+    "id_product": 321,
+    "product_name": "Стол",
+    "price": 1500
+  },
+  {
+    "id_product": 112,
+    "product_name": "Стул",
+    "price": 1600
+  },
+  {
+    "id_product": 113,
+    "product_name": "Коврик для мыши",
+    "price": 10
   }
 ]
