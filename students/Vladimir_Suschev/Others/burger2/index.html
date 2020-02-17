@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>burger2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="form">
+    <p>Выберите размер Гамбургера:</p>
+    <select name="sizeBurg" id="sizeBurg">
+      <option value="Большой" data-pay="100" data-cals="40">Большой (100 рублей, 40 калорий)</option>
+      <option value="Маленький" data-pay="50" data-cals="20">Маленький (50 рублей, 20 калорий)</option>
+    </select>
+    <p>Гамбургер может быть с одним из нескольких видов начинок (дополнительно):</p>
+    <select name="fill" id="fills">
+      <option value="с сыром" data-pay="10" data-cals="20" checked>С сыром (+10 рублей,
+        +20 калорий)</option>
+      <option value="с салатом" data-pay="20" data-cals="5">С салатом (+20 рублей, +5
+        калорий)</option>
+      <option value="с картофелем" data-pay="15" data-cals="10">С картофелем (+15
+        рублей, +10 калорий)</option>
+    </select>
+    <p>
+      <input type="checkbox" name="stuff" value="поперчить" data-pay="15" data-cals="0"><span>поперчить</span> (+15
+      рублей, +0 калорий)
+    </p>
+    <p>
+      <input type="checkbox" name="stuff" value="добавить майонез" data-pay="20" data-cals="5"><span>добавить майонез</span> (+20 рублей,
+      +5 калорий).
+    </p>
+    <p>
+      <button id="checkIn">СОБРАТЬ БУРГЕР</button>
+      <div id="viewBurg"></div>
+      <!-- <button id="checkOut">ДОБАВИТЬ К ЗАКАЗУ</button> -->
+    </p>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>

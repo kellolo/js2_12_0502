@@ -169,3 +169,8 @@ img {
     border: none;
     border-bottom: 2px solid #fafafa;
 }
+
+.products-sum {
+    display: flex;
+    padding: 30px 80px;
+}
