@@ -50,15 +50,16 @@ class Validator {
             //когда кнопку сабмит нажмут первый раз - вешаем еще один слушатель на изменение данных в форме
             if (!this.checking) {
                 this.checking = true
-                this.form.addEventListener('input', () => {this.check()})
+                this.form.addEventListener('input', evt => {this.check(evt.target)})
             }
         });
         
     }
 
-    check() {
+    check(target) {
         let valid = true
-        this.inputs.forEach(el => {
+        target ? target = [target] : target = this.inputs //проверяем прилетевший target или все инпуты формы
+        target.forEach(el => {
             let isOK = this.rules[el.id].test(el.value)
             el.classList.toggle("is-valid", isOK)
             el.classList.toggle("is-invalid", !isOK)
