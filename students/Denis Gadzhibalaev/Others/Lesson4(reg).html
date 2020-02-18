@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reg</title>
+</head>
+
+<body>
+    <script>
+        let reg1 = /\'/ig;
+        let reg2 = /(\w\"\w|[s]\"|\"\d)/ig;
+        let str = `start he: 'Hello.' later, she: 'Hello.' later, he: 'How are you?' later, she: 'I'm fine.'  end.`;
+        console.log(str);
+        str = str.replace(reg1, '\"');
+        let str2 = str.match(reg2);
+        let str3 = [];
+        str2.forEach((el) => {
+            elem = el.replace('\"', '\'');
+            str3.push(elem);
+        })
+        for (let i = 0; i < str2.length; i++) {
+            str = str.replace(str2[i], str3[i]);
+        };
+        console.log(str);
+    </script>
+</body>
+
+</html>
