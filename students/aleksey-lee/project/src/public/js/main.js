@@ -1,249 +1,153 @@
-//Общий класс для единицы товара
+//заглушки (имитация базы данных)
+const image = 'https://placehold.it/200x150'
+const cartImage = 'https://placehold.it/100x80'
+const API = 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/src/server/db'
+//parents abstract
+class List { 
+    constructor (url, container) {
+        this.url = url
+        this.container = container
+        this.items = []
+        this._init ()
+    }
+    _init () {
+        return false
+    }
+    getData (url) {
+        return fetch(API + url).then(d => d.json())
+    }
+    render () {
+        let block = document.querySelector(this.container)
+        let htmlStr = ''
+        this.items.forEach (item => {
+            // let newProd = new CatalogItem(item).getTemplate() //from Catalog
+            // let newProd = new CartItem(item).getTemplate() //from Cart
+            let newProd = new classesDependency[this.constructor.name](item)
+            htmlStr += newProd.getTemplate ()
+        })
+        block.innerHTML = htmlStr
+    }
+}
 class Item {
-  constructor(id, name, price, img, cartImage) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.img = img;
-    this.cartImage = cartImage;
-  }
+    constructor (obj, img = image) {
+        this.product_name = obj.product_name
+        this.price = obj.price
+        this.id_product = obj.id_product
+        this.img = img
+    }
+    getTemplate () {
+        return `<div class="product-item" data-id="${this.id_product}">
+            <img src="${this.img}" alt="Some img">
+            <div class="desc">
+                <h3>${this.product_name}</h3>
+                <p>${this.price} $</p>
+                <button class="buy-btn" 
+                name="buy-btn"
+                data-id_product="${this.id_product}"
+                data-product_name="${this.product_name}"
+                data-img="${this.img}"
+                data-price="${this.price}">Купить</button>
+            </div>
+        </div>`
+    }
 }
 
-//Класс Вывода единицы товара в каталоге
-class GoodsItem extends Item {
-  //Вывод единицы товара в каталоге
-  render() {
-    return `<div class="product-item" data-id="${this.id}">
-                <img src="${this.img}" alt="Some img">
-                <div class="desc">
-                    <h3>${this.name}</h3>
-                    <p>${this.price} $</p>
-                    <button class="buy-btn" 
-                    data-id="${this.id}"
-                    data-name="${this.name}"
-                    data-image="${this.img}"
-                    data-cartimage="${this.cartImage}"
-                    data-price="${this.price}">Купить</button>
-                </div>
-            </div>`;
-  }
+//extended
+//List
+class Catalog extends List {
+    constructor (linkToCart, url = '/catalogData.json', container = '.products') {
+        super (url, container)
+        this.cart = linkToCart
+    }
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'buy-btn') {
+                    this.cart.addProduct (evt.target)
+                }
+            })
+        })
+    }
 }
+class Cart extends List {
+    constructor (url = '/getBasket.json', container = '.cart-block') {
+        super (url, container)
+    }
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData.contents })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'del-btn') {
+                    this.removeProduct (evt.target.dataset.id_product)
+                }
+            })
 
-//Класс каталога
-class GoodsList {
-  constructor(container) {
-    this.goods = [];
-    this.container = document.querySelector(container);
-  }
-  fetchGoods() {
-    this.goods = [
-      {
-        id: 1,
-        name: "Notebook",
-        price: 1000,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 2,
-        name: "Display",
-        price: 200,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 3,
-        name: "Keyboard",
-        price: 20,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 4,
-        name: "Mouse",
-        price: 10,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 5,
-        name: "Phones",
-        price: 25,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 6,
-        name: "Router",
-        price: 30,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 7,
-        name: "USB-camera",
-        price: 18,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      },
-      {
-        id: 8,
-        name: "Gamepad",
-        price: 24,
-        img: "https://placehold.it/200x150",
-        cartImage: "https://placehold.it/100x80"
-      }
-    ];
-  }
+            document.querySelector('.btn-cart').addEventListener ('click', () => {
+                document.querySelector(this.container).classList.toggle('invisible')
+            })
+        })
+    }
 
-  //Вывод каталога
-  render() {
-    let listHtml = "";
-    this.goods.forEach(good => {
-      const goodItem = new GoodsItem(
-        good.id,
-        good.name,
-        good.price,
-        good.img,
-        good.cartImage
-      );
-      listHtml += goodItem.render();
-    });
-    this.container.innerHTML = listHtml;
-  }
-
-  //метод, определяющий суммарную стоимость всех товаров (из ДЗ)
-  getTotalPrice() {
-    return this.goods.reduce((sum, good) => sum + good.price, 0);
-  }
+    addProduct (item) {
+        let find = this.items.find (element => element.id_product == item.dataset.id_product);
+        if (!find) {
+            this.items.push (
+                new CartItem ({
+                    product_name: item.dataset.product_name,
+                    id_product: item.dataset.id_product,
+                    price: +item.dataset.price,
+                    quantity: 1
+                })
+            )
+        }  else {
+            find.quantity++
+        }
+        this.render ()
+    }
+    removeProduct (id) {
+        let find = this.items.find (element => element.id_product == id);
+        if (find.quantity > 1) {
+            find.quantity--
+        }  else {
+            this.items.splice (this.items.indexOf(find), 1)
+        }
+        this.render ()
+    }
 }
-
-//Класс вывода единицы товара в корзине
+//Item
+class CatalogItem extends Item {}
 class CartItem extends Item {
-  constructor(id, name, price, img, cartImage, quantity) {
-    super(id, name, price, img, cartImage);
-    this.quantity = quantity;
-  }
-
-  //Вывод товара в корзине
-  render() {
-    return `<div class="cart-item" data-id="${this.id}">
-                    <div class="product-bio">
-                        <img src="${this.img}" alt="Some image">
-                        <div class="product-desc">
-                            <p class="product-title">${this.name}</p>
-                            <p class="product-quantity">Quantity: ${
-                              this.quantity
-                            }</p>
-                            <p class="product-single-price">$${
-                              this.price
-                            } each</p>
-                        </div>
-                    </div>
-                    <div class="right-block">
-                        <p class="product-price">${this.quantity *
-                          this.price}</p>
-                        <button class="del-btn" data-id="${
-                          this.id
-                        }">&times;</button>
-                    </div>
-                </div>`;
-  }
+    constructor (obj, img = cartImage) {
+        super (obj, img)
+        this.quantity = obj.quantity
+    }
+    getTemplate () {
+        return `<div class="cart-item" data-id_product="${this.id_product}">
+            <div class="product-bio">
+                <img src="${this.img}" alt="Some image">
+                <div class="product-desc">
+                    <p class="product-title">${this.product_name}</p>
+                    <p class="product-quantity">Quantity: ${this.quantity}</p>
+                    <p class="product-single-price">$${this.price} each</p>
+                </div>
+            </div>
+            <div class="right-block">
+                <p class="product-price">${this.quantity * this.price}</p>
+                <button class="del-btn" name="del-btn" data-id_product="${this.id_product}">&times;</button>
+            </div>
+        </div>`
+    }
 }
 
-//Класс корзины
-class Cart {
-  constructor(container) {
-    this.products = [];
-    this.container = document.querySelector(container);
-
-    this._bindHandlers();
-  }
-
-  //Вывод корзины
-  render() {
-    let listHtml = "";
-    this.products.forEach(product => {
-      const productItem = new CartItem(
-        product.id,
-        product.name,
-        product.price,
-        product.img,
-        product.cartImage,
-        product.quantity
-      );
-      listHtml += productItem.render();
-    });
-    listHtml += `<div>Total price: ${this.getTotalPrice()} $</div>`;
-    this.container.innerHTML = listHtml;
-  }
-
-  // Добавление продуктов в корзину
-  addProduct(product) {
-    let productId = +product.dataset["id"];
-    let find = this.products.find(element => element.id === productId);
-
-    if (!find) {
-      this.products.push({
-        name: product.dataset["name"],
-        id: productId,
-        img: product.dataset["cartimage"],
-        price: +product.dataset["price"],
-        quantity: 1
-      });
-    } else {
-      find.quantity++;
-    }
-
-    this.render();
-  }
-
-  //удаление товаров
-  removeProduct(product) {
-    let productId = +product.dataset["id"];
-    let find = this.products.find(element => element.id === productId);
-    if (find.quantity > 1) {
-      find.quantity--;
-    } else {
-      this.products.splice(this.products.indexOf(find), 1);
-    }
-    this.render();
-  }
-
-  //Общая цена товаров в корзине
-  getTotalPrice() {
-    return this.products.reduce(
-      (sum, product) => sum + product.price * product.quantity,
-      0
-    );
-  }
-
-  _bindHandlers() {
-    //кнопка скрытия и показа корзины
-    document.querySelector(".btn-cart").addEventListener("click", () => {
-      document.querySelector(".cart-block").classList.toggle("invisible");
-    });
-
-    //кнопки удаления товара (добавляется один раз)
-    document.querySelector(".cart-block").addEventListener("click", evt => {
-      if (evt.target.classList.contains("del-btn")) {
-        userCart.removeProduct(evt.target);
-      }
-    });
-
-    //кнопки покупки товара (добавляется один раз)
-    document.querySelector(".products").addEventListener("click", evt => {
-      if (evt.target.classList.contains("buy-btn")) {
-        userCart.addProduct(evt.target);
-      }
-    });
-  }
+let classesDependency = {
+    Catalog: CatalogItem,
+    Cart: CartItem
 }
 
-const list = new GoodsList("#goods-list");
-list.fetchGoods();
-list.render();
-
-console.log(list.getTotalPrice());
-
-const userCart = new Cart("#cart-block");
+let cart = new Cart ()
+let catalog = new Catalog (cart)
