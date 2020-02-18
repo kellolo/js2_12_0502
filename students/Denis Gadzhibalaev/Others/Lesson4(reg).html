@@ -14,7 +14,6 @@
         let str = `start he: 'Hello.' later, she: 'Hello.' later, he: 'How are you?' later, she: 'I'm fine.'  end.`;
         console.log(str);
         str = str.replace(reg1, '\"');
-<<<<<<< HEAD
         let arr1 = str.match(reg2);
         let arr2 = [];
         arr1.forEach((el) => {
@@ -23,16 +22,6 @@
         })
         for (let i = 0; i < arr2.length; i++) {
             str = str.replace(arr1[i],arr2[i]);
-=======
-        let str2 = str.match(reg2);
-        let str3 = [];
-        str2.forEach((el) => {
-            elem = el.replace('\"', '\'');
-            str3.push(elem);
-        })
-        for (let i = 0; i < str2.length; i++) {
-            str = str.replace(str2[i], str3[i]);
->>>>>>> 3955594e956897b52b5fb829f8a4c1afa95e6a09
         };
         console.log(str);
     </script>
