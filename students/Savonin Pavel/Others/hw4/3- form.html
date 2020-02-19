@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input {
+            width: 200px;
+            margin-right: 100%;
+            margin-bottom: 10px;
+        }
+        
+        textarea {
+            width: 198px;
+            height: 100px;   
+        }
+
+    </style>
+</head>
+
+<body>
+    <form id='form'>
+        <input type="text" id='1' placeholder="Имя">
+        <input type="text" id='2' placeholder="Телефон">
+        <input type="text" id='3' placeholder="E-mail">
+        <!-- <input type="text" id='4' placeholder="Текст"> -->
+        <textarea name="" id="4" cols="30" rows="10" placeholder="Текст"></textarea>
+        <input id='5' type="button" value="проверить">
+    </form>
+    <script>
+        //неправильно введенные значения на 1 секунду заменяются на соответствующее сообщение, а потом возвращаются обратно; вокруг поля появляется красная рамка, не исчезающая до ввода правильного значения и повторного нажатия на кнопку.
+        let regName = /^[A-ZА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
+        let regPhone = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+        let regEmail = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/;
+        document.getElementById('5').onclick = function() {
+            let errCount = 0;
+            let name = document.getElementById('1').value;
+            console.log(name);
+            let phone = document.getElementById('2').value;
+            console.log(phone);
+            let email = document.getElementById('3').value;
+            console.log(email);
+            let text = document.getElementById('4').value;
+            console.log(text);
+            //проверка имени
+            if (regName.test(name) == false) {
+                document.getElementById('1').value = 'некорректное имя';
+                document.getElementById('1').style = 'outline: 1px solid red';
+                errCount = errCount + 1;
+                setTimeout(function() {
+                    document.getElementById('1').value = name;
+                }, 1000)
+            } else {
+                document.getElementById('1').value = name;
+                document.getElementById('1').style = 'outline: none';
+            }
+            //проверка телефона
+            if (regPhone.test(phone) == false) {
+                document.getElementById('2').value = 'некорректный телефон';
+                document.getElementById('2').style = 'outline: 1px solid red';
+                errCount = errCount + 1;
+                setTimeout(function() {
+                    document.getElementById('2').value = phone;
+                }, 1000)
+            } else {
+                document.getElementById('2').value = phone;
+                document.getElementById('2').style = 'outline: none';
+            }
+            //проверка почты
+            if (regEmail.test(email) == false) {
+                document.getElementById('3').value = 'неправильная почта';
+                document.getElementById('3').style = 'outline: 1px solid red';
+                errCount = errCount + 1;
+                setTimeout(function() {
+                    document.getElementById('3').value = email;
+                }, 1000)
+            } else {
+                document.getElementById('3').value = email;
+                document.getElementById('3').style = 'outline: none';
+            }
+            setTimeout(function() {
+                if (errCount > 0) {
+                    alert('Одно или несколько из полей заполнено неверно');
+                }
+            }, 1500);
+        }
+
+    </script>
+</body>
+
+</html>
