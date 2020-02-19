@@ -3,8 +3,17 @@ const htmlPlugin = require ('html-webpack-plugin')
 const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
+    devServer: {
+        port: 3000,
+        hot: true,
+        open: true
+    },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            },
             {
                 test: /\.css$/,
                 use: [
