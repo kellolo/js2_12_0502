@@ -1,6 +1,6 @@
 const image = 'https://placehold.it/200x150';
 const cartImage = 'https://placehold.it/100x80';
-const imgURL = '../img/';
+const imgURL = '../src/public/img/';
 const API = 'https://raw.githubusercontent.com/OlgaZh-UX/js2_12_0502/master/students/Zhalnina%20Olga/Project/iswebpack/src/server/db/'
 //общий родительский класс списка товаров
 class List {
@@ -29,11 +29,11 @@ class List {
 }
 //общий родительский класс товаров
 class Item {
-    constructor (obj, img = image) {
+    constructor (obj, img = imgURL) {
         this.product_name = obj.product_name
         this.price = obj.price
         this.id_product = obj.id_product
-        this.img = img
+        this.img = img + obj.img
     }
     getTemplate () {
         return `<div class="product-item" data-id="${this.id_product}">
