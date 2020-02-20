@@ -2,7 +2,7 @@
   {
     "id_product": 1,
     "product_name": "Notebook",
-    "img": "https://placehold.it/200x150",
+    "img": "data:image/svg+xml;base64,CjxpbWcgc3R5bGU9IndpZHRoOiAxMDAlOyBoZWlnaHQ6IGF1dG87IGZsb2F0OiBsZWZ0O2JhY2tncm91bmQtaW1hZ2U6IG5vbmU7IiBzcmM9Ii8vY2RuLm9ubGluZXdlYmZvbnRzLmNvbS9zdmcvaW1nXzUzMzc1NS5wbmciIGFsdD0iTm90ZWJvb2siPgogIA==",
     "price": 1000
   },
   {
