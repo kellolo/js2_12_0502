@@ -2,8 +2,18 @@ let minCss = require ('mini-css-extract-plugin')
 let htmlPlugin = require ('html-webpack-plugin')
 
 module.exports = {
+    devServer: {
+        port: 3000,
+        hot: true,
+        open: true
+    },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -28,13 +38,5 @@ module.exports = {
         new htmlPlugin({
             template: './src/public/index.html'
           })
-    ],  
-    
-    watch: true,
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000,
-        ignored: /node_modules/
-      }
-      
+    ]    
 }
