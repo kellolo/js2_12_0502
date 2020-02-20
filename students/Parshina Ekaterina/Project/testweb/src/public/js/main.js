@@ -1,198 +1,153 @@
-var list 
-
-const cartImage = 'https://placehold.it/100x80';
-
-//путь к нашим данным на гите
-let URL_CATALOG = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/catalogData.json'
-let URL_CART = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database/getBasket.json'
-
-// Запрос данных
-function makeGETRequest(url, resolve, reject) {
-    let xhr = new XMLHttpRequest()
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if(xhr.status === 200) {
-                resolve (xhr.responseText)
-            } else {
-                reject ('error')
-            }
-        }
+//заглушки (имитация базы данных)
+const image = 'https://placehold.it/200x150'
+const cartImage = 'https://placehold.it/100x80'
+const API = 'https://raw.githubusercontent.com/EkaterinaWeb/js2_12_0502/master/students/Parshina%20Ekaterina/Project/testweb/src/database'
+//parents abstract
+class List { 
+    constructor (url, container) {
+        this.url = url
+        this.container = container
+        this.items = []
+        this._init ()
     }
-
-    xhr.open('GET', url, true)
-    xhr.send()
-}
-
-function promiseReq (url) {
-    return new Promise ((res, rej) => {
-        makeGETRequest(url, res, rej)
-    })
-}
-
-
-
-// Имитация запроса
-//const goods = [
-//    {id:1, title: 'Shirt', price: 150, img:'https://via.placeholder.com/200x150'},
-//    {id:2, title: 'Socks', price: 50, img:'https://via.placeholder.com/200x150' },
-//    {id:3, title: 'Jacket', price: 350, img:'https://via.placeholder.com/200x150' },
-//    {id:4, title: 'Shoes', price: 250, img:'https://via.placeholder.com/200x150' },
-//]
-
-//Общий класс для единицы товара
-class GoodItem {
-    constructor(good){
-            this.id = good.id;
-            this.title = good.title;
-            this.price = good.price;
-            this.img = good.img
-        }
-        render(){
-            return `<div class="product-item">
-                        <img src="${this.img}" alt="Some img">
-                        <div class="desc">
-                            <h3>${this.title}</h3>
-                            <p>${this.price} $</p>
-                            <button class="buy-btn" data-value="addToCart" data-id="${this.id}">Купить</button>
-                        </div>
-                    </div>`
-        }
+    _init () {
+        return false
     }
-
-//Общий класс для списка товаров
-class GoodList  {
-    constructor(container){
-        this.container = document.querySelector(container); 
-        this.goods=[];
-        this._init()
+    getData (url) {
+        return fetch(API + url).then(d => d.json())
     }
-    _init(){
-        promiseReq (URL_CATALOG)
-        .then (dataJSON => { 
-            this.goods = JSON.parse(dataJSON)
-            })
-        .then (() => {
-            this.render()
+    render () {
+        let block = document.querySelector(this.container)
+        let htmlStr = ''
+        this.items.forEach (item => {
+            // let newProd = new CatalogItem(item).getTemplate() //from Catalog
+            // let newProd = new CartItem(item).getTemplate() //from Cart
+            let newProd = new classesDependency[this.constructor.name](item)
+            htmlStr += newProd.getTemplate ()
         })
-        .catch (dataError => {
-            console.log(dataError)
-            })
+        block.innerHTML = htmlStr
     }
-    initListeners(){//лиснер для каталога и корзины
-        const buttons = [...this.container.querySelectorAll('button')];
-        buttons.forEach((button)=>{
-            button.addEventListener('click', (evt)=>{
-               if(evt.target.dataset.value==='addToCart'){
-                   this.addToCart(this.findElement(parseInt(evt.target.dataset.id, 10)))
-               }else if(evt.target.dataset.value==='removeToCart'){
-                   this.deleteGood(this.findElement(parseInt(evt.target.dataset.id, 10)))
-               }
+}
+class Item {
+    constructor (obj) {
+        this.title = obj.title
+        this.price = obj.price
+        this.id = obj.id
+        this.img = obj.img
+    }
+    getTemplate () {
+        return `<div class="product-item" data-id="${this.id}">
+            <img src="${this.img}" alt="Some img">
+            <div class="desc">
+                <h3>${this.title}</h3>
+                <p>${this.price} $</p>
+                <button class="buy-btn" 
+                name="buy-btn"
+                data-id_product="${this.id}"
+                data-product_name="${this.title}"
+                data-img="${this.img}"
+                data-price="${this.price}">Купить</button>
+            </div>
+        </div>`
+    }
+}
+
+//extended
+//List
+class Catalog extends List {
+    constructor (linkToCart, url = '/catalogData.json', container = '.products') {
+        super (url, container)
+        this.cart = linkToCart
+    }
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'buy-btn') {
+                    this.cart.addProduct (evt.target)
+                }
             })
         })
     }
-    findElement(goodId){
-       return this.goods.find(el=>el.id===goodId)  
-    }
-    totalCost(){
-        let sum = 0;
-        this.goods.forEach(good=>sum += good.price)
-        return sum
-    }
-
-    render(){
-        let listHtml=''
-        this.goods.forEach((good)=>{
-            listHtml+=new GoodItem(good).render()
-        })
-        this.container.innerHTML = listHtml;
-        this.initListeners()
-        this.totalCost()
-    }
 }
-
-//Наследуемся от класса GoodList
-class GoodCatalog extends GoodList{
-    addToCart(goodElem){//Здесь данные должны отправлятся на сервак, но пока так
-        cart.checkQuantity(goodElem)
+class Cart extends List {
+    constructor (url = '/getBasket.json', container = '.cart-block') {
+        super (url, container)
     }
-}
-// Создаём каталог товара на базе класса GoodCatalog
-const catalog = new GoodCatalog('.products')
-
-class GoodItemCart {
-    constructor(good){
-        this.id = good.id;
-        this.title = good.title;
-        this.price = good.price;
-        this.img = good.img;
-        this.quantity =good.quantity;
-    }
-    render(){
-        return  `<div class="cart-item" data-id="${this.id}">
-        <div class="product-bio">
-        <img src="${this.img}" alt="Some image">
-        <div class="product-desc">
-        <p class="product-title">${this.title}</p>
-        <p class="product-quantity">Quantity: ${this.quantity}</p>
-        <p class="product-single-price">$${this.price} each</p>
-    </div>
-</div>
-<div class="right-block">
-    <p class="product-price">$${this.quantity * this.price}</p>
-    <button class="del-btn" data-id="${this.id}" data-value="removeToCart">&times;</button>
-</div>
-</div>`}
-    }
-    
-//Наследуемся от класса GoodList
-    class GoodCart extends GoodList {
-        constructor(...attrs){ //Собираем все элементы родительского конструктора
-            super(attrs);      //Передаём все элементы в новый конструктор
-        }
-        _init() {
-            promiseReq (URL_CART)
-                .then (dataJSON => {
-                    this.goods = JSON.parse(dataJSON)
-                })
-                .then (() => {
-                    this.render()
-                })
-                .catch (dataError => {
-                    console.log(dataError)
-                })
-        }
-        checkQuantity(goodItem){ 
-            if(this.findElement(goodItem.id)){
-                this.goods[this.findIndexGood(goodItem)].quantity++
-                this.render()
-            }else{
-                goodItem.quantity=1
-                this.goods.push(goodItem)
-                this.render()
-            }
-        }
-        findIndexGood(good){
-            return this.goods.findIndex(el=>el===good)
-        }
-        incQuantity(){}
-        decQuantity(){}
-        deleteGood(goodRemoveId){
-            this.goods.splice(this.findIndexGood(goodRemoveId), 1)
-            this.render()
-        }
-        render(){
-            let listHtml=''
-            this.goods.forEach((good)=>{
-                listHtml+=new GoodItemCart(good).render()
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData.contents })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'del-btn') {
+                    this.removeProduct (evt.target.dataset.id)
+                }
             })
-            this.container.innerHTML = listHtml;
-            this.initListeners()
-        }
-    }
-//Создаём корзину
-const cart = new GoodCart('.cart-block');
 
-document.querySelector('.btn-cart').addEventListener('click', () => {
-    document.querySelector('.cart-block').classList.toggle('invisible');
-});
+            document.querySelector('.btn-cart').addEventListener ('click', () => {
+                document.querySelector(this.container).classList.toggle('invisible')
+            })
+        })
+    }
+
+    addProduct (item) {
+        let find = this.items.find (element => element.id == item.dataset.id);
+        if (!find) {
+            this.items.push (
+                new CartItem ({
+                    title: item.dataset.title,
+                    id: item.dataset.id,
+                    price: +item.dataset.price,
+                    quantity: 1
+                })
+            )
+        }  else {
+            find.quantity++
+        }
+        this.render ()
+    }
+    removeProduct (id) {
+        let find = this.items.find (element => element.id == id);
+        if (find.quantity > 1) {
+            find.quantity--
+        }  else {
+            this.items.splice (this.items.indexOf(find), 1)
+        }
+        this.render ()
+    }
+}
+//Item
+class CatalogItem extends Item {}
+class CartItem extends Item {
+    constructor (obj) {
+        super (obj)
+        this.quantity = obj.quantity
+    }
+    getTemplate () {
+        return `<div class="cart-item" data-id_product="${this.id}">
+            <div class="product-bio">
+                <img src="${this.img}" alt="Some image">
+                <div class="product-desc">
+                    <p class="product-title">${this.title}</p>
+                    <p class="product-quantity">Quantity: ${this.quantity}</p>
+                    <p class="product-single-price">$${this.price} each</p>
+                </div>
+            </div>
+            <div class="right-block">
+                <p class="product-price">${this.quantity * this.price}</p>
+                <button class="del-btn" name="del-btn" data-id_product="${this.id}">&times;</button>
+            </div>
+        </div>`
+    }
+}
+
+let classesDependency = {
+    Catalog: CatalogItem,
+    Cart: CartItem
+}
+
+let cart = new Cart ()
+let catalog = new Catalog (cart)
