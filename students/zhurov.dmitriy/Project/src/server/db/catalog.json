@@ -2,49 +2,49 @@
   {
     "id_product": 1,
     "product_name": "Notebook",
-    "img": "data:image/svg+xml;base64,CjxpbWcgc3R5bGU9IndpZHRoOiAxMDAlOyBoZWlnaHQ6IGF1dG87IGZsb2F0OiBsZWZ0O2JhY2tncm91bmQtaW1hZ2U6IG5vbmU7IiBzcmM9Ii8vY2RuLm9ubGluZXdlYmZvbnRzLmNvbS9zdmcvaW1nXzUzMzc1NS5wbmciIGFsdD0iTm90ZWJvb2siPgogIA==",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_533755.png",
     "price": 1000
   },
   {
     "id_product": 2,
     "product_name": "Display",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_274083.png",
     "price": 200
   },
   {
     "id_product": 3,
     "product_name": "Keyboard",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_135641.png",
     "price": 20
   },
   {
     "id_product": 4,
     "product_name": "Mouse",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_426876.png",
     "price": 10
   },
   {
     "id_product": 5,
     "product_name": "Phones",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_565044.png",
     "price": 25
   },
   {
     "id_product": 6,
     "product_name": "Router",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_485683.png",
     "price": 30
   },
   {
     "id_product": 7,
     "product_name": "USB-camera",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_119472.png",
     "price": 18
   },
   {
     "id_product": 8,
     "product_name": "Gamepad",
-    "img": "https://placehold.it/200x150",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_60547.png",
     "price": 24
   }
 ]
