@@ -25,10 +25,10 @@ class Validator {
     constructor(form = document.querySelector("form")){
         this.form = form
         this.inputs = {
-            this.name: form.elements.name,
-            this.phone: form.elements.phone,
-            this.mail: form.elements.mail,
-            this.text: form.elements.text
+            name: form.elements.name,
+            phone: form.elements.phone,
+            mail: form.elements.mail,
+            text: form.elements.text
         }
         this.checking = false
         this.rules = {
