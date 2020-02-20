@@ -26,7 +26,7 @@ class List {
             htmlStr += newProd.getTemplate ()
         })
         block.innerHTML = htmlStr
-    }
+    } 
 }
 class Item {
     constructor (obj, img = image) {
