@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: 0 auto
+        }
+        .post {
+            border-radius: 5px;
+            border: 2px solid grey;
+            padding: 15px;
+            margin-bottom: 10px
+        }
+        .post-footer {
+            text-align: right
+        }
+        .font-it {
+            font-style: italic
+        }
+        .red {
+            color: red
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="controller"></div>
+        <div class="container">
+            <div class="post" v-for="post of items">
+                <div class="user">
+                    <strong>{{ post.name }}</strong>
+                </div>
+                <button @click="toggle(post)">{{ post.hidden ? '+' : '-' }}</button>
+                <div class="post-body">
+                    <p v-if="!post.hidden">{{ post.body }}</p>
+                </div>
+                <div class="post-footer">
+                    <a href="#">{{ post.email }}</a>
+                </div>
+            </div>
+        </div>
+        <!--h1>{{ testComputed }}</h1>
+        <input type="text" v-model.lazy="testData">
+        <br>
+        <button @click="fooMethod" v-show="visible">Ok</button-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el: '#app',
+            data: {
+                items: [],
+                url: 'https://jsonplaceholder.typicode.com/comments'
+                // testData: 'Hello Vue',
+                // visible: true
+                //данные, создаваемые и изменяемые внутри vue-компонента
+            },
+            methods: {
+                //функции, которые изменяют объект или данные data
+                getData (url) {
+                    return fetch(url)
+                        .then(d => d.json())
+                },
+                toggle (el) {
+                    el.hidden !== undefined ? el.hidden = !el.hidden : this.$set(el, 'hidden', true)
+                }
+                // fooMethod () {
+                //     alert (this.testData)
+                // }
+            },
+            computed: {
+                // testComputed () {
+                //     return 'Computed Value: ' + this.testData
+                // }
+                //функции, должные возвращать значения
+            },
+            // Хуки жизненного цикла
+            mounted () {
+                //событие, когда vue-компонент встроился в ДОМ-модель
+                this.getData(this.url)
+                    .then(posts => {
+                        this.items = posts
+                        console.log (this.items)
+                    })
+            }
+        })
+    </script>
+</body>
+</html>
