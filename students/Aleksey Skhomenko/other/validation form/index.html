@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!--
+    ВНИМАНИЕ: Оставленные сообщения доступны к просмотру по ссылке:
+    https://docs.google.com/spreadsheets/d/1AOfkVuL7WPqGp_pTsIWr4zAPmmpYvWGZ01U2BzIsUmg
+-->
+
+<body id="particles-js">
+    <section id="feedback-form">
+        <form class="needs-validation" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeHsywA0eGWCDSfiZkFk8yNbb_1V6-JVEFUvyD447jByBShXA/formResponse" target="_blank" method="POST" novalidate>
+            <h2>Обратная связь</h2>
+            <div class="col-md-12 mb-12">
+                <label for="name">Имя</label>
+                <input name="entry.162222583" type="text" class="form-control" id="name" placeholder="Олег" required>
+                <div class="invalid-feedback">
+                    Имя может содержать только буквы (без пробелов).
+                </div>
+            </div>
+            <div class="col-md-12 mb-12">
+                <label for="phone">Телефон</label>
+                <input name="entry.827161355" type="text" class="form-control" id="phone" placeholder="+7(000)000-0000" required>
+                <div class="valid-feedback">
+                    Выглядит отлично!
+                </div>
+                <div class="invalid-feedback">
+                    Укажите телефон в формате +7(000)000-0000
+                </div>
+            </div>
+            <div class="col-md-12 mb-12">
+                <label for="mail">E-Mail</label>
+                <input name="entry.1825877952" type="email" class="form-control" id="mail" placeholder="name@example.com" required>
+                <div class="valid-feedback">
+                    Выглядит отлично!
+                </div>
+                <div class="invalid-feedback">
+                    Укажите действительный E-Mail
+                </div>
+            </div>
+            </div>
+            <div class="col-md-12 mb-12">
+                <label for="text">Ваше сообщение</label>
+                <textarea name="entry.647547320" class="form-control" id="text" rows="4" required></textarea>
+                <div class="valid-feedback">
+                    Выглядит отлично!
+                </div>
+                <div class="invalid-feedback">
+                    Укажите ваше сообщение
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Отправить</button>
+        </form>
+    </section>
+    <script src="./js/main.js"></script>
+    <script src="./js/particles.js"></script> <!-- ParticleJS library -->
+    <script src="./js/particlesjs-config.js"></script> <!-- ParticleJS config -->
+</body>
+
+</html>
