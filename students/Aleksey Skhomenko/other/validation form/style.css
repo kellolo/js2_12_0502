@@ -31,10 +31,6 @@ form>h2 {
     margin: 15px 4%;
 }
 
-.form-control {
-    width: 365px;
-}
-
 .form-control:focus {
     border-color: #777777;
     box-shadow: 0 0 0 0.2rem rgba(123, 123, 123, 0.25);
