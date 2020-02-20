@@ -48,6 +48,19 @@ const app = new Vue({
             } else {
                 document.getElementById('empty_list').classList.add('invisible');
             }
+        },
+        addToCart() {
+            console.log('item ' +  ' added to cart');
+        },
+        
+        toggleCart() {
+            if(this.cartIsVisible == false) {
+                this.cartIsVisible = true;
+                document.getElementById('cart-block').classList.remove('invisible');
+            } else {
+                this.cartIsVisible = false;
+                document.getElementById('cart-block').classList.add('invisible');
+            }
         }
     },
 
