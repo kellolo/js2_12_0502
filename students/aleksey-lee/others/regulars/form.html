@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .valid{
+      width: 200px;
+      border: 1px solid #777;
+    }
+    .valid.valid-error{
+      border-color: red;
+      color: tomato;
+    }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <fieldset>
+      <legend>Валидация формы</legend>
+      <p><input type="text" name="name" class="valid valid-name"> Введите ваше имя</p>
+      <p><input type="tel" name="phone" class="valid valid-phone"> Введите номер телефона в формате +7(000)000-0000 </p>
+      <p><input type="email" name="email" class="valid valid-email"> Введите ваш Email</p>
+      <p><span>Введите сообщение</span> <br> <textarea name="text" class="valid valid-text" cols="30" rows="10"></textarea></p>
+      <input type="submit" name="submit" value="Отправить">
+    </fieldset>
+  </form>
+
+  <script src="validate.js"></script>
+</body>
+</html>

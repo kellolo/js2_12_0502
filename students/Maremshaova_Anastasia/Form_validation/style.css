@@ -1,0 +1,41 @@
+.container{
+    background-color: rgb(60, 137, 156);
+    padding-bottom: 200px;
+    padding-top: 50px; 
+ 
+}
+
+.row{
+    position: relative;
+}
+
+.fon-white{
+    background-color: rgb(236, 236, 236);
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+}
+
+.window-success-message{
+    width: 500px;
+    height: 100px; 
+    background-color: darkseagreen;
+    color: rgb(41, 95, 41); 
+    position: absolute;
+    top: 300px; 
+
+
+
+}
+
+.alert-success{
+   
+}
+
+
+.error-message{
+    color: red; 
+    font-size: 12px; 
+}
+
+
+
