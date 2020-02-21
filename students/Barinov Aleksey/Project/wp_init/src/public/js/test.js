@@ -1,21 +1,50 @@
 // Массив с товарами
-const goods = [
-    { name: 'Notebook', price: 1000, ids: 1, image: 'https://placehold.it/200x150' },
-    { name: 'Display', price: 200, ids: 2, image: 'https://placehold.it/200x150' },
-    { name: 'Keyboard', price: 20, ids: 3, image: 'https://placehold.it/200x150' },
-    { name: 'Mouse', price: 10, ids: 4, image: 'https://placehold.it/200x150' },
-    { name: 'Phones', price: 25, ids: 5, image: 'https://placehold.it/200x150' },
-    { name: 'Router', price: 30, ids: 6, image: 'https://placehold.it/200x150' },
-    { name: 'USB-camera', price: 18, ids: 7, image: 'https://placehold.it/200x150' },
-    { name: 'Gamepad', price: 24, ids: 8, image: 'https://placehold.it/200x150' },
-]
+// const goods = [
+//     { name: 'Notebook', price: 1000, ids: 1, image: 'https://placehold.it/200x150' },
+//     { name: 'Display', price: 200, ids: 2, image: 'https://placehold.it/200x150' },
+//     { name: 'Keyboard', price: 20, ids: 3, image: 'https://placehold.it/200x150' },
+//     { name: 'Mouse', price: 10, ids: 4, image: 'https://placehold.it/200x150' },
+//     { name: 'Phones', price: 25, ids: 5, image: 'https://placehold.it/200x150' },
+//     { name: 'Router', price: 30, ids: 6, image: 'https://placehold.it/200x150' },
+//     { name: 'USB-camera', price: 18, ids: 7, image: 'https://placehold.it/200x150' },
+//     { name: 'Gamepad', price: 24, ids: 8, image: 'https://placehold.it/200x150' },
+// ]
+
+
+let getCatalog = 'https://raw.githubusercontent.com/Barinulka/js2_12_0502/master/students/Barinov%20Aleksey/Project/wp_init/src/database/catalogData.json'
 const cartImage = 'https://placehold.it/100x80'
+
+function makeGETRequest(url, resolve, reject) {
+    let xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+        //callback(xhr.responseText); //то, что должно быть ПОСЛЕ окончания асинх запроса
+            if (xhr.status === 200) {
+                resolve (xhr.responseText)
+            } else {
+                reject ('error')
+            }
+        }
+    }
+
+    xhr.open('GET', url, true)
+    xhr.send()
+}
+
+
+function promiseReq (url) {
+    return new Promise ((res, rej) => {
+        makeGETRequest(url, res, rej)
+    })
+}
+
 // Класс товара
 class Product {
     constructor (good) {
-        this.name = good.name
+        this.id = good.id_product
+        this.name = good.product_name
         this.price = good.price
-        this.id = good.ids
         this.image = good.image
     }
 
@@ -40,11 +69,20 @@ class Catalog {
     constructor (container) {
         this.goods = []
         this.container = container
+        this._init ()
     }
 
-    init () {
-        this.goods = goods
-        this._render ()
+    _init () {
+        promiseReq (getCatalog)
+            .then (dataJSON => {
+                this.goods = JSON.parse(dataJSON)
+            })
+            .then (dataParsedFromJSON => {
+                this._render ()
+            })
+            .catch (errorData => {
+                console.log (errorData + ' ERROR')
+            })
     }
     _render () {
         let strCat = ''
@@ -57,16 +95,16 @@ class Catalog {
 }
 // Создаем каталог и выводим в div с классом "products"
 const catalog = new Catalog('.products')
-catalog.init()
+catalog._init()
 
 
 // Элемент карзины
 
 class CartProduct {
     constructor (good) {
-        this.name = good.name
+        this.id = good.id_product
+        this.name = good.product_name
         this.price = good.price
-        this.id = good.ids
         this.image = good.image
         this.quantity = good.quantity
     }
@@ -135,9 +173,9 @@ class Cart {
         let find = this.cartGoods.find (element => element.id === productId);
         if (!find) {
             this.cartGoods.push ({
-                name: product.dataset ['name'],
-                price: +product.dataset ['price'],
                 id: productId,
+                name: product.dataset ['product_name'],
+                price: +product.dataset ['price'],
                 image: cartImage,
                 quantity: 1
             })

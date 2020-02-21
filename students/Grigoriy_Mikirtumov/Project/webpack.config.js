@@ -1,13 +1,22 @@
-let minCss = require('mini-css-extract-plugin');
-let HtmlWebpackPlugin = require ('html-webpack-plugin')
- 
+let minCss = require ('mini-css-extract-plugin')
+let htmlPlugin = require ('html-webpack-plugin')
 
-module.exports ={
+module.exports = {
+    devServer: {
+        port: 3000,
+        hot: true,
+        open: true
+    },
     module: {
         rules: [
-          {
-            test: /\.css$/i,
-            use: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                use: [
                     {
                         loader: minCss.loader,
                         options: {
@@ -15,19 +24,19 @@ module.exports ={
                             hmr: process.env.NODE_ENV === 'production',
                         },
                     },
-                'css-loader',
-              ],
-          },
-        ],
-      },
-      plugins: [
-        new minCss({
-          filename: 'css/[name].css',
-          chunkFilename: '[id].css',
-          ignoreOrder: false, // Enable to remove warnings about conflicting order
+                    'css-loader'
+                ]
+            },
+        ]
+    },
+    plugins: [
+        new minCss ({
+            filename: 'css/[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false, 
         }),
-        new HtmlWebpackPlugin({
+        new htmlPlugin({
             template: './src/public/index.html'
-        })
-      ]
+          })
+    ]
 }
