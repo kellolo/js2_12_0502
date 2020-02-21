@@ -10,8 +10,6 @@ let app = new Vue ({
         cart_container: '.cart-block',
         cart_btn: '.btn-cart',
         cart_visible: false,
-        // cart_price: 0,
-        // cart_quantity: 0
     },
     methods: {
         getData(url) {
@@ -21,13 +19,7 @@ let app = new Vue ({
         addProduct(prod) {
             let find = this.cart_items.find(x => x.product_id === prod.product_id)
             if (!find) {
-                this.cart_items.push({
-                    img: prod.img,
-                    product_name: prod.product_name,
-                    price: prod.price,
-                    product_id: prod.product_id,
-                    quantity: 1
-                })
+                this.cart_items.push({...prod, quantity: 1})
             } else {
                 find.quantity++
             }
@@ -41,28 +33,25 @@ let app = new Vue ({
                 this.cart_items.splice(this.cart_items.indexOf(item), 1)
             } else console.log(`Количество ${item.product_name} изменено и теперь равно ${item.quantity}.`)
         },
+        //очищает корзину
         wipe() {
             this.cart_items = []
             console.log('Корзина очищена.')
         },
-        _calc() {
+        //считает кол-во и стоимость корзины
+        _calc(flag) {
             let p = 0, q = 0
             this.cart_items.forEach(elem => {
                 p += elem.price * elem.quantity
                 q += elem.quantity
             })
-            return {price: p, quantity: q}
+            return flag ? p : q // если флаг возвращаем цену иначе количество
         }
     },
     computed: {
-        cart_price: function () {
-                return this._calc().price
-        },
-        cart_quantity: function () {
-                return this._calc().quantity
-        }
+        cart_price: function () {return this._calc(true)},
+        cart_quantity: function () {return this._calc()}
     },
-    // Хук с правой
     mounted () {
         // Загрузка корзины
         this.getData(this.API + this.cart_url)
@@ -72,7 +61,6 @@ let app = new Vue ({
         this.getData(this.API + this.catalog_url)
             .then(Data => {this.catalog_items = Data})
             .catch(console.log.bind(console))
+            .finally(console.timeEnd('Loading'))
     }
 })
-
-window.onload = console.timeEnd('Loading')
