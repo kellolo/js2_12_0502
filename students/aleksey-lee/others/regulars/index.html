@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    'use strict'
+    let text = `D'Artagnan: 'Hello, Athos!'
+                Athos: 'Hello, D'Artagnan!'`;
+
+    let reg1 = /(\B\')|(\'\B)/gi
+    let resText = text.replace(reg1, '"')
+
+    console.log(resText)
+  </script>
+</body>
+</html>
