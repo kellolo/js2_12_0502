@@ -49,10 +49,10 @@ let app = new Vue ({
         }
     },
     computed: {
-        cart_price: function () {return this._calc(true)},
-        cart_quantity: function () {return this._calc()}
+        cart_price: function() {return this._calc(true)},
+        cart_quantity: function() {return this._calc()}
     },
-    mounted () {
+    mounted() {
         // Загрузка корзины
         this.getData(this.API + this.cart_url)
             .then(Data => {this.cart_items = Data.items})
