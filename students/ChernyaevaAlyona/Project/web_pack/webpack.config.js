@@ -2,8 +2,18 @@ let minCss = require ('mini-css-extract-plugin')
 var htmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devServer: {
+        port: 3000,
+        hot: true,
+        open: true
+    },
     module:{
         rules: [
+            {
+                test:/\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
             {
                 test:/\.css$/,
                 use:
