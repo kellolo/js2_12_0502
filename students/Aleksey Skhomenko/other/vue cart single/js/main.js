@@ -9,7 +9,7 @@ let app = new Vue ({
         cart_url: '/cartDataResponse.json',
         cart_container: '.cart-block',
         cart_btn: '.btn-cart',
-        cart_visible: false,
+        cart_visible: false
     },
     methods: {
         getData(url) {
@@ -33,12 +33,12 @@ let app = new Vue ({
                 this.cart_items.splice(this.cart_items.indexOf(item), 1)
             } else console.log(`Количество ${item.product_name} изменено и теперь равно ${item.quantity}.`)
         },
-        //очищает корзину
+        // очищает корзину
         wipe() {
             this.cart_items = []
             console.log('Корзина очищена.')
         },
-        //считает кол-во и стоимость корзины
+        // считает кол-во и стоимость корзины
         _calc(flag) {
             let p = 0, q = 0
             this.cart_items.forEach(elem => {
