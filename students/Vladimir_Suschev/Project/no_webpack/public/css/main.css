@@ -33,6 +33,20 @@ button:focus{
 .btn-cart, .logo{
     align-self: center;
 }
+/* .btn-cart{
+  position: relative;
+} */
+.viewQ{
+  position: absolute;
+  left: 345px;
+  bottom: 25px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  border: 2px solid #fafafa;
+  background-color: red;
+  color: #fafafa;
+  align-self: center;
+}
 /*.products {*/
 /*display: flex;*/
 /*justify-content: space-between;*/
