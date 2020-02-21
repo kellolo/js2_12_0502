@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>regEx</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <div class="content">
+    <p id="txt">
+      Secretary: 'Good morning. President's office. How can I help you?'<br>
+      Vladimir: 'Hello. I'd like to speak to George W., please.'<br>
+      Secretary: 'May I ask who’s calling?'<br>
+      Vladimir: 'It's Vladimir.'<br>
+      Secretary: 'Could you tell me what it's about?'<br>
+      Vladimir: 'No, I'd like to speak to him personally.'<br>
+      Secretary: 'Just hold on, please… I'm sorry. He's busy at the moment. Would you like to speak to somebody
+      else?'<br>
+      Vladimir: 'No, I have to speak to George W.'<br>
+      Secretary: 'O.K. Can I take a message or shall I ask him to call you back?'<br>
+      Vladimir: 'Could you tell him I called and I'd be grateful if he'd call me back. I'll be in my office all
+      morning.'<br>
+      Secretary: 'Does he have your number? - У него есть ваш номер?'<br>
+      Vladimir: 'Yes, but just in case, I'll give it to you. It's (001) 202-123-4567.'<br>
+      Secretary: 'So, that's (001) 202-123-4567.'<br>
+      Vladimir: 'That's right.'<br>
+      Secretary: 'O.K., I'll give him your message. Goodbye.'<br>
+      Vladimir: 'Thank you. Goodbye.'
+    </p>
+    <button id="butTxt">Заменить кавычки</button>
+    <form action="#" id="butForm">
+      <input type="text" name="name" id="name" placeholder="имя" onclick="valid()" required
+        data-fal="Имя должно содержать только буквы"><br>
+      <input type="tel" name="phone" id="phone" placeholder="+7(000)000-0000" onclick="valid()" required
+        data-fal="Телефон должен иметь вид +7(000)000-0000."><br>
+      <input type="email" name="mail" id="mail" placeholder="email" onclick="valid()" required
+        data-fal="E-mail должен иметь вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru."><br>
+      <input type="text" name="txt" id="txt" placeholder="messages/сообщение" onclick="valid()" required
+        data-fal="Введите сообщение"><br>
+      <div id="fal">
+
+      </div>
+      <input type="submit" value="Отправить">
+    </form>
+
+  </div>
+</body>
+
+</html>
