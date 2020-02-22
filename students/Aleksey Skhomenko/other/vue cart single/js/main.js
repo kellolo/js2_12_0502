@@ -3,7 +3,6 @@ let app = new Vue ({
     data: {
         API: 'https://raw.githubusercontent.com/awesomesk1ll/js2_12_0502/master/students/Aleksey%20Skhomenko/project/src/public/json',
         search_text: "",
-        // filtered_items: [],
         catalog_items: [],
         catalog_url: '/catalogDataResponse.json',
         catalog_container: '.products',
