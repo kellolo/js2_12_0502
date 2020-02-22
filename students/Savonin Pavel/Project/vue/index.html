@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <input type="text" class="goods-search" v-model="searchLine" />
+            <button @click="filterGoods(searchLine)" class="search-button" type="button">Искать</button>
+            <button @click="searchLine = ''; filterGoods('')" class="search-button" type="button">Очистить</button>
+            <button @click="toggleCart()" class="cart-button" type="button">Корзина</button>
+            <div id='cart-block' class="cart-block">
+                <div class="cart-legend">
+                    <div class="col0 cart-col"></div>
+                    <div class="col1 cart-col">описание</div>
+                    <div class="col2 cart-col">цена</div>
+                    <div class="col3 cart-col">кол-во</div>
+                    <div class="col4 cart-col">сумма</div>
+                </div>
+                <div class="cart-item">
+                    <img class="product-image" src="https://via.placeholder.com/40" alt="">
+                    <div class="product-desc"></div>
+                    <div class="product-price"></div>
+                    <div class="product-quantity"></div>
+                    <div class="product-sum"></div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="goods-list">
+                <div id="empty_list" class="empty_list invisible">Нет результатов по запросу {{searchRequest}}</div>
+                <div class="goods-item" v-for="good in filteredGoods">
+                    <img src="https://via.placeholder.com/200x120" alt="">
+                    <h3>{{ good.product_name }}</h3>
+                    <p>{{ good.price }}</p>
+                    <button @click="addToCart()" class="toCart-button">В корзину</button>
+                </div>
+            </div>
+        </main>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

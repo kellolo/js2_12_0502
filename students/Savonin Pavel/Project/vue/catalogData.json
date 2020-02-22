@@ -1,0 +1,37 @@
+﻿[
+    {
+      "id_product": 123,
+      "product_name": "Ноутбук",
+      "price": 45600
+    },
+    {
+      "id_product": 456,
+      "product_name": "Мышка",
+      "price": 1000
+    },
+    {
+      "id_product": 111,
+      "product_name": "Клавиатура",
+      "price": 1200
+    },
+    {
+      "id_product": 666,
+      "product_name": "Смартфон",
+      "price": 22800
+    },
+    {
+      "id_product": 112,
+      "product_name": "Флешка",
+      "price": 250
+    },
+    {
+      "id_product": 236,
+      "product_name": "Адаптер",
+      "price": 100
+    },
+    {
+      "id_product": 768,
+      "product_name": "Монитор",
+      "price": 12990
+    }
+  ]
