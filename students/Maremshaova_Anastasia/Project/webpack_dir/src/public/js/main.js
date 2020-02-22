@@ -1,255 +1,149 @@
-class ItemBasket{
-    constructor(name, id, img, price, count){       
-        this.name = name;
-        this.price = price;
-        this.image = img;
-        this.id = id;
-        this.quantity = count;
+const API = 'https://raw.githubusercontent.com/amaremshaova/data_db/master'
+//parents abstract
+class List { 
+    constructor (url, container) {
+        this.url = url
+        this.container = container
+        this.items = []
+        this._init ()
     }
-
-    render(){
-        return `<div class="cart-item" data-id="${this.id}">
-        <div class="product-bio">
-            <img src="${this.image}" alt="Some image">
-            <div class="product-desc">
-                <p class="product-title">${this.name}</p>
-                <p class="product-quantity">Quantity: ${this.quantity}</p>
-                <p class="product-single-price"> 	
-                Р ${this.price} each</p>
-             </div>
-        </div>
-        <div class="right-block">
-            <p class="product-price">${this.quantity * this.price}</p>
-            <button class="del-btn" data-id="${this.id}">&times;</button>
-        </div>
-                    </div>`;
+    _init () {
+        return false
     }
- 
+    getData (url) {
+        return fetch(API + url).then(d => d.json())
+    }
+    render () {
+        let block = document.querySelector(this.container)
+        let htmlStr = ''
+        this.items.forEach (item => {
+            let newProd = new classesDependency[this.constructor.name](item)
+            htmlStr += newProd.getTemplate ()
+        })
+        block.innerHTML = htmlStr
+    }
+}
+class Item {
+    constructor (obj) {
+        this.product_name = obj.product_name
+        this.price = obj.price
+        this.id_product = obj.id_product
+        this.img = obj.img
+    }
+    getTemplate () {
+        return `<div class="product-item" data-id="${this.id_product}">
+            <img src="${this.img}" alt="Some img">
+            <div class="desc">
+                <h3>${this.product_name}</h3>
+                <p>${this.price} $</p>
+                <button class="buy-btn" 
+                name="buy-btn"
+                data-id_product="${this.id_product}"
+                data-product_name="${this.product_name}"
+                data-img="${this.img}"
+                data-price="${this.price}">Купить</button>
+            </div>
+        </div>`
+    }
 }
 
-class Basket {
-    constructor() {
-        this.userCarts = [];
-        this.URL ="https://raw.githubusercontent.com/amaremshaova/data_db/master/getBasket.json";
-        this._init();
-        this.getData();
-        //this.renderCart();
-       
+//extended
+//List
+class Catalog extends List {
+    constructor (linkToCart, url = '/catalogData.json', container = '.products') {
+        super (url, container)
+        this.cart = linkToCart
     }
-
-    _init() {
-        document.querySelector('.btn-cart').addEventListener('click', () => {
-                document.querySelector('.cart-block').classList.toggle('invisible');
-            });
-    }
-
-
-    makeGETRequest(url, resolve, reject) {
-        let xhr = new XMLHttpRequest()
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                   // console.log(xhr.responseText); 
-                    resolve (xhr.responseText)
-                } else {
-                    reject ('error')
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'buy-btn') {
+                    this.cart.addProduct (evt.target)
                 }
-            }
-        }
-
-        xhr.open('GET', url, true);
-        xhr.send(null);
+            })
+        })
     }
+}
+class Cart extends List {
+    constructor (url = '/getBasket.json', container = '.cart-block') {
+        super (url, container)
+    }
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData.contents })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'del-btn') {
+                    this.removeProduct (evt.target.dataset.id_product)
+                }
+            })
 
-
-    promiseReq (url) {
-        return new Promise ((res, rej) => {
-            this.makeGETRequest(url, res, rej)
+            document.querySelector('.btn-cart').addEventListener ('click', () => {
+                document.querySelector(this.container).classList.toggle('invisible')
+            })
         })
     }
 
-    renderCart() {
-        let allProductsHtml = '';
-        this.userCarts.forEach(function(product, index, array) {
-        let itemBasket = new ItemBasket(product['name'], product['id'], product['image'], product['price'], product['quantity']); 
-            allProductsHtml += itemBasket.render(); 
-        }); 
-
-
-        document.querySelector(`.cart-block`).innerHTML = allProductsHtml;
-        var totalCost = document.createElement('p');
-        totalCost.innerHTML = 'Общая сумма:' + this.totalCostGoods(); 
-
-        document.querySelector(`.cart-block`).appendChild(totalCost);
-    }
-
-    getData(){
-        this.promiseReq (this.URL)
-            .then (dataJSON => {
-                console.log (dataJSON); // String
-                return JSON.parse(dataJSON);
-            })
-            .then (dataParsedFromJSON => {
-                this.userCarts = dataParsedFromJSON['contents']
-                this.renderCart();
-            })
-            .then( this.activateDelBtn())
-            .catch (errorData => {
-                console.log (errorData + ' ERROR');
-            })
-            .finally (() => {
-                console.log (this.userCarts_tmp); // catch+ -> [] / -catch -> [{}, {}]
-            });
-    }
-
-     //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
-     totalCostGoods(){
-        let totalCost = 0; 
-        let el; 
-        for ( el of this.userCarts) {
-            totalCost += el.price * el.quantity; 
-        }
-        return totalCost; 
-    }
-
-    addProduct (product) {
-        let productId = +product.dataset['id'];
-        let find = this.userCarts.find (element => element.id === productId);
+    addProduct (item) {
+        let find = this.items.find (element => element.id_product == item.dataset.id_product);
         if (!find) {
-            this.userCarts.push (new ItemBasket(product.dataset ['name'], productId, product.dataset['image'], +product.dataset['price'], 1)); 
+            this.items.push (
+                new CartItem ({
+                    product_name: item.dataset.product_name,
+                    id_product: item.dataset.id_product,
+                    img: item.dataset.img,
+                    price: +item.dataset.price,
+                    quantity: 1
+                })
+            )
         }  else {
             find.quantity++
         }
-        this.renderCart();
+        this.render ()
     }
-    
-    removeProduct (product) {
-            let productId = +product.dataset['id'];
-            let find = this.userCarts.find (element => element.id === productId);
-            if (find.quantity > 1) {
-                find.quantity--;
-            } else {
-                this.userCarts.splice(this.userCarts.indexOf(find), 1);
-                document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
-            }
-            this.renderCart ();
+    removeProduct (id) {
+        let find = this.items.find (element => element.id_product == id);
+        if (find.quantity > 1) {
+            find.quantity--
+        }  else {
+            this.items.splice (this.items.indexOf(find), 1)
         }
-
-        activateDelBtn(){
-            document.querySelector('.cart-block').addEventListener('click', (evt) => {
-                if (evt.target.classList.contains('del-btn')) {
-                    this.removeProduct(evt.target);
-                }
-            });
-        }
+        this.render ()
+    }
 }
-
-
-
-class Item {
-    constructor(name, price, img, id) {
-        this.name = name;
-        this.price = price;
-        this.image = img;
-        this.id = id;
-
+//Item
+class CatalogItem extends Item {}
+class CartItem extends Item {
+    constructor (obj) {
+        super (obj)
+        this.quantity = obj.quantity
     }
-
-    render() {
-        return `<div class="product-item" data-id="${this.id}">
-      <img src="${this.image}" alt="Some img">
-      <div class="desc">
-          <h3>${this.name}</h3>
-          <p>${this.price} Р </p>
-          <button class="buy-btn" 
-          data-id="${this.id}"
-          data-name="${this.name}"
-          data-image="${this.image}"
-          data-price="${this.price}">Купить</button>
-      </div>
-  </div>`;
+    getTemplate () {
+        return `<div class="cart-item" data-id_product="${this.id_product}">
+            <div class="product-bio">
+                <img src="${this.img}" alt="Some image">
+                <div class="product-desc">
+                    <p class="product-title">${this.product_name}</p>
+                    <p class="product-quantity">Quantity: ${this.quantity}</p>
+                    <p class="product-single-price">$${this.price} each</p>
+                </div>
+            </div>
+            <div class="right-block">
+                <p class="product-price">${this.quantity * this.price}</p>
+                <button class="del-btn" name="del-btn" data-id_product="${this.id_product}">&times;</button>
+            </div>
+        </div>`
     }
 }
 
-class Catalog {
-    constructor() {
-        this.items =[];
-        this.URL = 'https://raw.githubusercontent.com/amaremshaova/data_db/master/catalogData.json';
-        this.getData(); 
-        this.activateBuyBtn();
-        this.basket = new Basket(); 
-    }
-
-    makeGETRequest(url, resolve, reject) {
-        let xhr = new XMLHttpRequest()
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                   // console.log(xhr.responseText); 
-                    resolve (xhr.responseText)
-                } else {
-                    reject ('error')
-                }
-            }
-        }
-
-        xhr.open('GET', url, true);
-        xhr.send(null);
-    }
-
-
-    promiseReq (url) {
-        return new Promise ((res, rej) => {
-            this.makeGETRequest(url, res, rej)
-        })
-    }
-
-    getData(){
-        this.promiseReq (this.URL)
-            .then (dataJSON => {
-                console.log (dataJSON); // String
-                return JSON.parse(dataJSON);
-            })
-            .then (dataParsedFromJSON => {
-               // console.log (dataParsedFromJSON); //Object/Array
-                this.items = dataParsedFromJSON;
-                this.render();
-            })
-            .catch (errorData => {
-                console.log (errorData + ' ERROR');
-            })
-            .finally (() => {
-                console.log (this.items); // catch+ -> [] / -catch -> [{}, {}]
-            });
-    }
-
-
-    render() {
-        let listHtml = [];
-        let product;
-
-        for (let i = 0; i < this.items.length; i++) {
-            const item = new Item(this.items[i]['name'], this.items[i]['price'], this.items[i]['image'], this.items[i]['id']);
-            listHtml.push(item.render());
-        }
-        document.querySelector('.products').innerHTML = listHtml.join();
-       
-        
-    }
-
-    activateBuyBtn(){
-        document.querySelector('.products').addEventListener('click', (evt) => {
-            if (evt.target.classList.contains('buy-btn')) {
-                this.basket.addProduct(evt.target);
-            }
-        });
-    }
-
-
-
-   
+let classesDependency = {
+    Catalog: CatalogItem,
+    Cart: CartItem
 }
-const list = new Catalog();
 
+let cart = new Cart ()
+let catalog = new Catalog (cart)

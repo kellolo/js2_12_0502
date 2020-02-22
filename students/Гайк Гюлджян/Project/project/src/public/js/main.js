@@ -126,6 +126,28 @@ class List {
     this.render();
     this.totalCost();
   }
+
+  _makeGETRequest(url, resolve, reject) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                resolve (xhr.responseText);
+            } else {
+                reject ('error');
+            }
+        }
+    }
+
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+
+_promiseReq (url) {
+    return new Promise ((res, rej) => {
+        this._makeGETRequest(url, res, rej);
+    });
+}
   render() {
     let listHtml = "";
     this.goods.forEach(item => {
