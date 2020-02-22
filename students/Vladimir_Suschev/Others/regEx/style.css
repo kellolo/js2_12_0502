@@ -1,0 +1,29 @@
+#butForm{
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 30px;
+  border: 2px solid green;
+}
+#butForm input {
+  margin: 5px auto;
+  width: 100%;
+}
+.red{
+  border: 2px solid red;
+}
+.green {
+  border: 2px solid green;
+}
+#fal {
+  /* display: block; */
+  margin: 20px auto;
+  color: red;
+}
+/* .green::after {
+  content: "\2714";
+  position: absolute;
+  z-index: 50;
+  right: 20px;
+  color: rgb(17, 146, 34);
+} */

@@ -71,7 +71,7 @@ function renderProducts () {
     for (item of list) {
         arr.push(item.createTemplate())
     }
-    document.querySelector('.products').innerHTML = arr.join('');
+    document.querySelector('.products').innerHTML = arr.join();
 }
 
 renderProducts ();
@@ -84,7 +84,7 @@ function addProduct (product) {
     let find = userCart.find (element => element.id === productId);
     if (!find) {
         userCart.push ({
-            name: product.dataset['name'],
+            name: product.dataset ['name'],
             id: productId,
             img: cartImage,
             price: +product.dataset['price'],
