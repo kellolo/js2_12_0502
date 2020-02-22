@@ -1,7 +1,13 @@
-let app = new Vue ({
+let app = new Vue({
     el: '#app',
     data: {
-        items: [],
+        items: {
+            catalog: [],
+            basket: []
+        },
+        basket: {
+            show: false
+        },
         url: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/server/db/'
         // testData: 'Hello Vue',
         // visible: true
@@ -9,11 +15,11 @@ let app = new Vue ({
     },
     methods: {
         //функции, которые изменяют объект или данные data
-        getData (url) {
+        getData(url) {
             return fetch(url)
                 .then(d => d.json())
         },
-        toggle (el) {
+        toggle(el) {
             el.hidden !== undefined ? el.hidden = !el.hidden : this.$set(el, 'hidden', true)
         }
         // fooMethod () {
@@ -27,12 +33,17 @@ let app = new Vue ({
         //функции, должные возвращать значения
     },
     // Хуки жизненного цикла
-    mounted () {
+    mounted() {
         //событие, когда vue-компонент встроился в ДОМ-модель
         this.getData(this.url + 'catalog.json')
-            .then(posts => {
-                this.items = posts
-                console.log (this.items)
+            .then(items => {
+                this.items.catalog = items
+                console.log(this.items.catalog)
+            })
+        this.getData(this.url + 'basket.json')
+            .then(items => {
+                this.items.basket = items
+                console.log(this.items.basket)
             })
     }
 })

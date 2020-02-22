@@ -1,20 +1,20 @@
 {
-  "amount": 1200,
-  "count": 2,
+  "amount": 1400,
+  "count": 3,
   "contents": [
     {
       "id": 1,
       "name": "Notebook",
       "img": "https://placehold.it/100x80",
       "price": 1000,
-      "quantity": 1
+      "qty": 1
     },
     {
       "id": 2,
       "name": "Display",
       "img": "https://placehold.it/100x80",
       "price": 200,
-      "quantity": 1
+      "qty": 2
     }
   ]
 }
