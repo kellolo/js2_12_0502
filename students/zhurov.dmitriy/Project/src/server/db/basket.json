@@ -1,17 +1,17 @@
 {
   "amount": 1200,
-  "countGoods": 2,
+  "count": 2,
   "contents": [
     {
-      "id_product": 1,
-      "product_name": "Notebook",
+      "id": 1,
+      "name": "Notebook",
       "img": "https://placehold.it/100x80",
       "price": 1000,
       "quantity": 1
     },
     {
-      "id_product": 2,
-      "product_name": "Display",
+      "id": 2,
+      "name": "Display",
       "img": "https://placehold.it/100x80",
       "price": 200,
       "quantity": 1

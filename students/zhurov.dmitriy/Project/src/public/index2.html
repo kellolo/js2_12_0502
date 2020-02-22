@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link href="style/normalize.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="logo">vue-shop</div>
+        <div class="cart">
+            <form action="#" class="search-form">
+                <input type="text" class="search-field">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button class="btn-cart" type="button"><span class="items-count"></span>Корзина</button>
+            <div class="cart-block invisible">
+                <div class="cart-item" data-id="NaN">
+                    <div class="product-bio">
+                        <img src="https://placehold.it/100x80" alt="Some image">
+                        <div class="product-desc">
+                            <p class="product-title">undefined</p>
+                            <p class="product-quantity">Quantity: 1</p>
+                            <p class="product-single-price">$10 each</p>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <button class="del-btn" data-id="NaN" data-price="10">×</button>
+                        <p class="product-price">Total: $10</p>
+                    </div>
+                </div>
+                <p class="total-cost">Cart is empty!</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="products" class="products">
+            <div class="product-item" data-id="undefined">
+                <div class="product-img">
+                    <img src="https://cdn.onlinewebfonts.com/svg/img_533755.png" alt="undefined">
+                </div>
+                <div class="desc">
+                    <h3>undefined</h3>
+                    <p>1000 $</p>
+                    <button class="buy-btn" data-id="undefined" data-name="undefined"
+                            data-image="https://cdn.onlinewebfonts.com/svg/img_533755.png" data-price="1000">Купить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/main2.js"></script>
+</body>
+</html>
