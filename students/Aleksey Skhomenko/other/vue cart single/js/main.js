@@ -2,6 +2,8 @@ let app = new Vue ({
     el: '#app',
     data: {
         API: 'https://raw.githubusercontent.com/awesomesk1ll/js2_12_0502/master/students/Aleksey%20Skhomenko/project/src/public/json',
+        search_text: "",
+        // filtered_items: [],
         catalog_items: [],
         catalog_url: '/catalogDataResponse.json',
         catalog_container: '.products',
@@ -50,7 +52,10 @@ let app = new Vue ({
     },
     computed: {
         cart_price: function() {return this._calc(true)},
-        cart_quantity: function() {return this._calc()}
+        cart_quantity: function() {return this._calc()},
+        filtered_items: function() {
+            return this.catalog_items.filter(x => x.product_name.toLowerCase().indexOf(this.search_text.toLowerCase()) >= 0)
+        }
     },
     mounted() {
         // Загрузка корзины

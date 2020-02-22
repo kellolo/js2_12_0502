@@ -15,7 +15,7 @@
             <div class="logo">E-shop</div>
             <div class="cart">
                 <form action="#" class="search-form">
-                    <input type="text" class="search-field">
+                    <input type="text" class="search-field" v-model="search_text">
                     <button class="btn-search" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
@@ -47,12 +47,12 @@
         </header>
         <main>
             <div class="products">
-                <div class="product-item" v-for="product_item of catalog_items">
+                <div class="product-item" v-for="product_item of filtered_items">
                     <img :src="product_item.img+'?225x311'" :alt="product_item.product_name">
                     <div class="desc">
                         <h3>{{ product_item.product_name }}</h3>
-                        <p>{{ product_item.price }}$</p>
-                        <button name="buy" class="btn" @click="addProduct(product_item)">Купить</button>
+                        <p>{{ product_item.price ? product_item.price+"$" : "бесплатно" }}</p>
+                        <button name="buy" class="btn" @click="addProduct(product_item)">{{ product_item.price ? "Купить" : "Получить" }}</button>
                     </div>
                 </div>
             </div>
