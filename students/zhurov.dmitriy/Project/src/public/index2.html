@@ -21,7 +21,7 @@
                 <span class="items-count"></span>Корзина
             </button>
             <div class="cart-block" v-show="basket.show">
-                <div class="cart-item" v-for="item of items.cart" :data-id="item.id">
+                <div class="cart-item" v-for="item of basket.content" :data-id="item.id">
                     <div class="product-bio">
                         <img :src="item.img" :alt="item.name">
                         <div class="product-desc">
@@ -41,7 +41,7 @@
     </header>
     <main>
         <div id="products" class="products">
-            <div class="product-item" v-for="item of items.catalog" :data-id="item.id">
+            <div class="product-item" v-for="item of catalog.content" :data-id="item.id">
                 <div class="product-img">
                     <img :src="item.img" :alt="item.name">
                 </div>

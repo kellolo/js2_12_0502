@@ -1,12 +1,14 @@
 let app = new Vue({
     el: '#app',
     data: {
-        items: {
-            catalog: [],
-            basket: []
+        catalog: {
+            content: []
         },
         basket: {
-            show: false
+            show: false,
+            totalCost: 0,
+            totalQty: 0,
+            content: []
         },
         url: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/server/db/'
         // testData: 'Hello Vue',
@@ -37,13 +39,13 @@ let app = new Vue({
         //событие, когда vue-компонент встроился в ДОМ-модель
         this.getData(this.url + 'catalog.json')
             .then(items => {
-                this.items.catalog = items
-                console.log(this.items.catalog)
+                this.catalog.content = items
+                console.log(this.catalog.content)
             })
         this.getData(this.url + 'basket.json')
             .then(items => {
-                this.items.basket = items
-                console.log(this.items.basket)
+                this.basket.content = items.content
+                console.log(this.basket.content)
             })
     }
 })
