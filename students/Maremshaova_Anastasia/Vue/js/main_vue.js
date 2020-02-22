@@ -15,7 +15,7 @@ var app = new Vue({
         },
 
         addProduct(el){
-            let find = this.carts.find (element => element.id == el.id_product);
+            let find = this.carts.find (element => element.id_product == el.id_product);
             if (!find) {
                 let cart = {
                     product_name: el.product_name,
