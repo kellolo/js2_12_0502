@@ -58,7 +58,7 @@ let app = new Vue({
                 this.filterCatalogItems = this.catalogItems;
             } else {
                 this.filterCatalogItems = this.catalogItems.filter(el => {
-                return el.product_name.toLowerCase() == this.inputValue.toLowerCase();
+                return el.product_name.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1
             });
         }
             }
