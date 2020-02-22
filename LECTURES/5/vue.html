@@ -84,11 +84,11 @@
             // Хуки жизненного цикла
             mounted () {
                 //событие, когда vue-компонент встроился в ДОМ-модель
-                // this.getData(this.url)
-                //     .then(posts => {
-                //         this.items = posts
-                //         console.log (this.items)
-                //     })
+                this.getData(this.url)
+                    .then(posts => {
+                        this.items = posts
+                        console.log (this.items)
+                    })
             }
         })
     </script>
