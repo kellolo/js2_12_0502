@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+}
+.hidden{
+    display: none;
+}
+.text-wrp{
+    display: block;
+    width: 700px;
+    margin: 0 auto 50px auto;
+    border: 1px solid black;
+    padding: 10px;
+}
+.text{
+    text-align: left;
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+.text-btn{
+    transition-duration: 0.3s;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: indigo;
+    color: white;
+    border: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    outline: none;
+}
+.text-btn:hover{
+    background-color: rgb(126, 55, 177);
+}
+.text-btn:active{
+    background-color: rgb(18, 2, 29);
+}
+
+.form{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+    display: inline-block;
+    padding: 70px 40px 40px 40px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    margin: 0 auto;
+    background-color: white;
+    
+}
+.close-form{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition-duration: 0.3s;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #2f2a2d;
+    font-size: 28px;
+    cursor: pointer;
+}
+.close-form:hover{
+    color: grey;
+}
+.form-message{
+    display: block;
+    width: 70px;
+}
+.form input,
+.form button,
+.form_textarea{
+    width: 300px;
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    outline: none;
+    border-radius: 8px;
+    border: 2px solid gray;
+}
+.form input:focus,
+.form_textarea:focus{
+    background-color: none;
+}
+
+.form .form_btn-submit{
+    background-color: #2f2a2d;
+    font-family: sans-serif;
+    font-size: 17px;
+    transition-duration: 0.3s;
+    font-weight: bold;
+    color: white;
+    
+}
+/* .form-block{
+    border: 1px solid red;
+} */
+.form .form_btn-submit:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+

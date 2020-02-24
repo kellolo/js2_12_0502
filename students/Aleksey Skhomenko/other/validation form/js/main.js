@@ -24,12 +24,12 @@ console.log("Задание 2:\n",text.replace(rule2,"\""))
 class Validator {
     constructor(form = document.querySelector("form")){
         this.form = form
-        this.inputs = [
-            this.name = form.elements.name,
-            this.phone = form.elements.phone,
-            this.mail = form.elements.mail,
-            this.text = form.elements.text
-        ]
+        this.inputs = {
+            name: form.elements.name,
+            phone: form.elements.phone,
+            mail: form.elements.mail,
+            text: form.elements.text
+        }
         this.checking = false
         this.rules = {
             name: /^[a-zа-яё]+$/i,
@@ -43,7 +43,7 @@ class Validator {
     _init() {
         // Слушатель недает отправить форму если она не проходит проверку
         this.form.addEventListener('submit', evt => {
-            if (this.check() === false) {
+            if (this.check_all() === false) {
               evt.preventDefault();
               evt.stopPropagation();
             }
@@ -57,14 +57,19 @@ class Validator {
     }
 
     check(target) {
+		let isOK = this.rules[target.id].test(target.value)
+        target.classList.toggle("is-valid", isOK)
+        target.classList.toggle("is-invalid", !isOK)
+		return isOK
+	}
+	
+	check_all() {
         let valid = true
-        target ? target = [target] : target = this.inputs //проверяем прилетевший target или все инпуты формы
-        target.forEach(el => {
-            let isOK = this.rules[el.id].test(el.value)
-            el.classList.toggle("is-valid", isOK)
-            el.classList.toggle("is-invalid", !isOK)
+
+        for (let input in this.inputs) {
+            let isOK = this.check(this.inputs[input])
             if (valid && !isOK) valid = false // input не прошел проверку валидности - ставим флаг, что форму нельзя отправлять
-        });
+        };
         return valid
     }
 }
