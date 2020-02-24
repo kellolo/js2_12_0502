@@ -24,7 +24,7 @@
                     <div v-for="basketItem of basketItems.contents" class="cart-block">
                         <div class="cart-item">
                             <div class="product-bio">
-                                <img class="product-basket-image" src="https://placehold.it/200x150" alt="Some image">
+                                <img class="product-basket-image" :src="img" alt="Some image">
                                 <div class="product-desc">
                                     <p class="product-title">{{ basketItem.product_name }}</p>
                                     <p class="product-quantity">Quantity: {{ basketItem.quantity }}</p>
@@ -45,7 +45,7 @@
         <main>
             <div class="products">
                 <div class="product-item" v-for="catalogItem of filterCatalogItems">
-                    <img src="https://placehold.it/200x150" alt="Some img">
+                    <img :src="img" alt="Some img">
                     <div class="desc">
                         <h3>{{ catalogItem.product_name }}</h3>
                         <p>{{ catalogItem.price }}</p>

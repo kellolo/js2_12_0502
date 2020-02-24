@@ -8,6 +8,7 @@ let app = new Vue({
         urlbasket: 'https://raw.githubusercontent.com/Diger134/js2_12_0502/master/students/Denis%20Gadzhibalaev/Project/webpack/src/server/db/getBasket.json',
         hiddenBasket: false,
         seenTotalsum: true,
+        img: "https://placehold.it/200x150",
         inputValue: ''
     },
     methods: {
@@ -35,7 +36,7 @@ let app = new Vue({
                 this.basketItems.amount += el.price;
             }
             if (this.basketItems.contents.length > 0) {
-              this.seenTotalsum = true;
+                this.seenTotalsum = true;
             }
         },
         removeProduct(el) {
@@ -50,7 +51,7 @@ let app = new Vue({
                 this.basketItems.amount -= el.price;
             }
             if (this.basketItems.contents.length == 0) {
-              this.seenTotalsum = false;
+                this.seenTotalsum = false;
             }
         },
         filterProducts() {
@@ -58,14 +59,13 @@ let app = new Vue({
                 this.filterCatalogItems = this.catalogItems;
             } else {
                 this.filterCatalogItems = this.catalogItems.filter(el => {
-                return el.product_name.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1
-            });
-        }
+                    return el.product_name.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1
+                });
             }
-            
+        }
+
     },
-    computed: {
-    },
+    computed: {},
     mounted() {
         this.getData(this.urlcatalog)
             .then(items => {
@@ -78,9 +78,9 @@ let app = new Vue({
                 this.basketItems = items;
                 console.log(this.basketItems);
                 if (this.basketItems.contents.length == 0) {
-              this.seenTotalsum = false;
-            }
+                    this.seenTotalsum = false;
+                }
             });
-            
+
     }
 })
