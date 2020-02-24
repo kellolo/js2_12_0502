@@ -1,27 +1,28 @@
 //заглушки (имитация базы данных)
 
 const cartImage = 'https://placehold.it/100x80';
+const goodImg = 'https://via.placeholder.com/200x150';
 var list;
 
 const goods = [
-    {id:1, title: 'Notebook', price: 1000, img:'https://via.placeholder.com/200x150'},
-    {id:2, title: 'Display', price: 200, img:'https://via.placeholder.com/200x150' },
-    {id:3, title: 'Keyboard', price: 20, img:'https://via.placeholder.com/200x150' },
-    {id:4, title: 'Mouse', price: 10, img:'https://via.placeholder.com/200x150' },
-    {id:5, title: 'Phones', price: 25, img:'https://via.placeholder.com/200x150'},
-    {id:6, title: 'Router', price: 30, img:'https://via.placeholder.com/200x150' },
-    {id:7, title: 'USB-camera', price: 18, img:'https://via.placeholder.com/200x150' },
-    {id:8, title: 'Gamepad', price: 24, img:'https://via.placeholder.com/200x150' },
+    {id:1, title: 'Notebook', price: 1000},
+    {id:2, title: 'Display', price: 200},
+    {id:3, title: 'Keyboard', price: 20},
+    {id:4, title: 'Mouse', price: 10},
+    {id:5, title: 'Phones', price: 25},
+    {id:6, title: 'Router', price: 30},
+    {id:7, title: 'USB-camera', price: 18},
+    {id:8, title: 'Gamepad', price: 24},
 ]
 
 
 // товар
 class GoodsItem {
-    constructor(id,title, price, img) {
+    constructor(id,title, price) {
       this.id = id;
       this.title = title;
       this.price = price;
-      this.img = img;
+      this.img = goodImg;
 
     }
     render() {
