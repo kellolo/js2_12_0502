@@ -1,132 +1,135 @@
-//заглушки (имитация базы данных)
-const image = 'https://placehold.it/200x150';
-const cartImage = 'https://placehold.it/100x80';
-const items = ['Notebook', 'Display', 'Keyboard', 'Mouse', 'Phones', 'Router', 'USB-camera', 'Gamepad'];
-const prices = [1000, 200, 20, 10, 25, 30, 18, 24];
-const ids = [1, 2, 3, 4, 5, 6, 7, 8];
-
-
-//глобальные сущности корзины и каталога (ИМИТАЦИЯ! НЕЛЬЗЯ ТАК ДЕЛАТЬ!)
-var userCart = [];
-var list = fetchData ();
-
-//кнопка скрытия и показа корзины
-document.querySelector('.btn-cart').addEventListener('click', () => {
-    document.querySelector('.cart-block').classList.toggle('invisible');
-});
-//кнопки удаления товара (добавляется один раз)
-document.querySelector('.cart-block').addEventListener ('click', (evt) => {
-    if (evt.target.classList.contains ('del-btn')) {
-        removeProduct (evt.target);
-    }
-})
-//кнопки покупки товара (добавляется один раз)
-document.querySelector('.products').addEventListener ('click', (evt) => {
-    if (evt.target.classList.contains ('buy-btn')) {
-        addProduct (evt.target);
-    }
-})
-
-//создание массива объектов - имитация загрузки данных с сервера
-function fetchData () {
-    let arr = [];
-    for (let i = 0; i < items.length; i++) {
-        arr.push (createProduct (i));
-    }
-    return arr
-};
-
-//создание товара
-function createProduct (i) {
-    return {
-        id: ids[i],
-        name: items[i],
-        price: prices[i],
-        img: image,
-        quantity: 0,
-        createTemplate: function () {
-            return `<div class="product-item" data-id="${this.id}">
-                        <img src="${this.img}" alt="Some img">
-                        <div class="desc">
-                            <h3>${this.name}</h3>
-                            <p>${this.price} $</p>
-                            <button class="buy-btn" 
-                            data-id="${this.id}"
-                            data-name="${this.name}"
-                            data-image="${this.img}"
-                            data-price="${this.price}">Купить</button>
-                        </div>
-                    </div>`
+let app = new Vue({
+    el: '#app',
+    data:{
+        name: '',
+        phone : '',
+        e_mail: '',
+        statusNameField: false,
+        statusPhoneField: false,
+        statusEmailField: false,
+        resultCheckName: false,
+        resultCheckPhone: false,
+        resultChecke_mail: false,
+        resultGEneralCheck: false,
+        search:'',
+        filterdElements:[],
+        cartStatus:  false,
+        formStatus: false,
+        catalogItems:[],
+        cartItems:[],
+        url_catalog:'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/catalogData.json',
+        url_cart: 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base/getBasket.json',
+    },
+    methods:{
+        
+        getData(url){
+           return fetch(url).then(d=>d.json())
         },
-
-        add: function() {
-            this.quantity++
+        toggleCart(){
+            this.cartStatus ? this.cartStatus = false : this.cartStatus = true
+        },
+        toggleForm(){
+            this.formStatus ? this.formStatus = false : this.formStatus = true
+            this.statusNameField = false
+            this.statusPhoneField = false
+            this.statusEmailField = false
+            this.resultCheckName = false
+            this.resultCheckPhone = false
+            this.resultChecke_mail = false
+            this.resultGEneralCheck = false
+            this.name= ''
+            this.phone = ''
+            this.e_mail= ''
+        },
+        addItemToCart(item){
+           if(!this.check(item)){
+                this.$set(item, 'quantity', 1)
+                this.cartItems.contents.push(item)
+                this.cartItems.countGoods++
+           }else{
+                this.cartItems.contents[this.findIndexItem(item)].quantity++
+           }
+           this.amountItem()
+        },
+        removeItem(item){
+            this.cartItems.contents.splice(this.findIndexItem(item), 1)
+            this.amountItem()
+            this.cartItems.countGoods--
+        },
+        check(elItem){
+            
+           return  this.cartItems.contents.find(el=>el.id_product==elItem.id_product)
+        },
+        findIndexItem(elItem){
+            return this.cartItems.contents.findIndex(el=>el.id_product==elItem.id_product)
+        },
+        amountItem(){
+            let sum=0
+            this.cartItems.contents.forEach(el => sum+=el.price*el.quantity);
+            this.cartItems.amount = sum
+        },
+        filtredItem(){
+            let regexp = new RegExp(this.search, 'i')
+            this.filterdElements = this.catalogItems.filter((el)=>{
+                return regexp.test(el.product_name)
+            })
+        },
+        checkValueName(){
+            let regexpName = /[a-zА-яё]+$/gi
+            this.resultCheckName = regexpName.test(this.name)
+            this.statusNameField=true
+            this.generalCheck()
+        },
+        checkValuePhone(){
+            let regexpPhone = /^\+7\(\d{3}\)\d{3}\-\d{4}$/gi
+            this.resultCheckPhone = regexpPhone.test(this.phone)
+            this.statusPhoneField = true
+            this.generalCheck()
+        },
+        checkValueE_mail(val){
+            let regexpE_mail = /^[\w._-]+\w+@\w+\.\w{2,4}$/gi
+            this.resultChecke_mail = regexpE_mail.test(this.e_mail)
+            this.statusEmailField = true
+            this.generalCheck()
+        },
+        generalCheck(){
+            if(this.resultCheckName && this.resultCheckPhone && this.resultChecke_mail){
+                this.resultGEneralCheck = true;
+            }
         }
-    }
-};
-
-//рендер списка товаров (каталога)
-function renderProducts () {
-    let arr = [];
-    for (item of list) {
-        arr.push(item.createTemplate())
-    }
-    document.querySelector('.products').innerHTML = arr.join();
-}
-
-renderProducts ();
-
-//CART
-
-// Добавление продуктов в корзину
-function addProduct (product) {
-    let productId = +product.dataset['id'];
-    let find = userCart.find (element => element.id === productId);
-    if (!find) {
-        userCart.push ({
-            name: product.dataset ['name'],
-            id: productId,
-            img: cartImage,
-            price: +product.dataset['price'],
-            quantity: 1
+        
+    },
+    computed:{
+        classForNameField() {
+            return {
+                valid: this.resultCheckName && this.statusNameField, novalid: !this.resultCheckName && this.statusNameField 
+            }
+        },
+        classForPhoneField() {
+            return {
+                valid: this.resultCheckPhone && this.statusPhoneField, novalid: !this.resultCheckPhone && this.statusPhoneField 
+            }
+        },
+        classForEmailField() {
+            return {
+                valid: this.resultChecke_mail && this.statusEmailField, novalid: !this.resultChecke_mail && this.statusEmailField 
+            }
+        },
+        classForBtnField(){
+            return {
+                formValid: this.resultGEneralCheck && this.statusEmailField && this.statusPhoneField && this.statusNameField, formNovalid: !this.resultGEneralCheck && this.statusEmailField && this.statusPhoneField && this.statusNameField 
+            }
+        }
+    },
+    mounted() {
+        this.getData(this.url_catalog).then(items=>{
+            this.catalogItems = items;
+            this.filterdElements = [...this.catalogItems]
         })
-    }  else {
-        find.quantity++
+        this.getData(this.url_cart).then(items=>{
+            this.cartItems = items
+        })
     }
-    renderCart ()
-}
+})
 
-//удаление товаров
-function removeProduct (product) {
-    let productId = +product.dataset['id'];
-    let find = userCart.find (element => element.id === productId);
-    if (find.quantity > 1) {
-        find.quantity--;
-    } else {
-        userCart.splice(userCart.indexOf(find), 1);
-        document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
-    }
-    renderCart ();
-}
 
-//перерендер корзины
-function renderCart () {
-    let allProducts = '';
-    for (el of userCart) {
-        allProducts += `<div class="cart-item" data-id="${el.id}">
-                            <div class="product-bio">
-                                <img src="${el.img}" alt="Some image">
-                                <div class="product-desc">
-                                    <p class="product-title">${el.name}</p>
-                                    <p class="product-quantity">Quantity: ${el.quantity}</p>
-                                    <p class="product-single-price">$${el.price} each</p>
-                                </div>
-                            </div>
-                            <div class="right-block">
-                                <p class="product-price">${el.quantity * el.price}</p>
-                                <button class="del-btn" data-id="${el.id}">&times;</button>
-                            </div>
-                        </div>`
-    }
-    document.querySelector(`.cart-block`).innerHTML = allProducts;
-}
