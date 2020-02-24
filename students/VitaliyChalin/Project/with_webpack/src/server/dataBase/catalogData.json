@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"name": "AteloCollagen - Коллагеновый очищающий гель с ателоколлагеном и морскими минералами",
+		"price": 990,
+		"img": "https://via.placeholder.com/200x150"
+	},
+    {
+    	"id": 2,
+    	"name": "AteloCollagen - Коллагеновый тоник с ателоколлагеном и морскими минералами",
+    	"price": 935,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 3,
+    	"name": "AteloCollagen – Разглаживающий морщины коллагеновый крем с ателоколлагеном и морскими минералами",
+    	"price": 2030,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 4,
+    	"name": "Hyaluron Plus - Активно увлажняющий крем для области вокруг глаз",
+    	"price": 996,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 5,
+    	"name": "Hyaluron Plus - Очищающее молочко с гиалуроновой кислотой",
+    	"price": 880,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 6,
+    	"name": "MultiVitamin — Питательная витаминная маска",
+    	"price": 1265,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 7,
+    	"name": "Антибактериальный тоник Acne - Antibacterial tonic",
+    	"price": 880,
+    	"img": "https://via.placeholder.com/200x150"
+    },
+    {
+    	"id": 8,
+    	"name": "Гиалуроновая маска для активного увлажнения кожи / Hyaluron Plus - Hyaluronic mask active moisturizing",
+    	"price": 1200,
+    	"img": "https://via.placeholder.com/200x150"
+    }
+]

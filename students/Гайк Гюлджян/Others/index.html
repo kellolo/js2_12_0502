@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let reg = /(?!s'|[a-z]'[a-z])([\s\S])'|^'/g;
+        let str = `he: 'lol', she: 'azaz'aaaa' don't 'let me down'`;
+        
+        console.log(str.replace(reg, '$1"'));
+    </script>
+</body>
+</html>
