@@ -4,7 +4,7 @@ const cartImage = 'https://placehold.it/100x80';
 const goodImg = 'https://via.placeholder.com/200x150';
 var list;
 
-const goods = [
+/* const goods = [
     {id:1, title: 'Notebook', price: 1000},
     {id:2, title: 'Display', price: 200},
     {id:3, title: 'Keyboard', price: 20},
@@ -13,7 +13,7 @@ const goods = [
     {id:6, title: 'Router', price: 30},
     {id:7, title: 'USB-camera', price: 18},
     {id:8, title: 'Gamepad', price: 24},
-]
+] */
 
 
 // товар
@@ -46,9 +46,44 @@ class GoodsItem {
     constructor() {
       this.goods = [];
     }
-    fetchGoods() {
+/*     fetchGoods() {
         this.goods = goods;
-    }  
+    }   */
+
+    fetchData() {
+        let url = 'https://raw.githubusercontent.com/qimitau/js2_12_0502/master/students/MajaFaber/Project/webp/src/public/db/catalogData.json';
+        this.promiseReq (url)
+            .then (dataJSON => {
+                return JSON.parse(dataJSON);
+            })
+            .then (dataParsedFromJSON => {
+                this.goods = dataParsedFromJSON;
+                this.render();
+            })
+    }
+
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve (xhr.responseText);
+                } else {
+                    reject ('error');
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej);
+        });
+    }
+
 
     render() {
         let listHtml = '';
@@ -68,52 +103,91 @@ class GoodsItem {
     }
     init () {
      console.log ('init start')
-    this.fetchGoods();
-    this.render();
-    this.countSum();
+    // this.fetchGoods();
+    // this.render();
+    // this.countSum();
+    this.fetchData();
     }
   }
 
 
-//Добавьте пустые классы для корзины товаров и элемента корзины товаров. Продумайте, какие методы понадобятся для работы с этими сущностями.
 class Cart {
     constructor() {   
         this.goods = [];
+        this.sum = 0;
       }
+
+      fetchData() {
+        let url = 'https://raw.githubusercontent.com/qimitau/js2_12_0502/master/students/MajaFaber/Project/webp/src/public/db/getBasket.json';
+        this.basketList = [];
+        this.promiseReq (url)
+            .then (dataJSON => {
+                this.goods =  JSON.parse(dataJSON);
+                this.sum = this.goods.amount; // to do: пока нигде не отображается
+                this.render();    
+            })
+    }
+
+    makeGETRequest(url, resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve (xhr.responseText);
+                } else {
+                    reject ('error');
+                }
+            }
+        }
+
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+
+    promiseReq (url) {
+        return new Promise ((res, rej) => {
+            this.makeGETRequest(url, res, rej);
+        });
+    }
 
     addProduct(product) {
         let productId = +product.dataset['id'];
-        let find = this.goods.find (element => element.id === productId);
+        let find = this.goods.contents.find (element => element.id === productId);
         if (!find) {
-            this.goods.push ({
+            this.goods.contents.push ({
                 id: productId,
                 title: product.dataset ['name'],
                 price: +product.dataset['price'],
                 img: cartImage,
                 quantity: 1
             })
-        }  else {
+            this.goods.countGoods +=1;
+        }  
+        else {
             find.quantity++
+            this.goods.countGoods +=1;
         }
         this.render();
       }
 
     removeProduct(product) {  
         let productId = +product.dataset['id'];
-        let find = this.goods.find (element => element.id === productId);
+        let find = this.goods.contents.find (element => element.id === productId);
         if (find.quantity > 1) {
             find.quantity--;
+            this.goods.countGoods -=1;
         } else {
-            this.goods.splice(this.goods.indexOf(find), 1);
-            document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
+            this.goods.contents.splice(this.goods.contents.indexOf(find), 1);
+            this.goods.countGoods +=1;
+            document.querySelector(`.cart-item[data-id="${productId}"]`).remove();
         }
         this.render();
       }
 
     render() {
         let oneCartItem = ' ';
-        this.goods.forEach(el => {
-            oneCartItem += new CartItem( el.id, el.title, el.price, el.img, el.quantity).render();
+        this.goods.contents.forEach(el => {
+            oneCartItem += new CartItem( el.id, el.title, el.price, el.quantity).render();
         });
         document.querySelector(`.cart-block`).innerHTML = oneCartItem;
         
@@ -137,16 +211,17 @@ class Cart {
 
     init() {    
         this.makeButtons();    
-        this.render();
+      //  this.render();
+        this.fetchData();
     }
 }
 
 class CartItem  { 
-    constructor(id, title, price, img, quantity) {  
+    constructor(id, title, price, quantity) {  
         this.id = id;
         this.title = title;
         this.price = price;
-        this.img = img;
+        this.img = cartImage;
         this.quantity = quantity;
         }
     render() {  
