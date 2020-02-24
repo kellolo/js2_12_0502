@@ -189,3 +189,4 @@ cart.fetchData(URL_CART);
 document.querySelector('.btn-cart').addEventListener('click', () => {
     document.querySelector('.cart-block').classList.toggle('invisible');
 });
+
