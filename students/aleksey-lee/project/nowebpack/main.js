@@ -4,26 +4,18 @@ let app = new Vue ({
     items: [],//товары каталога
     goods: [],//товары корзины
     founds: [],//найденные товары
-    API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/src/server/db',
+    API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/webpack/src/server/db',
     image: 'https://placehold.it/200x150',
     cartImage: 'https://placehold.it/100x80',
     isVisibleCart: false,
-    searchLine: ''
+    searchLine: '',
+    urlCatalog: '/catalogData.json',
+    urlCart: '/getBasket.json'
   },
   methods: {
 
     getData (url) {
       return fetch(this.API + url).then(d => d.json())
-    },
-
-    renderCatalog(){
-      this.getData('/catalogData.json')
-        .then (parsedData => { this.founds = this.items = parsedData })
-    },
-
-    renderCart(){
-      this.getData('/getBasket.json')
-        .then (parsedData => { this.goods = parsedData.contents })
     },
 
     addProduct (good) {
@@ -42,8 +34,8 @@ let app = new Vue ({
       }
     },
 
-    removeProduct (id) {
-      let find = this.goods.find (element => element.id_product == id);
+    removeProduct (good) {
+      let find = this.goods.find (element => element.id_product == good.id_product);
       if (find.quantity > 1) {
           find.quantity--
       }  else {
@@ -57,6 +49,7 @@ let app = new Vue ({
       this.founds = this.items.filter(item => reg.test(item.product_name))
     }
   },
+
   computed: {
     getTotalPrice(){
       return this.goods.reduce((sum, good) => {
@@ -64,8 +57,12 @@ let app = new Vue ({
       }, 0)
     }
   },
+
   mounted () {
-    this.renderCatalog()
-    this.renderCart()
+    this.getData(this.urlCatalog)
+      .then (parsedData => { this.founds = this.items = parsedData })
+
+    this.getData(this.urlCart)
+      .then (parsedData => { this.goods = parsedData.contents })
   }
 })
