@@ -1,4 +1,11 @@
 import './public/style/style.css'
 import './public/style/normalize.css'
+import Vue from 'vue'
+import app from './public/views/e-shop.vue'
 
-import './public/js/main.js'
+new Vue ({
+    render: h => h(app)
+}).$mount('#app')
+
+
+

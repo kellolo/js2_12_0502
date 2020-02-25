@@ -1,6 +1,7 @@
 const minCss = require ('mini-css-extract-plugin')
 const htmlPlugin = require ('html-webpack-plugin')
 const devMode = process.env.NODE_ENV !== 'production'
+const vueLoad = require('vue-loader/lib/plugin')
 
 module.exports = {
     devServer: {
@@ -10,6 +11,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
             {
                 test: /\.js$/,
                 loader: 'babel-loader'
@@ -37,6 +42,7 @@ module.exports = {
         }),
         new htmlPlugin({
             template: './src/public/index.html'
-          })
+          }),
+        new vueLoad ()
     ]
 }

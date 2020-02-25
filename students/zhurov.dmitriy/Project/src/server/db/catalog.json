@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Notebook",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_533755.png",
+    "price": 1000
+  },
+  {
+    "id": 2,
+    "name": "Display",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_274083.png",
+    "price": 200
+  },
+  {
+    "id": 3,
+    "name": "Keyboard",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_135641.png",
+    "price": 20
+  },
+  {
+    "id": 4,
+    "name": "Mouse",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_358448.png",
+    "price": 10
+  },
+  {
+    "id": 5,
+    "name": "Phones",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_565044.png",
+    "price": 25
+  },
+  {
+    "id": 6,
+    "name": "Router",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_485683.png",
+    "price": 30
+  },
+  {
+    "id": 7,
+    "name": "USB-camera",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_119472.png",
+    "price": 18
+  },
+  {
+    "id": 8,
+    "name": "Gamepad",
+    "img": "https://cdn.onlinewebfonts.com/svg/img_60547.png",
+    "price": 24
+  }
+]
