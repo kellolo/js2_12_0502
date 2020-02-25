@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "Marina: 'Hello, Masha!'/n Masha 'Hello, Marina!'	/n Marina: 'Do you have some free time this weekend? I'm organizing a party for my friends and would like to invite you!' /n Masha: 'It'd be nice! What do you plan to do?' /n Marina: 'Well, I think, we could watch TV and discuss the latest news. Then we could go for a walk, as the weather is going to be nice on this weekend. What do you think?' /n Masha: 'Sounds nice! What about going to a disco? I adore dancing.' /n Marina: 'I know that. I think our friends will have nothing against it. We agreed to meet tomorrow at 4 p.m. Will this time be convenient for you?' /n Masha: 'O.K. I'll come. Thank you!' /n Marina: 'See you tomorrow!'";
+        console.log (str);
+        let newStr = str.replace(/\B'| '\B/g, '"');
+        console.log (newStr);
+    </script>
+</body>
+</html>
