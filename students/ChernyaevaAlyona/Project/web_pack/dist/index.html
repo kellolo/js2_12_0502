@@ -6,18 +6,18 @@
 <link href="css/main.css" rel="stylesheet"></head>
 <body>
     <div id="app">
-        <header>
+        <!-- <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <!-- <form action="#" class="search-form">
+                <form action="#" class="search-form">
                     <input type="text" class="search-field">
                     <button class="btn-search" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
-                </form> -->
+                </form>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
                 <div class="cart-block" v-show="showCart">
-                    <div v-for="item of cartItems" class="cart-item" :key="item.id_product">
+                    <div v-for="item of catalogItems" class="cart-item" :key="item.id_product" v-if="item.quantity > 0" v-bind:key="item.id_product">
                         <div class="product-bio">
                             <img :src="cartImg" :alt="item.product_name">
                             <div class="product-desc">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </main> -->
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
