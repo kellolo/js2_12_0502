@@ -40,76 +40,8 @@
 		<button name="send" class="btn_send">Send</button>
 	</form>
 
-
-
-
 	<script>
-		class List {
-			constructor (container) {
-				this.container = container
-				this._init ()
-			}
-			_init () {
-				this._render ()
-			}
-			_render () {
-				let fieldName = new FieldName
-				let fieldTel = new FieldTel
-				//document.querySelector('.form__wrp').insertAdjacentHTML('beforeend', fieldName)
-				console.log(fieldName)
-				console.log(fieldTel)
-			}
-		}
 
-		class FieldName {
-			constructor (type, name, clsSuff, plcHolder) {
-				this.type = type
-				this.name = name
-				this.clsSuff = clsSuff
-				this.plcHolder = plcHolder
-				this._init ()
-			}
-			_init () {
-				this.type = 'text'
-				this.name = 'user-name'
-				this.clsSuff = this.name
-				this.plcHolder = 'Your Name'
-				this.render ()
-			}
-			render () {
-				let field = ''
-				field += `<input type="${this.type}" name="${this.name}" class="form__field form__field--${this.clsSuff}" placeholder="${this.plcHolder}">`
-			}
-		}
-
-		class FieldTel {
-			constructor (type, name, clsSuff, plcHolder) {
-				this.type = type
-				this.name = name
-				this.clsSuff = clsSuff
-				this.plcHolder = plcHolder
-				this._init ()
-			}
-			_init () {
-				this.type = 'tel'
-				this.name = 'user-phone'
-				this.clsSuff = this.name
-				this.plcHolder = 'Your Phone'
-				this.render ()
-			}
-			render () {
-				let field = ''
-				field += `<input type="${this.type}" name="${this.name}" class="form__field form__field--${this.clsSuff}" placeholder="${this.plcHolder}">`
-			}
-		}
-		class FieldEmail{}
-		class FieldTextarea{}
-		class Button{}
-
-		let list = new List
-
-/*		let fieldName = new FieldName*/
-		/*let fieldPhone = new FieldTel*/
 	</script>
 </body>
 </html>
