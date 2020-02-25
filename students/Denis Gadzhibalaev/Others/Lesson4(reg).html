@@ -10,7 +10,7 @@
 <body>
     <script>
         let reg1 = /\'/ig;
-        let reg2 = /(\w\"\w|[s]\"|\"\d)/ig;
+        let reg2 = /(\w\"\w|[s]\"|\"\d+\s)/ig;
         let str = `start he: 'Hello.' later, she: 'Hello.' later, he: 'How are you?' later, she: 'I'm fine.'  end.`;
         console.log(str);
         str = str.replace(reg1, '\"');
