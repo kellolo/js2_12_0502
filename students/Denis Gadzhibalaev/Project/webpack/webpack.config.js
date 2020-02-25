@@ -1,6 +1,6 @@
 let minCss = require ('mini-css-extract-plugin')
 let htmlPlugin = require ('html-webpack-plugin')
-
+let VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
     devServer: {
         port: 3000,
@@ -9,6 +9,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                loader: 'vue-loader'
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -37,6 +42,7 @@ module.exports = {
         }),
         new htmlPlugin({
             template: './src/public/index.html'
-          })
+          }),
+        new VueLoaderPlugin ()
     ]    
 }

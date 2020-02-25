@@ -2,7 +2,7 @@
     "amount": 1220,
     "countGoods": 3,
     "contents": [
-      {
+        {
         "id_product": 1,
         "product_name": "Notebook",
         "price": 1000,
