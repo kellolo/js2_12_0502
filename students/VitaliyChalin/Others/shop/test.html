@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shop Vue</title>
+</head>
+<body>
+	<div id="app">
+		<div id="controller"></div>
+		<div class="container">
+			<div class="post" v-for="post of items">
+				<div class="user">
+					<strong>{{ post.name }}</strong>
+				</div>
+				<button @click="toggle(post)">{{ post.hidden ? '+' : '-' }}</button>
+				<div class="post-body">
+					<p v-if="!post.hidden">{{ post.body }}</p>
+				</div>
+				<div class="post-footer">
+					<a href="#">{{ post.email }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
