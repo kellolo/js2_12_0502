@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>vue-test</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: 0 auto
+        }
+        .post {
+            border-radius: 5px;
+            border: 2px solid grey;
+            padding: 15px;
+            margin-bottom: 10px
+        }
+        .post-footer {
+            text-align: right
+        }
+        .font-it {
+            font-style: italic
+        }
+        .red {
+            color: red
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <h1>{{testComputed}}</h1>
+        <br>
+        <input type="text" v-model.lazy="testData">
+        <button @click="fooMethod" v-show="visible">ок</button> -->
+        <div id="controller">
+            <div class="container">
+                <div class="post" v-for="post of items">
+                    <div class="user">
+                        <strong>{{post.name}}</strong>
+                    </div>
+                    <button @click = "toggle(post)">{{post.hidden ? "-" : "+"}}</button>
+                    <div class="post-body">
+                        <p v-show = "post.hidden">{{post.body}}</p>
+                    </div>
+                    <div class="post-footer">
+                        <a href="#">{{post.email}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
