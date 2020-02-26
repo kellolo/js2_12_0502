@@ -3,12 +3,7 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <form action="#" class="search-form">
-                    <input type="text" class="search-field">
-                    <button class="btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
+                <search />
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
                 <cart v-show="showCart" />
                 
@@ -23,6 +18,7 @@
 <script>
 import catalog from '../components/catalog.vue'
 import cart from '../components/cart.vue'
+import search from '../components/search.vue'
 
 export default {
     data() {
@@ -33,7 +29,8 @@ export default {
     },
     components: {
         catalog,
-        cart
+        cart,
+        search
     },
     methods: {
         getData(url) {
