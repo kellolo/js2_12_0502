@@ -12,7 +12,7 @@ button:focus{
     outline: none;
 }
 .logo{
-    font-size: 32px;
+    font-size: 24px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -73,17 +73,20 @@ p {
     margin: 20px 0;
 }
 img {
-    max-width: 100%;
-    height: auto
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
 }
 .desc {
-    border: 1px solid #c0c0c040;
+    border: 1px solid gainsboro;
     padding: 15px
 }
 .cart{
     position: relative;
 }
 .cart-block{
+    display: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.62);
     border-radius: 5px;
     box-sizing: border-box;
@@ -96,6 +99,10 @@ img {
     width: 300px;
 }
 
+.show {
+    display: block;
+}
+
 .total-cost {
     text-align: right;
     background: #7cbeff40;
@@ -106,9 +113,6 @@ img {
     margin: 0;
 }
 
-.invisible{
-    display: none;
-}
 .cart-block:before{
     content: '';
     width: 0;
@@ -155,7 +159,10 @@ img {
 }
 .cart-item img{
     align-self: flex-start;
-    margin-right: 15px;
+    height: auto;
+    width: 30%;
+    display: block;
+    margin: auto 15px;
 }
 .product-single-price{
     color: #474747;
@@ -167,6 +174,12 @@ img {
     right: 0;
     margin: 0;
     width: 400%;
+}
+.product-img {
+    padding: 20px 0;
+    height: 100px;
+    border: 1px solid #c0c0c040;
+    background: gainsboro;
 }
 .product-desc{
     max-width: 150px;
