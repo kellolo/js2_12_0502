@@ -5,7 +5,7 @@
             <item v-for="item of items" :key="item.product_id" :cart_item="item"/>
             <div v-if="this.items.length > 0">
                 <hr>
-                Товаров в корзине: {{ quantity }} (стаков: {{ items.length }})<br>
+                Товаров в корзине: {{ quantity }})<br>
                 Общая стоимость: {{ price }}$
                 <button name="wipe" class="btn" @click="wipe()">Очистить корзину</button>
             </div>
