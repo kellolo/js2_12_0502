@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field">
+                    <button class="btn-search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" @click="btnCart">Корзина</button>
+                <!-- <div class="viewQ" v-show="viewQshow">{{viewQ}}</div> -->
+                <div class="cart-block" v-show="viewCart">
+                    <div class="cart-item" v-for="el of cartitems">
+                        <div class="product-bio">
+                            <img v-bind:src="cartImg" alt="">
+                            <div class="product-desc">
+                                <p class="product-title">{{el.product_name}}</p>
+                                <p class="product-quantity">Quantity: {{el.quantity}}</p>
+                                <p class="product-single-price">{{el.price}} $</p>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <p class="product-price">{{el.price*el.quantity}}</p>
+                            <button class="del-btn" name="del-btn" @click="btnRemCartItem(el)">&times;</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <div class="products">
+                <div class="product-item" v-for="el of items">
+                    <img v-bind:src="img" alt="">
+                    <div class="desc">
+                        <h3>{{el.product_name}}</h3>
+                        <p>{{el.price}} $</p>
+                        <button class="buy-btn" @click="btnBay(el)">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="my_vue.js"></script>
+</body>
+
+</html>
