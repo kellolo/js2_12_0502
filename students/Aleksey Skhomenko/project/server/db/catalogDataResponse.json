@@ -1,0 +1,71 @@
+[{
+    "product_name": "Warcraft 3: Reforged",
+    "price": 25,
+    "product_id": "0",
+    "img": "https://i.playground.ru/e/YNCtBoZigQh3r0BdVeBMLg.jpeg"
+}, {
+    "product_name": "Grand Theft Auto 5",
+    "price": 20,
+    "product_id": "1",
+    "img": "https://i.playground.ru/e/Tf0mwt9jPRX8OLPMsWupgQ.jpeg"
+}, {
+    "product_name": "Half-Life 2",
+    "price": 10,
+    "product_id": "2",
+    "img": "https://i.playground.ru/e/T4l7p0eVZeOBAFQOy8BIpQ.jpeg"
+}, {
+    "product_name": "StarCraft 2",
+    "price": 20,
+    "product_id": "3",
+    "img": "https://i.playground.ru/e/KloMCCgISWymrCtkSEUHdA.jpeg"
+}, {
+    "product_name": "Diablo 2",
+    "price": 5,
+    "product_id": "4",
+    "img": "https://i.playground.ru/e/kLs-qQnqWHLdhb0D1C4SYQ.jpeg"
+}, {
+    "product_name": "Quake 3 Arena",
+    "price": 4,
+    "product_id": "5",
+    "img": "https://i.playground.ru/e/g0W9dvjAF8w3HhHIjFk6pw.jpeg"
+}, {
+    "product_name": "Counter-Strike",
+    "price": 5,
+    "product_id": "6",
+    "img": "https://i.playground.ru/e/u18h2k2WwaVr3NNeYt21Gw.jpeg"
+}, {
+    "product_name": "Unreal Tournament",
+    "price": 6,
+    "product_id": "7",
+    "img": "https://i.playground.ru/e/Jl0JgBjQV9lSSafNw04xbA.jpeg"
+}, {
+    "product_name": "Lineage 2",
+    "price": 11,
+    "product_id": "8",
+    "img": "https://i.playground.ru/e/PcHv_B_IwANIUhHROWMsog.jpeg"
+}, {
+    "product_name": "World of Warcraft",
+    "price": 25,
+    "product_id": "9",
+    "img": "https://i.playground.ru/e/jjPQWssLBOWxAGr2CMSctA.jpeg"
+}, {
+    "product_name": "The Sims 4",
+    "price": 9,
+    "product_id": "10",
+    "img": "https://i.playground.ru/e/UDWWFg__vdmulgoQ3RLCOg.jpeg"
+}, {
+    "product_name": "Dota 2",
+    "price": 0,
+    "product_id": "11",
+    "img": "https://i.playground.ru/e/Lth2iY_bn4kXaATTmmoUrw.jpeg"
+}, {
+    "product_name": "Max Payne",
+    "price": 5,
+    "product_id": "12",
+    "img": "https://i.playground.ru/e/CTVnZ3tM0T5I77J4PhGQcQ.jpeg"
+}, {
+    "product_name": "Heroes 3",
+    "price": 6,
+    "product_id": "13",
+    "img": "https://i.playground.ru/e/zev3EnUtE0cWUPlxnsLFOA.jpeg"
+}]
