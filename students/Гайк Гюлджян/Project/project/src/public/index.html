@@ -9,53 +9,13 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">E-shop</div>
-
-        <div class="cart">
-            <form action="#" class="search-form">
-                <input type="text" class="search-field">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-            <button class="btn-cart" type="button">Корзина {{cart}} </button>
-            <div class="cart-block invisible" id="cart-block"> </div>
-        </div>
-    </header>
-    <main>
-        <div id="app">
-            <div class="main">
-                <div class="products">
-                    <div class="product-item" v-for="product of items">
-                        <div class="img">
-                            <img v-bind:src="image" v-bind:alt="description">
-                        </div>
-                        <div id="desc">
-                            <h3> {{product.product_name}} </h3>
-                            <div class="info">
-                                <p v-if="inStock">В наличии</p>
-                                <p v-else>Распродано</p>
-                            </div>
-                            <h4> {{product.price}} руб </h4>
-                        </div>
-                        <button v-on:click="addToCart" :disabled="!inStock" class="buy-btn">
-                            Купить
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-
-
+   
+    <div id="app"></div>
+    
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
         integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/main.js"></script>
 
 </body>
 

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Интернет-магазин</title>
-</head>
-<body>
-    <div id="app">
-        <!-- <header>
+<template>
+    <div>
+        <header>
             <div class="logo">E-shop</div>
             <div class="cart">
                 <form action="#" class="search-form">
@@ -17,7 +11,7 @@
                 </form>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
                 <div class="cart-block" v-show="showCart">
-                    <div v-for="item of catalogItems" class="cart-item" :key="item.id_product" v-if="item.quantity > 0" v-bind:key="item.id_product">
+                    <div v-for="item of catalogItems" class="cart-item" :key="item.id_product" v-show="item.quantity > 0">
                         <div class="product-bio">
                             <img :src="cartImg" :alt="item.product_name">
                             <div class="product-desc">
@@ -36,23 +30,50 @@
             </div>
         </header>
         <main>
-            <div class="products">
-                <div v-for="item of catalogItems" class="product-item" :key="item.id_product">
-                    <img :src="catalogImg" :alt="item.product_name">
-                    <div class="desc">
-                        <h3>{{item.product_name}}</h3>
-                        <p>{{item.price}} $</p>
-                        <button class="buy-btn" 
-                        name="buy-btn"
-                        @click="addProduct(item)"
-                        >Купить</button>
-                    </div>
-                </div>
-            </div>
-        </main> -->
+            <catalog />
+        </main>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-</body>
-</html>
+</template>
+
+<script>
+import catalog from '../components/catalog.vue'
+
+export default {
+    data() {
+        return {
+            showCart: false,
+            API: 'https://raw.githubusercontent.com/AlyonaCh/js2_12_0502/master/students/ChernyaevaAlyona/Others/bd_project',
+            catalogItems: [],
+            url: '/index.json',
+            cartImg: 'https://placehold.it/100x80'
+        }
+    },
+    components: {
+        catalog
+    },
+    methods: {
+        getQuantity(arrItems){
+            arrItems.forEach (item => {
+                item.quantity = 0
+            })
+        },
+        getData(url) {
+            return fetch(this.API + url).then(d => d.json())
+        },
+        removeProduct(item) {
+            this.$set(item, 'quantity', item.quantity-1)
+            this.showCart = false;
+        }
+    },
+    mounted() {
+         //событие, когда vue-компонент встроился в ДОМ-модель
+        this.getData(this.url)
+        .then(data => {this.catalogItems = data})
+        .then(() => { this.getQuantity(this.catalogItems) })
+    }
+}
+</script>
+
+<style>
+
+</style>
