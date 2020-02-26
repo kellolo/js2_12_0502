@@ -1,0 +1,20 @@
+{
+  "totalCost": 1400,
+  "totalQty": 3,
+  "content": [
+    {
+      "id": 1,
+      "name": "Notebook",
+      "img": "https://cdn.onlinewebfonts.com/svg/img_533755.png",
+      "price": 1000,
+      "qty": 1
+    },
+    {
+      "id": 2,
+      "name": "Display",
+      "img": "https://cdn.onlinewebfonts.com/svg/img_274083.png",
+      "price": 200,
+      "qty": 2
+    }
+  ]
+}
