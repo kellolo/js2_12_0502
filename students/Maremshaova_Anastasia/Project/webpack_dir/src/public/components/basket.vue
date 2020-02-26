@@ -18,8 +18,7 @@ export default {
         cartItem: {
             type: Object
         },
-        flagAdd: 
-        {
+        flagAdd: { 
             type: Boolean
         }
     },
@@ -29,9 +28,7 @@ export default {
 
     methods: {
         addProduct(cartItem){
-            console.log(this.flagAdd);
-            if (this.flagAdd){
-                let find = this.cartItems.find (element => element.id_product == prod.id_product);
+                let find = this.cartItems.find (element => element.id_product == cartItem.id_product);
                 let item = {
                         product_name: cartItem.product_name,
                         id_product: cartItem.id_product,
@@ -40,33 +37,37 @@ export default {
                         quantity: 1
                     };
 
+                    console.log(item); 
+
                 if (!find) {
-                this.cartItems.push (item)
+                this.cartItems.push(item)
                 }  else {
                 find.quantity++
                 }
-                this.flagAdd = false; 
-                console.log(this.flagAdd);
-            }
+                this.$parent.flagAdd = false; 
         },
 
         removeProduct(cartItem){
             let find = this.cartItems.find (element => element.id_product == cartItem.id_product);
-        if (find.quantity > 1) {
+            if (find.quantity > 1) {
             find.quantity--
-        }  else {
+            }  else {
             this.cartItems.splice (this.cartItems.indexOf(find), 1)
-        }
-        }
-
-    },
+            }
+        },
+},
     mounted() {
-        //this.addProduct(this.cartItem); 
-        
         this.$parent.getData(this.url)
-        .then(data => {this.cartItems = data.contents})
+        .then(data => {this.cartItems = data.contents; 
+        })
+        .then(() => {
+            if (this.flagAdd){
+                console.log(this.flagAdd)
+                this.addProduct(this.cartItem)
+            }      
+        })
+
         
-        //console.log(this)
     }
 }
 </script>

@@ -10,7 +10,7 @@
                     </button>
                 </form>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <basket :cartItem="cartItem" />
+                <basket :cartItem="cartItem" :flagAdd="this.flagAdd"/>
             </div>
         </header>
         <main>
@@ -28,7 +28,8 @@ export default {
         return {
             API: 'https://raw.githubusercontent.com/amaremshaova/data_db/master',
             showCart: false,
-            cartItem: {}
+            cartItem: {},
+            flagAdd: false
         }
     },
     components: {
@@ -41,6 +42,8 @@ export default {
         },
         getItem(item){
             this.cartItem = item;
+            this.flagAdd = true; 
+            //console.log(this.flagAdd)
         }
     }
 }
