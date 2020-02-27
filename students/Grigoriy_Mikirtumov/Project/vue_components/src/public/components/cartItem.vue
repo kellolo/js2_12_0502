@@ -10,7 +10,7 @@
         </div>
         <div class="right-block">
             <p class="product-price">{{ prodCart.quantity * prodCart.price }}</p>
-            <button class="del-btn">&times;</button>
+            <button class="del-btn" @click="removeItem(prodCart)">&times;</button>
         </div>
     </div>
 </template>
@@ -18,6 +18,11 @@
 
 <script>
 export default {
+   methods: {
+       removeItem(item){
+           this.$parent.removeItem(item);
+       }
+   },
     props:{
         cartImg:{
             type: String,
@@ -25,7 +30,8 @@ export default {
         },
         prodCart:{
             type: Object
-        }
+        },
+       
     }
 }
 </script>

@@ -20,6 +20,15 @@ export default {
      components: {
         itemcart
     },
+    methods: {
+        removeItem(item){
+            console.log("товар удалён")
+            this.items.splice(this.findIndexItem(item), 1)
+        },
+        findIndexItem(elItem){
+            return this.items.findIndex(el=>el.id_product==elItem.id_product)
+        },
+    },
     mounted() {
         this.$parent.getData(this.url)
         .then(data => {this.items = data.contents})
