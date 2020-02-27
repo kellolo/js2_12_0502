@@ -1,6 +1,6 @@
 let url = {
-    catalog: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/db/catalogData.json',
-    basket: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/db/getBasket.json'
+    catalog: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/server/db/catalog.json',
+    basket: 'https://raw.githubusercontent.com/Shadzen/js2_12_0502/master/students/zhurov.dmitriy/Project/src/server/db/basket.json'
 };
 
 let data = {
@@ -37,8 +37,8 @@ document.querySelector('.products').addEventListener('click', (evt) => {
 
 class CatalogItem {
     constructor(i) {
-        this.id = data.catalog[i].id_product;
-        this.name = data.catalog[i].product_name;
+        this.id = data.catalog[i].id;
+        this.name = data.catalog[i].name;
         this.img = data.catalog[i].img;
         this.price = data.catalog[i].price;
         this.quantity = 0;
@@ -46,7 +46,9 @@ class CatalogItem {
 
     toDOM() {
         return `<div class="product-item" data-id="${this.id}">
-                    <img src="${this.img}" alt="Some img">
+                    <div class="product-img">
+                        <img src="${this.img}" alt="${this.name}">
+                    </div>
                     <div class="desc">
                         <h3>${this.name}</h3>
                         <p>${this.price} $</p>
