@@ -2,31 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Интернет-магазин</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/style.css">
+    
+    <title>E-shop(vue_version)</title>
 </head>
 <body>
-    <header>
-        <div class="logo">E-shop</div>
-        <div class="cart">
-            <form action="#" class="search-form">
-                <input type="text" class="search-field">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="cart">
+                <form action="#" class="search-form" @keydown="filtredItem">
+                    <input type="text" class="search-field" v-model="search">
+                    <button class="btn-search" type="submit" >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" @click ="toggleCart">Корзина</button>
+                <div class="cart-block" v-if="cartStatus">
+                    <div class="cart-item" v-for="item of cartItems.contents">
+                        <div class="product-bio">
+                            <img v-bind:src="item.img">
+                            <div class="product-desc">
+                                <p class="product-title">{{item.product_name}}</p>
+                                <p class="product-quantity">{{item.quantity}}</p>
+                                <p class="product-single-price">{{item.price}}</p>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <p class="product-price">{{item.quantity*item.price}}</p>
+                            <button class="del-btn" @click = "removeItem(item)">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div  class="products">
+                <div class="product-item" v-for="item of filterdElements">
+                    <img v-bind:src="item.img">
+                    <div class="desc">
+                        <h3>{{item.product_name}}</h3>
+                        <p>price</p>
+                        <button class="buy-btn" @click = "addItemToCart(item)">Купить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="callBack">
+                <button class="callback-Btn" @click="toggleForm">
+                    <i class="fas fa-headset"></i>
                 </button>
-            </form>
-            <button class="btn-cart" type="button">Корзина</button>
-            <div class="cart-block invisible"></div>
-        </div>
-    </header>
-    <main>
-        <div class="products"></div>
-    </main>
-
-
-
+                <div class="form-block"  v-if="formStatus">
+                    <form  class="form" @submit ="generalCheck" action="#">
+                        <span class="close-form" @click="toggleForm">&#10006;</span>    
+                        <input type="text"  placeholder="Имя" class="form_name" v-bind:class="classForNameField"  @blur="checkValueName" v-model="name">
+                        <input type="tel" name="phone" placeholder="+7(000)000-0000" class="form_phone " v-bind:class="classForPhoneField" @blur="checkValuePhone" v-model="phone">
+                        <input type="text" name="e-mail" placeholder="e-mail" class="form_e-mail" v-bind:class="classForEmailField" @blur="checkValueE_mail" v-model="e_mail">
+                        <textarea name="textarea" cols="32" rows="10" class="form_textarea"></textarea>
+                        <button class="form_btn-submit" v-bind:class="classForBtnField" >Отправить</button> 
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
     <script src="js/main.js"></script>
 </body>
 </html>

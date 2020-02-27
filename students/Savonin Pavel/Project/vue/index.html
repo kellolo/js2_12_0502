@@ -13,8 +13,8 @@
             <input type="text" class="goods-search" v-model="searchLine" />
             <button @click="filterGoods(searchLine)" class="search-button" type="button">Искать</button>
             <button @click="searchLine = ''; filterGoods('')" class="search-button" type="button">Очистить</button>
-            <button @click="toggleCart()" class="cart-button" type="button">Корзина</button>
-            <div id='cart-block' class="cart-block">
+            <button @click="showCart = !showCart" class="cart-button" type="button">Корзина</button>
+            <div id='cart-block' class="cart-block" v-show="showCart">
                 <div class="cart-legend">
                     <div class="col0 cart-col"></div>
                     <div class="col1 cart-col">описание</div>

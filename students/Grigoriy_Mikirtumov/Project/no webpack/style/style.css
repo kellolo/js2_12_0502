@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'SF Pro Display', sans-serif;
 }
@@ -80,6 +84,7 @@ img {
     padding: 20px;
     color: black;
     width: 300px;
+    z-index: 2;
 }
 
 .invisible{
@@ -125,10 +130,11 @@ img {
 .cart-item img{
     align-self: flex-start;
     margin-right: 15px;
+    width: 50%;
 }
 .product-single-price{
     color: #474747;
-    font-size: 0.5em;
+    font-size: 1em;
 }
 .product-price{
     margin-left: 30px;
@@ -144,6 +150,7 @@ img {
     text-align: right;
 }
 .btn-search {
+    transition-duration: 0.3s;
     background-color: transparent;
     border: none;
     color: #fafafa;
@@ -151,6 +158,17 @@ img {
     position: absolute;
     bottom: 5px;
     right: 0;
+    cursor: pointer;
+
+}
+.btn-search:active{
+    transform: scale(0.9);
+}
+.fa-search{
+    transition-duration: 0.3s;
+}
+.fa-search:hover{
+    color: rgba(35, 255, 237, 0.993);
 }
 .search-form{
     position: relative;
@@ -168,4 +186,146 @@ img {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #fafafa;
+}
+
+/* Стили для формы обратной связи */
+.callBack{
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    right: 50px;
+    bottom: 50px;
+    z-index: 1;
+}
+.callback-Btn{
+    border: none;
+    background: none;
+}
+.callback-Btn .fa-headset{
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.3s;
+    color: #2f2a2d;
+}
+
+.callback-Btn .fa-headset:hover{
+    color: grey;
+}
+
+.callback-Btn .fa-headset:active{
+    transform: scale(0.9);
+}
+
+/* Стили блока формы */
+
+.hidden{
+    display: none;
+}
+.text-wrp{
+    display: block;
+    width: 700px;
+    margin: 0 auto 50px auto;
+    border: 1px solid black;
+    padding: 10px;
+}
+.text{
+    text-align: left;
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+.text-btn{
+    transition-duration: 0.3s;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: indigo;
+    color: white;
+    border: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    outline: none;
+}
+.text-btn:hover{
+    background-color: rgb(126, 55, 177);
+}
+.text-btn:active{
+    background-color: rgb(18, 2, 29);
+}
+
+.form{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+    display: inline-block;
+    padding: 70px 40px 40px 40px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    margin: 0 auto;
+    background-color: white;
+    
+}
+.close-form{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition-duration: 0.3s;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #2f2a2d;
+    font-size: 28px;
+    cursor: pointer;
+}
+.close-form:hover{
+    color: grey;
+}
+.form-message{
+    display: block;
+    width: 70px;
+}
+.form input,
+.form button,
+.form_textarea{
+    width: 300px;
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    outline: none;
+    border-radius: 8px;
+    border: 2px solid gray;
+}
+.form input:focus,
+.form_textarea:focus{
+    background-color: none;
+}
+
+.form .form_btn-submit{
+    background-color: #2f2a2d;
+    font-family: sans-serif;
+    font-size: 17px;
+    transition-duration: 0.3s;
+    font-weight: bold;
+    color: white;
+    
+}
+/* .form-block{
+    border: 1px solid red;
+} */
+.form .form_btn-submit:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.form .valid{
+    border:1px solid greenyellow;
+}
+.form .novalid{
+    border:1px solid red;
+}
+.form .formValid{
+    background-color: greenyellow;
+}
+.form .formNovalid{
+    background-color: red;
 }
