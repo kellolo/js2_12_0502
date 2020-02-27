@@ -75,26 +75,6 @@
         let URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json'
         let a = []
 
-        let makeGETRequest = (url) => {
-            return new Promise((resolve, reject ) => {	    
-                return new Promise((resolve, reject ) => {
-                    let xhr = new XMLHttpRequest();	        
-                    let xhr = new XMLHttpRequest();
-    	    
-                    xhr.open('GET', url, true);	        
-                    xhr.onreadystatechange = () => {	        
-                        const r = xhr.responseText;      	                   
-                        resolve(r);  
-                        reject(console.log('error'));    	            
-                	}
-                    xhr.send();
-                });
-            }	    
-        }
-
-        makeGETRequest();
-        
-        /*
         function makeGETRequest(url, resolve, reject) {
             let xhr = new XMLHttpRequest()
 
@@ -111,7 +91,7 @@
 
             xhr.open('GET', url, true)
             xhr.send()
-        } */
+        }
 
 
         function promiseReq (url) {
