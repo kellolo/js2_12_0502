@@ -10,7 +10,7 @@
                     </button>
                 </form>
                 <button class="btn-cart" @click="showBasket = !showBasket" type="button">Корзина</button>
-                <basket />                
+                <basket v-show="showBasket" ref="cartReference"/>                
             </div>
         </header>
         <main>        
@@ -26,7 +26,8 @@ import basket from '../components/basket.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/OlgaZh-UX/js2_12_0502/master/students/Zhalnina%20Olga/Project/iswebpack/src/server/db/'
+            API: 'https://raw.githubusercontent.com/OlgaZh-UX/js2_12_0502/master/students/Zhalnina%20Olga/Project/iswebpack/src/server/db/',
+            showBasket: false
         }
     },
     components: {

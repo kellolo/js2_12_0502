@@ -1,6 +1,6 @@
 <template>    
     <div class="cart-block">
-        <element v-for="item of elements" :key="item.id_product" :cart="item" :basketImg="img" />
+        <element v-for="item of elements" :key="item.id_product" :item="item" />
     </div>
 </template>
 
