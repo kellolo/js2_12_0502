@@ -6,7 +6,7 @@
             <p>{{prod.price}} $</p>
             <button class="buy-btn" 
             name="buy-btn"
-            @click="add(prod)"
+            @click="addProduct(prod)"
             >Купить</button>
         </div>
     </div>
@@ -20,8 +20,8 @@ export default {
         }
     },
     methods:{
-        add(prod){
-            this.$parent.$parent.getItem(prod)
+        addProduct(prod){
+            this.$root.$children[0].$refs.basketReference.addProduct(prod);
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
-    <div class="cart-block" v-show="this.$parent.showCart">
-            <basketItem  class="cart-item"  v-for="item of cartItems" :key="item.id_product" :prod="item"/>     
+    <div class="cart-block" >
+            <basketItem v-for="item of cartItems" :key="item.id_product" :prod="item"/>     
     </div>
 </template>
 
@@ -10,18 +10,11 @@ import basketItem from './basketItem.vue'
 export default {
     data() {
         return {
-            url: '/getBasket.json',
+            url: 'api/basket',
             cartItems: [],
         }
     },
-     props: {
-        cartItem: {
-            type: Object
-        },
-        flagAdd: { 
-            type: Boolean
-        }
-    },
+
     components: {
         basketItem
     },
@@ -44,7 +37,6 @@ export default {
                 }  else {
                 find.quantity++
                 }
-                this.$parent.flagAdd = false; 
         },
 
         removeProduct(cartItem){
@@ -59,13 +51,7 @@ export default {
     mounted() {
         this.$parent.getData(this.url)
         .then(data => {this.cartItems = data.contents; 
-        })
-        .then(() => {
-            if (this.flagAdd){
-                console.log(this.flagAdd)
-                this.addProduct(this.cartItem)
-            }      
-        })
+        });
 
         
     }

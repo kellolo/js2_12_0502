@@ -1,12 +1,19 @@
 let minCss = require ('mini-css-extract-plugin')
 let htmlPlugin = require ('html-webpack-plugin')
-let VueLoaderPlugin = require ('vue-loader/lib/plugin')
-
+let VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
     devServer: {
-        port: 3002,
+        port: 3000,
         hot: true,
-        open: true
+        open: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080/',
+                pathRewrite: { '^/api' : '' },
+                secure: false,
+                changeOrigin: true
+            }
+        }
     },
     module: {
         rules: [

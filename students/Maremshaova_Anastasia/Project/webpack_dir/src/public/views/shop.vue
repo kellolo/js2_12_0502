@@ -10,7 +10,7 @@
                     </button>
                 </form>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <basket :cartItem="cartItem" :flagAdd="this.flagAdd"/>
+                <basket ref="basketReference" v-show="showCart"/>
             </div>
         </header>
         <main>
@@ -26,10 +26,8 @@ import catalog from '../components/catalog.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/amaremshaova/data_db/master',
-            showCart: false,
-            cartItem: {},
-            flagAdd: false
+            //API: 'https://raw.githubusercontent.com/amaremshaova/data_db/master',
+            showCart: false
         }
     },
     components: {
@@ -38,7 +36,7 @@ export default {
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         },
         getItem(item){
             this.cartItem = item;

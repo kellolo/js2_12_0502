@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cart-item" :key="prod.id_product">
         <div class="product-bio">
             <img :src="prod.img" :alt="prod.product_name">
                 <div class="product-desc">
