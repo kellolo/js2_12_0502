@@ -9,8 +9,8 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <button class="btn-cart" type="button" @click="btnCart">Корзина</button>
-                <cart />
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+                <cart v-show="showCart" />
             </div>
         </header>
         <main>
@@ -26,12 +26,12 @@ import cart from '../components/cart.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/azazel87/js2_12_0502/master/students/Vladimir_Suschev/Project/wpk_vue/src/server'
+            API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
         }
     },
     components: {
         catalog,
-        cart,
+        cart
     },
     methods: {
         getData(url) {
@@ -43,4 +43,4 @@ export default {
 
 <style>
 
-</style> 
+</style>
