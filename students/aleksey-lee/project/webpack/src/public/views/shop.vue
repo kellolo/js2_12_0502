@@ -5,12 +5,11 @@
             <div class="cart">
                 <search />
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart v-show="showCart" />
-                
+                <cart v-show="showCart" ref="cartReference" />
             </div>
         </header>
         <main>
-            <catalog />
+            <catalog ref="catalogReference" />
         </main>
     </div>
 </template>
@@ -24,7 +23,7 @@ export default {
     data() {
         return {
             showCart: false,
-            API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/webpack/src/server/db'
+            // API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/webpack/src/server/db'
         }
     },
     components: {
@@ -34,7 +33,7 @@ export default {
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         }
     }
 }
