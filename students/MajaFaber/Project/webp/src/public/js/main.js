@@ -1,173 +1,154 @@
 //заглушки (имитация базы данных)
+const image = 'https://placehold.it/200x150'
+const cartImage = 'https://placehold.it/100x80'
+const API = 'https://raw.githubusercontent.com/qimitau/js2_12_0502/master/students/MajaFaber/Project/webp/src/public/db/'
 
-const cartImage = 'https://placehold.it/100x80';
-var list;
-
-const goods = [
-    {id:1, title: 'Notebook', price: 1000, img:'https://via.placeholder.com/200x150'},
-    {id:2, title: 'Display', price: 200, img:'https://via.placeholder.com/200x150' },
-    {id:3, title: 'Keyboard', price: 20, img:'https://via.placeholder.com/200x150' },
-    {id:4, title: 'Mouse', price: 10, img:'https://via.placeholder.com/200x150' },
-    {id:5, title: 'Phones', price: 25, img:'https://via.placeholder.com/200x150'},
-    {id:6, title: 'Router', price: 30, img:'https://via.placeholder.com/200x150' },
-    {id:7, title: 'USB-camera', price: 18, img:'https://via.placeholder.com/200x150' },
-    {id:8, title: 'Gamepad', price: 24, img:'https://via.placeholder.com/200x150' },
-]
-
-
-// товар
-class GoodsItem {
-    constructor(id,title, price, img) {
-      this.id = id;
-      this.title = title;
-      this.price = price;
-      this.img = img;
-
+//parents abstract
+class List { 
+    constructor (url, container) {
+        this.url = url
+        this.container = container
+        this.items = []
+        this._init ()
     }
-    render() {
+    _init () {
+        return false
+    }
+    getData (url) {
+        return fetch(API + url).then(d => d.json())
+    }
+    render () {
+        let block = document.querySelector(this.container)
+        let htmlStr = ''
+        this.items.forEach (item => {
+            // let newProd = new CatalogItem(item).getTemplate() //from Catalog
+            // let newProd = new CartItem(item).getTemplate() //from Cart
+            let newProd = new classesDependency[this.constructor.name](item)
+            htmlStr += newProd.getTemplate ()
+        })
+        block.innerHTML = htmlStr
+    }
+}
+class Item {
+    constructor (obj, img = image) {
+        this.title = obj.title
+        this.price = obj.price
+        this.id = obj.id
+        this.img = img
+    }
+    getTemplate () {
         return `<div class="product-item" data-id="${this.id}">
-        <img src="${this.img}" alt="Some img">
-          <div class="desc">
+            <img src="${this.img}" alt="Some img">
+            <div class="desc">
                 <h3>${this.title}</h3>
                 <p>${this.price} $</p>
                 <button class="buy-btn" 
+                name="buy-btn"
                 data-id="${this.id}"
-                data-name="${this.title}"
-                data-image="${this.img}"
+                data-title="${this.title}"
+                data-img="${this.img}"
                 data-price="${this.price}">Купить</button>
             </div>
         </div>`
     }
-  }
+}
 
-  // список товаров
-  class GoodsList {
-    constructor() {
-      this.goods = [];
+//extended
+//List
+class Catalog extends List {
+    constructor (linkToCart, url = '/catalogData.json', container = '.products') {
+        super (url, container)
+        this.cart = linkToCart
     }
-    fetchGoods() {
-        this.goods = goods;
-    }  
-
-    render() {
-        let listHtml = '';
-        this.goods.forEach(good => {
-          const goodItem = new GoodsItem(good.id, good.title, good.price, good.img);
-          listHtml += goodItem.render();
-        });
-        document.querySelector('.products').innerHTML = listHtml;
-    }
-    //Добавьте для GoodsList метод, определяющий суммарную стоимость всех товаров.
-    countSum() {
-        let sum = 0;
-        this.goods.forEach(good => {
-            sum += good.price;
-          });
-          console.log (sum)
-    }
-    init () {
-     console.log ('init start')
-    this.fetchGoods();
-    this.render();
-    this.countSum();
-    }
-  }
-
-
-//Добавьте пустые классы для корзины товаров и элемента корзины товаров. Продумайте, какие методы понадобятся для работы с этими сущностями.
-class Cart {
-    constructor() {   
-        this.goods = [];
-      }
-
-    addProduct(product) {
-        let productId = +product.dataset['id'];
-        let find = this.goods.find (element => element.id === productId);
-        if (!find) {
-            this.goods.push ({
-                id: productId,
-                title: product.dataset ['name'],
-                price: +product.dataset['price'],
-                img: cartImage,
-                quantity: 1
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'buy-btn') {
+                    this.cart.addProduct (evt.target)
+                }
             })
+        })
+    }
+}
+class Cart extends List {
+    constructor (url = '/getBasket.json', container = '.cart-block') {
+        super (url, container)
+    }
+    _init () {
+        this.getData(this.url)
+        .then (parsedData => { this.items = parsedData.contents })
+        .then (() => { this.render() })
+        .finally (() => {
+            document.querySelector(this.container).addEventListener ('click', evt => {
+                if (evt.target.name === 'del-btn') {
+                    this.removeProduct (evt.target.dataset.id)
+                }
+            })
+
+            document.querySelector('.btn-cart').addEventListener ('click', () => {
+                document.querySelector(this.container).classList.toggle('invisible')
+            })
+        })
+    }
+
+    addProduct (item) {
+        let find = this.items.find (element => element.id == item.dataset.id);
+        if (!find) {
+            this.items.push (
+                new CartItem ({
+                    title: item.dataset.title,
+                    id: item.dataset.id,
+                    price: +item.dataset.price,
+                    quantity: 1
+                })
+            )
         }  else {
             find.quantity++
         }
-        this.render();
-      }
-
-    removeProduct(product) {  
-        let productId = +product.dataset['id'];
-        let find = this.goods.find (element => element.id === productId);
+        this.render ()
+    }
+    removeProduct (id) {
+        let find = this.items.find (element => element.id == id);
         if (find.quantity > 1) {
-            find.quantity--;
-        } else {
-            this.goods.splice(this.goods.indexOf(find), 1);
-            document.querySelector(`.cart-item[data-id="${productId}"]`).remove()
+            find.quantity--
+        }  else {
+            this.items.splice (this.items.indexOf(find), 1)
         }
-        this.render();
-      }
-
-    render() {
-        let oneCartItem = ' ';
-        this.goods.forEach(el => {
-            oneCartItem += new CartItem( el.id, el.title, el.price, el.img, el.quantity).render();
-        });
-        document.querySelector(`.cart-block`).innerHTML = oneCartItem;
-        
-       }
-
-    makeButtons() {
-          document.querySelector('.btn-cart').addEventListener('click', () => {
-          document.querySelector('.cart-block').classList.toggle('invisible');
-          });
-            document.querySelector('.cart-block').addEventListener ('click', (evt) => {
-                if (evt.target.classList.contains ('del-btn')) {
-                    this.removeProduct (evt.target);
-                }
-            });
-            document.querySelector('.products').addEventListener ('click', (evt) => {
-                if (evt.target.classList.contains ('buy-btn')) {
-                    this.addProduct(evt.target);
-                }
-            }); 
-      }
-
-    init() {    
-        this.makeButtons();    
-        this.render();
+        this.render ()
+    }
+}
+//Item
+class CatalogItem extends Item {}
+class CartItem extends Item {
+    constructor (obj, img = cartImage) {
+        super (obj, img)
+        this.quantity = obj.quantity
+    }
+    getTemplate () {
+        return `<div class="cart-item" data-id="${this.id}">
+            <div class="product-bio">
+                <img src="${this.img}" alt="Some image">
+                <div class="product-desc">
+                    <p class="product-title">${this.title}</p>
+                    <p class="product-quantity">Quantity: ${this.quantity}</p>
+                    <p class="product-single-price">$${this.price} each</p>
+                </div>
+            </div>
+            <div class="right-block">
+                <p class="product-price">${this.quantity * this.price}</p>
+                <button class="del-btn" name="del-btn" data-id="${this.id}">&times;</button>
+            </div>
+        </div>`
     }
 }
 
-class CartItem  { 
-    constructor(id, title, price, img, quantity) {  
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.img = img;
-        this.quantity = quantity;
-        }
-    render() {  
-        return `<div class="cart-item" data-id="${this.id}">
-                                <div class="product-bio">
-                                    <img src="${this.img}" alt="Some image">
-                                    <div class="product-desc">
-                                        <p class="product-title">${this.title}</p>
-                                        <p class="product-quantity">Quantity: ${this.quantity}</p>
-                                        <p class="product-single-price">$${this.price} each</p>
-                                    </div>
-                                </div>
-                                <div class="right-block">
-                                    <p class="product-price">${this.quantity * this.price}</p>
-                                    <button class="del-btn" data-id="${this.id}">&times;</button>
-                                </div>
-                            </div>`
-
-      }
+let classesDependency = {
+    Catalog: CatalogItem,
+    Cart: CartItem
 }
 
-const customList = new GoodsList();
-customList.init();
-const customCart = new Cart();
-customCart.init();
+let cart = new Cart ()
+let catalog = new Catalog (cart)
