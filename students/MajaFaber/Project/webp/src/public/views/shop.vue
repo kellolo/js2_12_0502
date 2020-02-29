@@ -5,11 +5,11 @@
             <div class="cart">
                 <search />
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart />
+                <cart  v-show="showCart" ref="cartReference" />
             </div>
         </header>
         <main>
-            <catalog />
+            <catalog :filter="search_text"/>
         </main>
     </div>
 </template>
@@ -21,7 +21,9 @@ import search from '../components/search.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/qimitau/js2_12_0502/master/students/MajaFaber/Project/webp/src/public/db/'
+           // API: 'https://raw.githubusercontent.com/qimitau/js2_12_0502/master/students/MajaFaber/Project/webp/src/public/db/',
+            showCart: false,
+            search_text: ''
         }
     },
     components: {
@@ -31,7 +33,10 @@ export default {
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
+        },
+        update_search(val = '') {
+            this.search_text = val.toLowerCase()
         }
     }
 }
