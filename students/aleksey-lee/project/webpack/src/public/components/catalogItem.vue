@@ -6,7 +6,7 @@
             <p>{{prod.price}} $</p>
             <button class="buy-btn" 
             name="buy-btn"
-            @click="addProduct(prod)"
+            @click="$root.$children[0].$refs.cartReference.addProduct(prod)"
             >Купить</button>
         </div>
     </div>
