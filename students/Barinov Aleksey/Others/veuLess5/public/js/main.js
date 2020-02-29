@@ -2,6 +2,7 @@
 const image = 'https://placehold.it/200x150'
 const cartImage = 'https://placehold.it/100x80'
 const API = 'https://raw.githubusercontent.com/Barinulka/js2_12_0502/master/students/Barinov%20Aleksey/Project/wp_init/src/database'
+
 //parents abstract
 class List {
     constructor (url, container) {
