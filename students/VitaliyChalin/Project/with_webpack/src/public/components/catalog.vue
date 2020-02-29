@@ -9,7 +9,7 @@
 	export default {
 		data() {
 			return {
-				url: '/catalogData.json',
+				url: 'api/catalog',
 				items: []
 			}
 		},

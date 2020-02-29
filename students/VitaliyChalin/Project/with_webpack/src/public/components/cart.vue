@@ -9,7 +9,7 @@
 	export default {
 		data() {
 			return {
-				url: '/cartData.json',
+				url: 'api/cart',
 				items: []
 			}
 		},
@@ -19,7 +19,35 @@
 		mounted() {
 			this.$parent.getData(this.url)
 			.then(data => {this.items = data.contents})
-			//console.log(this.items)
-		}
+		},
+		methods: {
+			addToCart (prod) {
+				let find = undefined
+				this.items.find (element => {
+					if(element.id == prod.id) {
+						find = element
+					}
+				})
+		        if (!find) {
+		            this.items.push (
+		                {
+		                    name: prod.name,
+		                    id: prod.id,
+		                    price: +prod.price,
+		                    quant: 1
+		                }
+		            )
+		        }  else {
+		            find.quant++
+		        }
+			},
+            removeProduct (prod) {
+                if (prod.quant > 1) {
+                    prod.quant--
+                } else {
+                    this.items.splice (this.items.indexOf(prod), 1)
+                }
+            }
+        }
 	}
 </script>

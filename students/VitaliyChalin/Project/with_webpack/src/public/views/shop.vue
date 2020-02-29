@@ -10,7 +10,7 @@
 	                </button>
 	            </form>
 	            <button class="btn-cart" type="button" @click="shown = !shown">Корзина</button>
-	            <cart v-show="shown" />
+	            <cart v-show="shown" ref="cartReference" />
 	        </div>
 	    </header>
 	    <main>
@@ -26,7 +26,6 @@
 	export default {
 		data() {
 			return {
-				API: 'https://raw.githubusercontent.com/okkey45/js2_12_0502/master/students/VitaliyChalin/Project/with_webpack/src/server/dataBase',
 				shown: false
 			}
 		},
@@ -36,7 +35,7 @@
 		},
 		methods: {
 			getData (url) {
-				return fetch(this.API + url).then(d => d.json())
+				return fetch(url).then(d => d.json())
 			}
 		}
 	}

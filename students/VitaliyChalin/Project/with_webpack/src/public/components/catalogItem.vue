@@ -4,7 +4,10 @@
         <div class="desc">
             <h3>{{ prod.name }}</h3>
             <p>{{ prod.price }}</p>
-            <button @click="addToCart(prod)" class="buy-btn" name="buy-btn">Купить</button>
+            <button
+            	@click="$root.$children[0].$refs.cartReference.addToCart(prod)"
+            	class="buy-btn"
+            	name="buy-btn">Купить</button>
         </div>
     </div>
 </template>

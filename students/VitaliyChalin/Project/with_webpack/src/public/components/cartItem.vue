@@ -10,7 +10,7 @@
         </div>
         <div class="right-block">
             <p class="product-price">{{ prod.quant * prod.price }}</p>
-            <button class="del-btn" name="del-btn" :data-id="prod.id" @click="removeProduct(prod)">&times;</button>
+            <button class="del-btn" name="del-btn" :data-id="prod.id" @click="$parent.removeProduct(prod)">&times;</button>
         </div>
     </div>
 </template>
@@ -20,21 +20,11 @@
 		props: {
 			cartImg: {
 				type: String,
-				default: 'https://placehold.it/100x80'
+				default: 'https://placehold.it/80x100'
 			},
 			prod: {
 				type: Object
 			}
-		},
-        methods: {
-            removeProduct (el) {
-                console.log(this.$parent.items)
-                if (el.quant > 1) {
-                    el.quant--
-                }  else {
-                    this.$parent.items.splice (this.items.indexOf(el.id), 1)
-                }
-            }
-        }
+		}
 	}
 </script>
