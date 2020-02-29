@@ -68,5 +68,15 @@
   "time": "29 02 2020 08:25:13",
   "title": "Display",
   "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 09:12:30",
+  "title": "Keyboard",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 09:12:32",
+  "title": "Notebook",
+  "userAction": "change"
  }
 ]
