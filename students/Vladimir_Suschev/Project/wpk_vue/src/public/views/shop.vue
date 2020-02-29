@@ -26,7 +26,6 @@ import cart from '../components/cart.vue'
 export default {
     data() {
         return {
-            //API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses',
             showCart: false
         }
     },

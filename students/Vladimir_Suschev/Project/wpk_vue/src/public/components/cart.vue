@@ -9,16 +9,12 @@ import item from './cartItem.vue'
 export default {
     data() {
         return {
-            url: '/getBasket.json',
+            url: 'api/basket',
             items: [],
         }
     },
     components: {
         item
-    },
-    mounted() {
-        this.$parent.getData(this.url)
-        .then(data => {this.items = data.contents})
     },
     methods: {
         addProduct(prod) {
@@ -32,6 +28,10 @@ export default {
                 this.items.splice (this.items.indexOf(find), 1)
             }
         }
+    },
+        mounted() {
+        this.$parent.getData(this.url)
+        .then(data => {this.items = data.contents})
     }
 }
 </script>
