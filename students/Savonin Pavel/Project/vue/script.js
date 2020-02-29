@@ -9,6 +9,7 @@ const app = new Vue({
         searchLine: '',
         searchRequest: '',
         isCartVisible: false,
+        showCart: false,
     },
     methods: {
         makeGETRequest(url, callback) {
@@ -52,16 +53,6 @@ const app = new Vue({
         addToCart() {
             console.log('item ' +  ' added to cart');
         },
-        
-        toggleCart() {
-            if(this.cartIsVisible == false) {
-                this.cartIsVisible = true;
-                document.getElementById('cart-block').classList.remove('invisible');
-            } else {
-                this.cartIsVisible = false;
-                document.getElementById('cart-block').classList.add('invisible');
-            }
-        }
     },
 
     mounted() {
