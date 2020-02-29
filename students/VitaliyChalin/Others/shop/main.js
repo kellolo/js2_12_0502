@@ -8,8 +8,7 @@ let app = new Vue ({
 		url: API_URL + '/catalogData.json',
 		urlCart: API_URL + '/cartData.json',
 		cartImg: 'https://placehold.it/100x80',
-		filteredProds: [],
-		searchLine: ''
+		showCart: false
 	},
 	methods: {
 		getData (url) {
@@ -47,9 +46,6 @@ let app = new Vue ({
 	        }  else {
 	            this.cartItems.splice (this.cartItems.indexOf(find), 1)
 	        }
-		},
-		cartToggle () {
-			document.querySelector('.cart-block').classList.toggle('invisible')
 		}
 	},
 	computed: {
