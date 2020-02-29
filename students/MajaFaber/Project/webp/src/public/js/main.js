@@ -13,7 +13,8 @@ let app = new Vue({
         cartUrl: '/getBasket.json',
         showCart: false,
         catalogImg: 'https://placehold.it/200x150',
-        cartImg: 'https://placehold.it/100x80'
+        cartImg: 'https://placehold.it/100x80',
+        searchLine: ''
     },
     methods: {
         getData(url) {
