@@ -1,0 +1,42 @@
+{
+  "amount": 193480,
+  "countGoods": 7,
+  "contents": [
+    {
+      "id_product": 1,
+      "product_name": "Монитор Samsung C49HG90DMI, черный",
+      "price": 69900,
+      "quantity": 1
+    },
+    {
+      "id_product": 17,
+      "product_name": "Устройство видеозахвата AVerMedia Live Gamer Ultra",
+      "price": 17900,
+      "quantity": 1
+    },
+    {
+      "id_product": 14,
+      "product_name": "Моноблок HP EliteOne 800 G3 (1ND18EA), серебристый",
+      "price": 99900,
+      "quantity": 1
+    },
+    {
+      "id_product": 8,
+      "product_name": "Беспроводной геймпад Defender Blast USB,Bluetooth,Android,Li-Ion",
+      "price": 1990,
+      "quantity": 2
+    },
+    {
+      "id_product": 3,
+      "product_name": "Игровая клавиатура Defender Werewolf GK-120DL RU,RGB подсветка,19 Anti-Ghost",
+      "price": 1300,
+      "quantity": 1
+    },
+    {
+      "id_product": 4,
+      "product_name": "Проводная игровая мышь Defender Sky Dragon GM-090L оптика,6 кнопок, 800-3200dpi",
+      "price": 500,
+      "quantity": 1
+    }
+  ]
+}
