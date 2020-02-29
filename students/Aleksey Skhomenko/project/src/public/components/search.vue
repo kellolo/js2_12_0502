@@ -16,8 +16,8 @@ export default {
     },
     watch: {
         search_text: function (val) {            
-        this.$parent.search_text = val.toLowerCase()
+            this.$parent.update_search(val)   
         }
-  }
+    }
 }
 </script>
