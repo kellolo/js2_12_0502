@@ -1,0 +1,12 @@
+[
+  {
+    "id_product": 124,
+    "product_name": "Клавиатура",
+    "price": 1600
+  },
+  {
+    "id_product": 457,
+    "product_name": "Геймпад",
+    "price": 3000
+  }
+]

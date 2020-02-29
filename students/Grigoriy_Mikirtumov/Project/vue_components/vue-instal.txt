@@ -1,0 +1,22 @@
+Установка vue: 
+1) npm i vue (устанавливаем vue в папку с проектом)
+2) npm i -D vue-loader vue-template-compiler (устанавливаем дополнительные инструменты)
+3) Далее добавляем правила в webpack.config.js:
+    Cоздаём перерменную: 
+
+        let vueLoaderPlugin = require('vue-loader/lib/plugin')
+
+    Добавляем новое по поле к rules:
+         rules: [
+            {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                loader: 'vue-loader' 
+            }
+         ]
+    Обьявляем новый плагин в поле plugins:
+        plugins: [
+        
+        new vueLoaderPlugin ()
+
+        ]

@@ -17,9 +17,9 @@
 	                    <i class="fas fa-search"></i>
 	                </button>
 	            </form>
-	            <button class="btn-cart" type="button" @click="cartToggle()">Корзина</button>
-	            <div class="cart-block invisible">
-	            	<div class="cart-item" v-for="item in cartItems" :key="item.id" :data-id="item.id">
+	            <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+	            <div class="cart-block" v-show="showCart">
+	            	<div class="cart-item" v-for="item in cartItems" :key="item.id">
 			            <div class="product-bio">
 			                <img :src="cartImg" :alt="item.name">
 			                <div class="product-desc">
@@ -38,17 +38,12 @@
 	    </header>
 	    <main>
 	        <div class="products">
-	        	<div class="product-item" v-for="prod in items" :key="prod.id" :data-id="prod.id">
+	        	<div class="product-item" v-for="prod in items" :key="prod.id">
 		            <img :src="prod.img" :alt="prod.name">
 		            <div class="desc">
 		                <h3>{{ prod.name }}</h3>
 		                <p>{{ prod.price }}</p>
-		                <button @click="addToCart(prod)" class="buy-btn" 
-		                name="buy-btn"
-		                :data-id="prod.id"
-		                :data-name="prod.name"
-		                :data-img="prod.img"
-		                :data-price="prod.price">Купить</button>
+		                <button @click="addToCart(prod)" class="buy-btn" name="buy-btn">Купить</button>
 		            </div>
 		        </div>
 	        </div>
