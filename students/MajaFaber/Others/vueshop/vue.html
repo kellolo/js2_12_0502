@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-shop</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo"><a href="vue.html">E-shop</a></div>
+            <div class="cart">
+                <form action="#" class="search-form" @submit="findProduct">
+                    <input type="text" class="search-field" v-model="searchLine">
+                    <button class="btn-search" type="submit">Найти</button>
+                </form>
+                <button class="btn-cart" type="button" @click="isVisibleCart = !isVisibleCart">Корзина</button>
+                <div class="cart-block" id="cart-block" v-show="isVisibleCart">
+                    <div class="cart-item" v-for="good in cartItems" :data-id="good.id" >
+                        <div class="product-bio">
+                            <img :src="cartImage" alt="Some image">
+                            <div class="product-desc">
+                                <p class="product-title">{{good.title}}</p>
+                                <p class="product-quantity">Quantity: {{good.quantity}}</p>
+                                <p class="product-single-price">${{good.price}} each</p>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <p class="product-price">${{good.quantity * good.price}}</p>
+                            <button 
+                                class="del-btn" 
+                                name="del-btn" 
+                                @click="removeProduct(good.id)"
+                            >&times;</button>
+                        </div>
+                    </div>
+                    <p>Итого: {{getTotalPrice}} $</p>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="products" id="goods-list" v-if="catalogItems.length > 0">
+                <div  class="product-item"  v-for="item in foundItems"  :data-id="item.id" >
+                    <img  :src="image" >
+                    <div class="desc">
+                        <h3>{{item.title}}</h3>
+                        <p>{{item.price}} $</p>
+                        <button 
+                            class="buy-btn" 
+                            name="buy-btn"
+                            :data-id="item.id"
+                            :data-title="item.title"
+                            :data-img="image"
+                            :data-price="item.price"
+                            @click="addProduct(item)" >Купить</button>
+                    </div>
+                </div>
+            </div>
+            <p v-else style="text-align: center;margin-top: 50px;">Нет данных</p>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="main.js"></script></body>
+    </body>
+</html>
