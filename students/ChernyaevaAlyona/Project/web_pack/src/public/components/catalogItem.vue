@@ -24,11 +24,9 @@ export default {
         }
     },
     methods: {
-        addProduct(item) {
-            this.$set(item, 'quantity', item.quantity+1)
+        addProduct (prod) {
+            this.$root.$children[0].$refs.cartReference.addProduct(prod)
         }
-    }
-    
-    
+    },
 }
 </script>
