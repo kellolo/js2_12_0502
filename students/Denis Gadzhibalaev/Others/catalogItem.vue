@@ -22,6 +22,11 @@ export default {
         prod: {
             type: Object
         }
-    }
+    },
+    methods: {
+        addProduct(el) {
+            this.$root.$children[0].$refs.basket.addProduct(el);
+        }
+    },
 }
 </script>
