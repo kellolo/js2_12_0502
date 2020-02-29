@@ -1,0 +1,16 @@
+{
+ "contents": [
+  {
+   "id_product": 5,
+   "product_name": "Phones",
+   "price": 25,
+   "quantity": 1
+  },
+  {
+   "id_product": 4,
+   "product_name": "Mouse",
+   "price": 10,
+   "quantity": 1
+  }
+ ]
+}

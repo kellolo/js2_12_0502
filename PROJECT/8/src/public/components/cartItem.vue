@@ -11,7 +11,7 @@
         <div class="right-block">
             <p class="product-price">{{ item.quantity * item.price }}</p>
             <button class="del-btn" name="del-btn"
-            @click="$parent.removeProduct(item)">&times;</button>
+            @click="removeProduct(item)">&times;</button>
         </div>
     </div>
 </template>

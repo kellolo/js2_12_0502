@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode development",
-    "dev": "webpack-dev-server",
-    "serve": "nodemon server/server.js"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
