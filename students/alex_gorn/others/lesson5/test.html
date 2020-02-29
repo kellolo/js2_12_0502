@@ -1,0 +1,15 @@
+<div class="modal-body">
+    <form method="post" action="apiactions/api.php">
+        <input class="form-control" style="font-family: 'Courier New';" type="text" name="numberSitiations" id="numberSitiations" size="70" placeholder="1N-77 " disabled /><br>
+        <input class="form-control" style="font-family: 'Courier New';" type="text" name="numberSitiations" id="numberSitiations" size="70" placeholder="<? echo $_SESSION['identifier'] ?>" disabled /><br>
+        <input class="form-control" style="font-family: 'Courier New';" type="text" name="numberSitiations" id="numberSitiations" size="70" placeholder="Количество обработанных ситуаций" required /><br>
+        <p>Начало патруля</p>
+        <input class="form-control" style="font-family: 'Courier New';" type="time" name="startWatch" id="startWatch" size="70" placeholder="Начало патруля" required /><br>
+        <p>Конец патруля</p>
+        <input class="form-control" style="font-family: 'Courier New';" type="time" name="endWatch" id="endWatch" size="70" placeholder="Конец патруля" required /><br>
+        <input name="create_raport" type="submit" class="btn btn-primary" value="Добавить">
+    </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+[
+  {
+    "id_product": 1,
+    "product_name": "Монитор Samsung C49HG90DMI, черный",
+    "price": 69900
+  },
+  {
+    "id_product": 2,
+    "product_name": "1 ТБ Внешний жесткий диск Seagate Expansion (STEA1000400), черный",
+    "price": 3200
+  },
+  {
+    "id_product": 3,
+    "product_name": "Игровая клавиатура Defender Werewolf GK-120DL RU,RGB подсветка,19 Anti-Ghost",
+    "price": 1300
+  },
+  {
+    "id_product": 4,
+    "product_name": "Проводная игровая мышь Defender Sky Dragon GM-090L оптика,6 кнопок, 800-3200dpi",
+    "price": 500
+  },
+  {
+    "id_product": 5,
+    "product_name": "Игровые наушники 23191 Trust GXT 450 Blizz RGB 7.1",
+    "price": 3890
+  },
+  {
+    "id_product": 6,
+    "product_name": "Проводной геймпад Defender Omega USB, 12 кнопок, 2 стика",
+    "price": 790
+  },
+  {
+    "id_product": 7,
+    "product_name": "Геймпад для смартфона 5 в 1",
+    "price": 490
+  },
+  {
+    "id_product": 8,
+    "product_name": "Беспроводной геймпад Defender Blast USB,Bluetooth,Android,Li-Ion",
+    "price": 1990
+  },
+  {
+    "id_product": 9,
+    "product_name": "Беспроводной джойстик для PlayStation 4 (PS4) Синий",
+    "price": 3290
+  },
+  {
+    "id_product": 10,
+    "product_name": "Умный браслет Xiaomi Mi Band 4 (Черный, без NFC)",
+    "price": 2140
+  },
+  {
+    "id_product": 11,
+    "product_name": "Фитнес-браслет M1 с беспроводными наушниками 5.0",
+    "price": 6990
+  },
+  {
+    "id_product": 12,
+    "product_name": "Моноблок Acer Aspire C22-820 (DQ.BCKER.001), серебристый, черный",
+    "price": 22500
+  },
+  {
+    "id_product": 13,
+    "product_name": "Моноблок Lenovo IdeaCentre A340-24IWL (F0E8002ERK), черный",
+    "price": 28900
+  },
+  {
+    "id_product": 14,
+    "product_name": "Моноблок HP EliteOne 800 G3 (1ND18EA), серебристый",
+    "price": 99900
+  },
+  {
+    "id_product": 15,
+    "product_name": "Видеокарта MSI GeForce GTX 1660 VENTUS XS OC 6GB",
+    "price": 16779
+  },
+  {
+    "id_product": 16,
+    "product_name": "Видеокарта Gigabyte GeForce RTX 2070 SUPER GAMING OC 3X 8GB, GV-N207SGAMING OC-8GD sw",
+    "price": 42990
+  },
+  {
+    "id_product": 17,
+    "product_name": "Устройство видеозахвата AVerMedia Live Gamer Ultra",
+    "price": 17900
+  }
+]

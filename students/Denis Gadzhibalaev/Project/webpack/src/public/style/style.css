@@ -57,7 +57,7 @@ p {
     width: 200px;
     border-radius: 5px;
     overflow: hidden;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 img {
     max-width: 100%;
@@ -120,6 +120,11 @@ img {
     color: #2f2a2d;
     border: 1px solid #2f2a2d;
 }
+
+.item_wrapper {
+    margin-bottom: 20px;
+}
+
 .cart-item {
     display: flex;
     justify-content: space-between;

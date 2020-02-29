@@ -1,0 +1,37 @@
+[
+ {
+  "time": "29 02 2020 07:38:40",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 07:38:41",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:42",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:45",
+  "product_name": "Display",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:08",
+  "product_name": "Keyboard",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:09",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 08:11:10",
+  "product_name": "Notebook",
+  "userAction": "del"
+ }
+]
