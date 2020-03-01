@@ -1,5 +1,5 @@
 <template>
-                    <div>
+                    <div class="cart-item">
                         <div class="product-bio">
                             <img :src="cartImg">
                             <div class="product-desc">
@@ -26,6 +26,12 @@ export default {
     prod: {
       type: Object
     }
-  }
+  },
+      methods: {
+        removeProduct(prod) {
+            this.$parent.removeProduct(prod)
+            //this.$parent.$emit('remove', prod)
+        }
+    }
 }
 </script> 

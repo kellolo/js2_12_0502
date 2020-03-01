@@ -1,29 +1,60 @@
 <template>
-    <div class="cart">
-                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <div class="cart-block" v-show="showCart">
-                    <div v-for="item of cartItems" class="cart-item" :key="item.id_product">
-                        <div class="product-bio">
-                            <img :src="cartImg" :alt="item.product_name">
-                            <div class="product-desc">
-                                <p class="product-title">{{item.product_name}}</p>
-                                <p class="product-quantity">Quantity: {{item.quantity}}</p>
-                                <p class="product-single-price">$ {{item.price}} each</p>
-                            </div>
-                        </div>
-                        <div class="right-block">
-                            <p class="product-price">{{ item.quantity * item.price }}</p>
-                            <button class="del-btn" name="del-btn"
-                            @click="removeProduct(item)">&times;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="cart-block">
+        <item v-for="item of items" :key="item.id_product" :item="item" @remove="removeProduct"/>     
+    </div>
 </template>
+
 <script>
+import item from './cartItem.vue'
 export default {
-    data:  {
-        showCart: false,
+    data() {
+        return {
+            url: 'api/cart',
+            items: [],
+        }
     },
+    components: {
+        item
+    },
+    mounted() {
+        this.$parent.getData(this.url)
+        .then(data => {this.items = data.contents})
+    },
+    methods: {
+        
+        removeProduct(val) {
+            let find = this.items.find (element => element.id_product == val.id_product);
+            if (find.quantity > 1) {
+                find.quantity--
+            }  else {
+                this.items.splice (this.items.indexOf(find), 1)
+            }
+        },
+        makePOSTRequest(url, data) {
+            let xhr;
+
+            if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { 
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            /* xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    callback(xhr.responseText);
+                }
+            } */
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+            xhr.send(data);
+        },
+        addProduct(prod) {
+            this.makePOSTRequest("api/addToCart", prod);
+            console.log(prod);
+            //console.log(this.api/cart)
+        },
+    }
 }
 </script>
