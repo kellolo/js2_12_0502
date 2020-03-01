@@ -5,17 +5,20 @@
 </template>
 
 <script>
-import item from './catalogItem.vue'
+import item from './item.vue'
 export default {
     data() {
         return {
-            url: 'https://raw.githubusercontent.com/Diger134/js2_12_0502/master/students/Denis%20Gadzhibalaev/Project/webpack/src/server/db/catalogData.json',
+            url: 'api/catalog',
             catalogItems: [],
-            filterCatalogItems: []
-        }
+            filterCatalogItems: [], 
+        }    
     },
     components: {
         item
+    },
+    methods: {
+        
     },
     mounted() {
         this.$parent.getData(this.url)
@@ -23,7 +26,12 @@ export default {
             this.catalogItems = data;
             this.filterCatalogItems = data;
             console.log(this.catalogItems);
+            })
+        .catch(errorData => {
+            this.$parent.showError = true;
+            this.$parent.errorMessage = 'УПС, произошла ошибка!!! Повторите попытку позднее.';
             });
+
     }
 }
 </script>

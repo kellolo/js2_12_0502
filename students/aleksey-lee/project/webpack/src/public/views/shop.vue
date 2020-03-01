@@ -3,19 +3,13 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <form action="#" class="search-form">
-                    <input type="text" class="search-field">
-                    <button class="btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
+                <search />
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart v-show="showCart" />
-                
+                <cart v-show="showCart" ref="cartReference" />
             </div>
         </header>
         <main>
-            <catalog />
+            <catalog ref="catalogReference" />
         </main>
     </div>
 </template>
@@ -23,21 +17,23 @@
 <script>
 import catalog from '../components/catalog.vue'
 import cart from '../components/cart.vue'
+import search from '../components/search.vue'
 
 export default {
     data() {
         return {
             showCart: false,
-            API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/webpack/src/server/db'
+            // API: 'https://raw.githubusercontent.com/aleksey-lee/js2_12_0502/master/students/aleksey-lee/project/webpack/src/server/db'
         }
     },
     components: {
         catalog,
-        cart
+        cart,
+        search
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         }
     }
 }
