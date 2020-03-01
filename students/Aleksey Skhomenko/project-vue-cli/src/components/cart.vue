@@ -39,6 +39,7 @@ export default {
                         console.log('Не удалось добавить товар '+prod.product_name, err)
                     }
                 })
+                .catch(console.log.bind(console))
             } else {
                 this.$parent.putData(`${this.url}/${prod.product_id}`, {set: find.quantity+1})
                 .then(d => {
@@ -49,6 +50,7 @@ export default {
                         console.log('Не удалось увеличить количество товара '+prod.product_name, err)
                     }
                 })
+                .catch(console.log.bind(console))
             }
         },
         setCount(item, count = 0) {
@@ -62,6 +64,7 @@ export default {
                         console.log('Не удалось изменить количество товара '+item.product_name, err)
                     }
                 })
+                .catch(console.log.bind(console))
             } else {
                 this.$parent.deleteData(`${this.url}/${item.product_id}`)
                 .then(d => {
@@ -72,6 +75,7 @@ export default {
                         console.log('Не удалось удалить товар '+item.product_name, err)
                     }
                 })
+                .catch(console.log.bind(console))
             }
         },
         _calc(flag) {
@@ -92,6 +96,7 @@ export default {
                         console.log('Не удалось очистить корзину.', err)
                     }
                 })
+                .catch(console.log.bind(console))
 
         }
     },
