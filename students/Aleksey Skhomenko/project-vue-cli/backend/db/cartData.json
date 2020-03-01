@@ -1,0 +1,32 @@
+{
+ "items": [
+  {
+   "product_name": "StarCraft 2",
+   "price": 20,
+   "product_id": "3",
+   "img": "https://i.playground.ru/e/KloMCCgISWymrCtkSEUHdA.jpeg",
+   "quantity": 1
+  },
+  {
+   "product_name": "Half-Life 2",
+   "price": 10,
+   "product_id": "2",
+   "img": "https://i.playground.ru/e/T4l7p0eVZeOBAFQOy8BIpQ.jpeg",
+   "quantity": 1
+  },
+  {
+   "product_name": "Grand Theft Auto 5",
+   "price": 20,
+   "product_id": "1",
+   "img": "https://i.playground.ru/e/Tf0mwt9jPRX8OLPMsWupgQ.jpeg",
+   "quantity": 1
+  },
+  {
+   "product_name": "Warcraft 3: Reforged",
+   "price": 25,
+   "product_id": "0",
+   "img": "https://i.playground.ru/e/YNCtBoZigQh3r0BdVeBMLg.jpeg",
+   "quantity": 1
+  }
+ ]
+}

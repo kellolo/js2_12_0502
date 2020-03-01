@@ -1,0 +1,689 @@
+[
+ {
+  "time": "29 02 2020 07:38:40",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 07:38:41",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:42",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:45",
+  "product_name": "Display",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:08",
+  "product_name": "Keyboard",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:09",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 08:11:10",
+  "product_name": "Notebook",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 12:47:54",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:48:04",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:54:51",
+  "product_name": "World of Warcraft",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:57:37",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:04",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:06",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:07",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:09",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:25",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:27",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:28",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:28",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:29",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:29",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:37",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 12:59:41",
+  "product_name": "Diablo 2",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:43",
+  "product_name": "Quake 3 Arena",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:48",
+  "product_name": "Lineage 2",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:50",
+  "product_name": "Max Payne",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:54",
+  "product_name": "The Sims 4",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 12:59:59",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:00:01",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:00:11",
+  "product_name": "Quake 3 Arena",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:00:15",
+  "product_name": "Lineage 2",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:06:16",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:13:59",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:00",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:01",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:02",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:02",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:03",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:04",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:05",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:09",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:10",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:12",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:14:15",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:14:18",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:14:20",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:23",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:23",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:14:55",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:14:55",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:56",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:57",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:14:57",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:16:32",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:16:34",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:16:38",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:18:52",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:22:48",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:51",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:54",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:55",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:56",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:56",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:22:56",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:05",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:08",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:09",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:21",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:23:23",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:24",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:23:27",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:23:29",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:30",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:23:32",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:25:37",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:27:46",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:27:47",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:27:51",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:28:22",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:28:53",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:29:19",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:29:23",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:33:09",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:33:13",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:33:15",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:34:45",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:35:07",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:35:36",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:35:42",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:38:16",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:20",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:21",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:22",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:38:24",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:25",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:26",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:27",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:28",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:38:30",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:39:43",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:41:16",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:41:17",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:41:20",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:46:15",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:46:29",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:46:32",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:47:33",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:47:34",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:47:36",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:47:37",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:47:38",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:47:40",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:48:54",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:49:59",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:50:18",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:50:18",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:50:18",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:50:18",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:50:19",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:50:22",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:50:25",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:50:27",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:50:30",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:59:23",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:59:23",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:59:25",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:59:27",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "change"
+ },
+ {
+  "time": "01 03 2020 01:59:29",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:59:32",
+  "product_name": "all products",
+  "userAction": "del"
+ },
+ {
+  "time": "01 03 2020 01:59:35",
+  "product_name": "StarCraft 2",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:59:37",
+  "product_name": "Half-Life 2",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:59:38",
+  "product_name": "Grand Theft Auto 5",
+  "userAction": "add"
+ },
+ {
+  "time": "01 03 2020 01:59:39",
+  "product_name": "Warcraft 3: Reforged",
+  "userAction": "add"
+ }
+]
