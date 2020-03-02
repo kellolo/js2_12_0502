@@ -3,18 +3,14 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <form action="#" class="search-form">
-                    <input type="text" class="search-field">
-                    <button class="btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
+                <search ref="searchReference"/>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
                 <cart v-show="showCart" ref="cartReference"/>
             </div>
         </header>
         <main>
-            <catalog />
+            <catalog ref="catalogReference"/>
+            <callback/>
         </main>
     </div>
 </template>
@@ -22,7 +18,8 @@
 <script>
 import catalog from '../components/catalog.vue'
 import cart from '../components/cart.vue'
-
+import search from '../components/search.vue'
+import callback from '../components/callback.vue'
 export default {
     data() {
         return {
@@ -32,7 +29,9 @@ export default {
     },
     components:{
          catalog,
-         cart
+         cart,
+         search,
+         callback
     },
     methods: {
         getData(url) {
