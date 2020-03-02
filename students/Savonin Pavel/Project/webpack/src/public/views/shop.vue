@@ -2,8 +2,16 @@
     <div>
         <header>
             <div class="logo">E-shop</div>
-            <search />
-            <cart />
+            <div class="cart">
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field">
+                    <button class="btn-search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="btn-cart" type="button" @click="showCart = !showCart;" >Корзина</button>
+                <cart v-show="showCart" ref="cartReference"/>
+            </div>
         </header>
         <main>
             <catalog />
@@ -12,26 +20,22 @@
 </template>
 
 <script>
-import cart from '../components/cart.vue'
 import catalog from '../components/catalog.vue'
-import search from '../components/search.vue'
-import error from '../components/error.vue'
+import cart from '../components/cart.vue'
 
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+            //API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses',
+            showCart: false
         }
     },
     components: {
-        cart,
-        catalog,
-        search,
-        error,
+        catalog, cart
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         }
     }
 }

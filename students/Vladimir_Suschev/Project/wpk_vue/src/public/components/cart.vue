@@ -1,29 +1,37 @@
 <template>
-  <div class="cart-block" v-show="this.viewCart">
-    <item v-for="item of items" class="cart-item" :key="item.id_product" :cart='item'>
-    </item>
-  </div>
-</template> 
+    <div class="cart-block">
+        <item v-for="item of items" :key="item.id_product" :item="item" @remove="removeProduct"/>     
+    </div>
+</template>
+
 <script>
-import item from "./cartitem.vue";
-export default { 
-  data() {
-    return {
-      url: "/getBasket.json",
-      items: [],
-      viewCart: true,
-    };
-  },
-  components: {
-    item
-  },
-  mounted() {
-    this.$parent.getData(this.url).then(data => {
-      this.items = data.contents;
-      // console.log(this)
-      console.log(items)
-    });
-    
-  }
-};
+import item from './cartItem.vue'
+export default {
+    data() {
+        return {
+            url: 'api/basket',
+            items: [],
+        }
+    },
+    components: {
+        item
+    },
+    methods: {
+        addProduct(prod) {
+            console.log('Куплен ' + prod.product_name)
+        },
+        removeProduct(val) {
+            let find = this.items.find (element => element.id_product == val.id_product);
+            if (find.quantity > 1) {
+                find.quantity--
+            }  else {
+                this.items.splice (this.items.indexOf(find), 1)
+            }
+        }
+    },
+        mounted() {
+        this.$parent.getData(this.url)
+        .then(data => {this.items = data.contents})
+    }
+}
 </script>
