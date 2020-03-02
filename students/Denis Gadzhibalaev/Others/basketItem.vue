@@ -25,6 +25,11 @@ export default {
         prod: {
             type: Object
         }
-    }
+    },
+    methods: {
+        removeProduct(el) {
+            this.$emit('remove', el);
+        }
+    },
 }
 </script>
