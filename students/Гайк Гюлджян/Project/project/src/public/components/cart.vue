@@ -1,13 +1,12 @@
 <template>
-    <div class="products">
-        <item v-for="item of items" :key="item.id_product" :prod="item"/>     
+    <div class="cart-block">
+        <item v-for="item of items" :key="item.id_product" :item="item" @remove="removeProduct"/>     
     </div>
 </template>
 
 <script>
 import item from './cartItem.vue'
-
-export default{
+export default {
     data() {
         return {
             url: '/getBasket.json',
@@ -20,6 +19,19 @@ export default{
     mounted() {
         this.$parent.getData(this.url)
         .then(data => {this.items = data.contents})
+    },
+    methods: {
+        addProduct(prod) {
+            console.log('Куплен ' + prod.product_name)
+        },
+        removeProduct(val) {
+            let find = this.items.find (element => element.id_product == val.id_product);
+            if (find.quantity > 1) {
+                find.quantity--
+            }  else {
+                this.items.splice (this.items.indexOf(find), 1)
+            }
+        }
     }
 }
 </script>

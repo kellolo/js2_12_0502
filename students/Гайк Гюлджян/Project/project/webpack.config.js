@@ -1,26 +1,31 @@
 let minCss = require ('mini-css-extract-plugin')
-
 let htmlPlugin = require ('html-webpack-plugin')
-
-let VueLoaderPlugin = require ('vue-loader/lib/plugin')
-
+let VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
     devServer: {
         port: 3000,
         hot: true,
-        open: true
-    }, 
+        open: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080/',
+                pathRewrite: { '^/api' : '' },
+                secure: false,
+                changeOrigin: true
+            }
+        }
+    },
     module: {
         rules: [
             {
                 test: /\.vue$/,
                 exclude: /node_modules/,
-                loader: "vue-loader"
+                loader: 'vue-loader'
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: 'babel-loader'
             },
             {
                 test: /\.css$/,
@@ -30,23 +35,22 @@ module.exports = {
                         options: {
                             publicPath: '../',
                             hmr: process.env.NODE_ENV === 'production',
-                        }
-                },
-                'css-loader'
-            ]            
-            }, 
+                        },
+                    },
+                    'css-loader'
+                ]
+            },
         ]
     },
     plugins: [
-        new minCss({
+        new minCss ({
             filename: 'css/[name].css',
             chunkFilename: '[id].css',
-            ignoreOrder: false,
-        }
-        ),
+            ignoreOrder: false, 
+        }),
         new htmlPlugin({
             template: './src/public/index.html'
-        }),
+          }),
         new VueLoaderPlugin ()
     ]
 }
