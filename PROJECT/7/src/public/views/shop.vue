@@ -14,7 +14,7 @@
             </div>
         </header>
         <main>
-            <catalog />
+            <catalog ref="catalogReference" />
         </main>
     </div>
 </template>
