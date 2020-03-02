@@ -9,8 +9,8 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <!-- <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button> -->
-                <cart />
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+                <cart v-show="showCart" ref="cartReference"/>
             </div>
         </header>
         <main>
@@ -26,7 +26,8 @@ import cart from '../components/cart.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base'
+            //API: 'https://raw.githubusercontent.com/GrigoRASH6000v/js2_12_0502/master/students/Grigoriy_Mikirtumov/Project/src/public/Data%20base',
+            showCart: false
         }
     },
     components:{
@@ -35,8 +36,9 @@ export default {
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         },
+        
     },
 }
 

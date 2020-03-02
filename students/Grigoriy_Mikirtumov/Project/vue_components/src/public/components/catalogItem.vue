@@ -22,6 +22,11 @@ export default {
         prod:{
             type: Object
         }
-    }
+    },
+    methods: {
+        addProduct(product){
+            this.$root.$children[0].$refs.cartReference.addProductToCart(product)
+        }
+    },
 }
 </script>
