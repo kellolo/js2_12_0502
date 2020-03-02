@@ -1,0 +1,27 @@
+let express = require('express') //DOC express
+let fs = require('fs') //filestream //DOC node JS
+let server = express()
+
+server.get('/catalog', (req, res) => {
+    fs.readFile('./server/database/catalog.json', 'utf-8', (err, data) => {
+        if (!err) {
+            res.send(data)
+        } else {
+            res.sendStatus(404)
+        }
+    })
+})
+server.get('/basket', (req, res) => {
+    fs.readFile('./server/database/getBasket.json', 'utf-8', (err, data) => {
+        if (!err) {
+            res.send(data)
+        } else {
+            res.sendStatus(404)
+        }
+    })
+})
+ //http://localhost:8080/
+//server.get('/home') //http://localhost:8080/home/
+
+
+server.listen(8080, () => { console.log('server is ON @ 8080') })
