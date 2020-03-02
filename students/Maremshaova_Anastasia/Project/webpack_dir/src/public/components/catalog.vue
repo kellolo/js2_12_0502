@@ -9,7 +9,7 @@ import item from './catalogItem.vue'
 export default {
     data() {
         return {
-            url: 'api/catalog',
+            url: '/api/catalog',
             items: [],
         }
     },

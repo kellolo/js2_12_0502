@@ -23,25 +23,47 @@
 
 import basket from '../components/basket.vue'
 import catalog from '../components/catalog.vue'
+
 export default {
     data() {
         return {
-            //API: 'https://raw.githubusercontent.com/amaremshaova/data_db/master',
+            //API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses',
             showCart: false
         }
     },
     components: {
-        catalog,
-        basket
+        catalog, basket
     },
     methods: {
         getData(url) {
             return fetch(url).then(d => d.json())
         },
-        getItem(item){
-            this.cartItem = item;
-            this.flagAdd = true; 
-            //console.log(this.flagAdd)
+        postData(url, data) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data) //новый объект с товаром, который нужно добавить
+            }).then(d => d.json())
+        },
+        putData(url, data) {
+
+            console.log(data); 
+            return fetch(url, {method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data) //дельта-изменение товара +1/-1
+            }).then(d => {console.log(d.json())})
+        },
+        deleteData(url) {
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(d => d.json())
         }
     }
 }
