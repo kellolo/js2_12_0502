@@ -3,18 +3,19 @@
         <header>
             <a href="#" class="logo">E-shop</a>
             <div class="cart">
-                <form action="#" class="search-form">
-                    <input v-model="inputValue" type="text" class="search-field">
-                    <button @click="filterProducts" class="btn-search" type="submit">
+                <div class="search-form">
+                    <input @keyup.enter="filterProducts" v-model="inputValue" type="text" class="search-field">
+                    <button @click="filterProducts" class="btn-search" >
                         <i class="fas fa-search"></i>
                     </button>
-                </form>
-                <button @click="controlModalWindow" class="btn-cart" type="button">Корзина</button>
-                    <basket v-show="showBasket" />
+                </div>
+                <button @click="showBasket = !showBasket" :disabled="basketBtnDisable" class="btn-cart" type="button">Корзина</button>
+                    <basket v-show="showBasket" ref="basket"/>
             </div>
         </header>
         <main>
-            <catalog />
+            <div style="font-size: 30px" v-if="showError" >{{ errorMessage }}</div>
+            <catalog ref="catalog" />
         </main>
     </div>
 </template>
@@ -26,7 +27,10 @@ import basket from '../components/basket.vue'
 export default {
     data() {
         return {
+            basketBtnDisable: false,
             showBasket: false,
+            showError: false,
+            errorMessage: '',
             inputValue: ''
         }
     },
@@ -39,15 +43,10 @@ export default {
             return fetch(url).then(d => d.json())
         },
         filterProducts() {
-                this.$children[1].filterCatalogItems = this.$children[1].catalogItems.filter(el => el.product_name.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1);
+                this.$refs.catalog.filterCatalogItems = this.$refs.catalog.catalogItems.filter(el => el.product_name.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1);
         },
-        controlModalWindow() {
-            this.showBasket == false ? this.showBasket = true : this.showBasket = false;
-        }
     },
-    computed: {
-        
-    },
+    computed: {},
 }
 </script>
 
