@@ -1,0 +1,97 @@
+[
+ {
+  "time": "29 02 2020 07:38:40",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 07:38:41",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:42",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "29 02 2020 07:38:45",
+  "product_name": "Display",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:08",
+  "product_name": "Keyboard",
+  "userAction": "del"
+ },
+ {
+  "time": "29 02 2020 08:11:09",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "29 02 2020 08:11:10",
+  "product_name": "Notebook",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:47:57",
+  "product_name": "Монитор Samsung C49HG90DMI, черный",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:47:58",
+  "product_name": "Устройство видеозахвата AVerMedia Live Gamer Ultra",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:47:58",
+  "product_name": "Моноблок HP EliteOne 800 G3 (1ND18EA), серебристый",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:47:59",
+  "product_name": "Беспроводной геймпад Defender Blast USB,Bluetooth,Android,Li-Ion",
+  "userAction": "change"
+ },
+ {
+  "time": "04 03 2020 07:47:59",
+  "product_name": "Беспроводной геймпад Defender Blast USB,Bluetooth,Android,Li-Ion",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:48:00",
+  "product_name": "Игровая клавиатура Defender Werewolf GK-120DL RU,RGB подсветка,19 Anti-Ghost",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:49:11",
+  "product_name": "Проводная игровая мышь Defender Sky Dragon GM-090L оптика,6 кнопок, 800-3200dpi",
+  "userAction": "del"
+ },
+ {
+  "time": "04 03 2020 07:49:13",
+  "product_name": "Проводная игровая мышь Defender Sky Dragon GM-090L оптика,6 кнопок, 800-3200dpi",
+  "userAction": "add"
+ },
+ {
+  "time": "04 03 2020 07:49:17",
+  "product_name": "Игровая клавиатура Defender Werewolf GK-120DL RU,RGB подсветка,19 Anti-Ghost",
+  "userAction": "add"
+ },
+ {
+  "time": "04 03 2020 07:49:18",
+  "product_name": "1 ТБ Внешний жесткий диск Seagate Expansion (STEA1000400), черный",
+  "userAction": "add"
+ },
+ {
+  "time": "04 03 2020 07:49:19",
+  "product_name": "Монитор Samsung C49HG90DMI, черный",
+  "userAction": "add"
+ },
+ {
+  "time": "04 03 2020 07:49:22",
+  "product_name": "Геймпад для смартфона 5 в 1",
+  "userAction": "add"
+ }
+]
