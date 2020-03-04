@@ -4,8 +4,8 @@ let server = express()
 
 server.use(express.json());
 
-let basket = require('./basket');
-let writer = require('./writer'); 
+let basket = require('./basket.js');
+let writer = require('./writer.js'); 
 
 
 server.get('/catalog', (req, res) => {
@@ -38,7 +38,7 @@ server.post('/basket', (req, res)=>{
             console.log(newCart); 
             writer(path, JSON.stringify(newCart, null, ' '), res);
         } else {
-            res.sendStatus(404)
+            res.sendStatus(500)
         }
     })
 }); 
@@ -47,11 +47,10 @@ server.put('/basket/:id', (req, res)=>{
     let path = './server/database/basket.json';
     fs.readFile(path, 'utf-8', (err, data) => {
         if (!err) {
-
             let newCart = basket.change(req, JSON.parse(data));
             writer(path, JSON.stringify(newCart, null, ' '), res);
         } else {
-            res.sendStatus(404)
+            res.sendStatus(500)
         }
     })
 }); 
@@ -63,7 +62,7 @@ server.delete('/basket/:id', (req, res)=>{
             let newCart = basket.delete(req, JSON.parse(data));
             writer(path, JSON.stringify(newCart, null, ' '), res);
         } else {
-            res.sendStatus(404)
+            res.sendStatus(500)
         }
     })
 }); 
