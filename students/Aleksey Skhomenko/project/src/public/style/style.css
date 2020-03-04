@@ -131,6 +131,7 @@ img {
 
 .cart-item {
     display: flex;
+    margin-bottom: 5px;
 }
 
 .cart-item:not(:last-child) {

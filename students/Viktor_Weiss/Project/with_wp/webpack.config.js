@@ -1,6 +1,5 @@
 let minCss = require ('mini-css-extract-plugin')
 let htmlPlugin = require ('html-webpack-plugin')
-
 module.exports = {
     devServer: {
         port: 3000,
@@ -37,6 +36,6 @@ module.exports = {
         }),
         new htmlPlugin({
             template: './src/public/index.html'
-          })
+				})
     ]
 }
