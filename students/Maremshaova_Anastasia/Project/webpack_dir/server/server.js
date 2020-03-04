@@ -34,9 +34,9 @@ server.post('/basket', (req, res)=>{
     let path = './server/database/basket.json'
     fs.readFile(path, 'utf-8', (err, data) => {
         if (!err) {
-            let newCart = basket.add(req, JSON.parse(data));
+            let {newCart, name} = basket.add(req, JSON.parse(data));
             console.log(newCart); 
-            writer(path, JSON.stringify(newCart, null, ' '), res);
+            writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'add', name: name});
         } else {
             res.sendStatus(500)
         }
@@ -47,8 +47,8 @@ server.put('/basket/:id', (req, res)=>{
     let path = './server/database/basket.json';
     fs.readFile(path, 'utf-8', (err, data) => {
         if (!err) {
-            let newCart = basket.change(req, JSON.parse(data));
-            writer(path, JSON.stringify(newCart, null, ' '), res);
+            let {newCart, name} = basket.change(req, JSON.parse(data));
+            writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'change', name: name});
         } else {
             res.sendStatus(500)
         }
@@ -59,8 +59,8 @@ server.delete('/basket/:id', (req, res)=>{
     let path = './server/database/basket.json';
     fs.readFile(path, 'utf-8', (err, data) => {
         if (!err) {
-            let newCart = basket.delete(req, JSON.parse(data));
-            writer(path, JSON.stringify(newCart, null, ' '), res);
+            let {newCart, name} = basket.delete(req, JSON.parse(data));
+            writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'del', name: name});
         } else {
             res.sendStatus(500)
         }

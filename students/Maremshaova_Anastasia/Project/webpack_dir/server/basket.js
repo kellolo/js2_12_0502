@@ -3,13 +3,13 @@ let basket = {
         let id = +req.params.id
         let find = this._findItem(cart, id);
         find.quantity += +req.body.delta; 
-        return cart; 
+        return {newCart: cart, name: find.product_name}; 
     },
 
     add(req, cart) {
         let newItem = req.body;
         cart.contents.push(newItem);
-        return cart;
+        return {newCart: cart, name: req.body.product_name}; 
     },
 
     delete(req, cart) {
