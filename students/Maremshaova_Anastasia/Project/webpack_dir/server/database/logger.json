@@ -1,0 +1,514 @@
+[
+ {
+  "time": "05 03 2020 03:04:36",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:05:20",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:05:31",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:05:32",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:05:33",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:05:34",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:06:27",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:06:35",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:06:40",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:38:43",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:39:50",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:43:11",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:16",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:21",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:25",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 03:44:29",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 03:44:48",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:49",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:50",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:51",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:52",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:53",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:54",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:55",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:44:56",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 03:49:39",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:43",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:44",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:45",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:48",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:49",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:50",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:51",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 03:49:53",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 03:53:57",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 04:04:38",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:41",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:43",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 04:04:45",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 04:04:46",
+  "product_name": "Лилия Азиатка",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:48",
+  "product_name": "Лилия Азиатка",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:49",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 04:04:51",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 04:04:53",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:54",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:54",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:55",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 04:04:56",
+  "product_name": "Роза белая",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 04:04:57",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:05:40",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:05:41",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:05:42",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:05:43",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:43:46",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:44:30",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:44:32",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:44:41",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:53:24",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:53:34",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:53:38",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:53:47",
+  "product_name": "Хризантема",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:53:53",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:53:55",
+  "product_name": "Гвоздика",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:53:56",
+  "product_name": "Тюльпан",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:53:58",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:53:59",
+  "product_name": "Лилия Азиатка",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:54:01",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:05",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:06",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:09",
+  "product_name": "Тюльпан",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:54:10",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:11",
+  "product_name": "Хризантема",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:54:12",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:14",
+  "product_name": "Лилия Азиатка",
+  "userAction": "change"
+ },
+ {
+  "time": "05 03 2020 06:54:15",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:19",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:25",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:26",
+  "product_name": "Хризантема",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:28",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:30",
+  "product_name": "Гвоздика",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 06:54:31",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:32",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:33",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:35",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 06:54:36",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:09:13",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:09:19",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:09:24",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:09:29",
+  "product_name": "Хризантема",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:09:29",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:09:32",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:09:33",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:09:35",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:09:56",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:09:57",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:10:00",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:10:03",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:11:03",
+  "product_name": "Роза белая",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:18",
+  "product_name": "Нарцисс",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:21",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:13:22",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:13:24",
+  "product_name": "Хризантема",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:25",
+  "product_name": "Лилия Азиатка",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:27",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:29",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:13:30",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:13:30",
+  "userAction": "del"
+ },
+ {
+  "time": "05 03 2020 07:13:55",
+  "product_name": "Тюльпан",
+  "userAction": "add"
+ },
+ {
+  "time": "05 03 2020 07:13:56",
+  "product_name": "Гвоздика",
+  "userAction": "add"
+ }
+]

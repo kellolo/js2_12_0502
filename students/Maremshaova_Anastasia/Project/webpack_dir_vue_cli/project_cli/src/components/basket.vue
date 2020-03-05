@@ -6,12 +6,12 @@
 
 
 <script>
-const api = 'http://localhost:8080';
+//const api = 'http://localhost:8080';
 import basketItem from './basketItem.vue'
 export default {
     data() {
         return {
-            url: `${api}/basket/`,
+            url: '/api/basket',
             cartItems: [],
         }
     },
@@ -27,13 +27,13 @@ export default {
             let id = prod.id_product
             let find = this.cartItems.find(item => +item.id_product === +id)
             if (find) {
-                this.$parent.putData(this.url + id, {delta: 1})
+                this.$parent.putData(`/api/basket/${id}`, {delta: 1})
                 .then(d => {
                     d.result ? find.quantity++ : console.log('error')
                 })
             } else {
                 let newProd = Object.assign({}, prod, {quantity: 1})
-                this.$parent.postData(this.url, newProd)
+                this.$parent.postData(`/api/basket`, newProd)
                 .then(d => {
                     d.result ? this.cartItems.push(newProd) : console.log('error')
                 })
@@ -43,12 +43,12 @@ export default {
             let id = +val.id_product
             let find = this.cartItems.find (element => +element.id_product === +id);
             if (find.quantity > 1) {
-                this.$parent.putData(this.url + id, {delta: -1})
+                this.$parent.putData(`/api/basket/${id}`, {delta: -1})
                 .then(d => {
                     d.result ? find.quantity-- : console.log('error')
                 })
             }  else {
-                this.$parent.deleteData(this.url + id)
+                this.$parent.deleteData(`/api/basket/${id}`)
                 .then(d => {
                     d.result ? this.cartItems.splice (this.cartItems.indexOf(find), 1) : console.log('error')
                 })

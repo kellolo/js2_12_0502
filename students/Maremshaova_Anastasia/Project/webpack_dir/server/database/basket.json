@@ -1,0 +1,20 @@
+{
+ "amount": 389,
+ "countGoods": 4,
+ "contents": [
+  {
+   "id_product": 4,
+   "product_name": "Тюльпан",
+   "price": 80,
+   "img": "https://cdn.pixabay.com/photo/2019/05/20/15/11/tulip-4216885_1280.jpg",
+   "quantity": 1
+  },
+  {
+   "id_product": 5,
+   "product_name": "Гвоздика",
+   "price": 50,
+   "img": "https://avatars.mds.yandex.net/get-zen_doc/1945976/pub_5da8eb203d873600ad154460_5da8eb49e6cb9b00b29164c9/scale_1200",
+   "quantity": 1
+  }
+ ]
+}
