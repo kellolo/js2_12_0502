@@ -1,0 +1,997 @@
+[
+ {
+  "time": "02 03 2020 07:22:19",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:22",
+  "product_name": "Display",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:22",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:23",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:25",
+  "product_name": "Keyboard",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:26",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:26",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:27",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:29",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:29",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:30",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:31",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:33",
+  "product_name": "Router",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:34",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:34",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:35",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:36",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:37",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 07:22:38",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 07:22:39",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:27:50",
+  "product_name": "Notebook",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 08:27:51",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:27:53",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:38:59",
+  "product_name": "Display",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 08:43:36",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:43:37",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:55:53",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 08:55:54",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:56:23",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:56:25",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 08:57:17",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:36",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:37",
+  "product_name": "Keyboard",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:22:37",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:38",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:45",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:46",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:47",
+  "product_name": "Mouse",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:22:48",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:22:49",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:11",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:12",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:13",
+  "product_name": "Router",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:23:14",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:14",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:15",
+  "product_name": "Phones",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:23:16",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:17",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:18",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:18",
+  "product_name": "Notebook",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:23:27",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:23:45",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:23:49",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:24:08",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:24:09",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:24:09",
+  "product_name": "Notebook",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:24:19",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:24:21",
+  "product_name": "Notebook",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:26:28",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:31",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:32",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:32",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:33",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:33",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:34",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:35",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:36",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:36",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:37",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:37",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:38",
+  "product_name": "Router",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:39",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:39",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:39",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:39",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:40",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:40",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:41",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:41",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:41",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:41",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:41",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:42",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:42",
+  "product_name": "Keyboard",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:43",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:44",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:48",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:49",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:49",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:50",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:26:51",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:07",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:09",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:09",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:09",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:10",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:11",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:16",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:35",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:36",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:38",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:40",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:40",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:41",
+  "product_name": "Notebook",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:27:47",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:27:48",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:33",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:37",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:38",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:39",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:39",
+  "product_name": "Mouse",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:39",
+  "product_name": "Mouse",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:28:40",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:28:40",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:20",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:22",
+  "product_name": "Phones",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:29:24",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:24",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:26",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:26",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:27",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:28",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:29",
+  "product_name": "Router",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:29:29",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:30",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:31",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:32",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:32",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:33",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:34",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:35",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:36",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:36",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:37",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:37",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:38",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:38",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:38",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:39",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:39",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:40",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:29:41",
+  "product_name": "Keyboard",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:29:41",
+  "product_name": "Keyboard",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:30:06",
+  "product_name": "Notebook",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:08",
+  "product_name": "Display",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:09",
+  "product_name": "Keyboard",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:10",
+  "product_name": "Mouse",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:12",
+  "product_name": "Phones",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:13",
+  "product_name": "Router",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:15",
+  "product_name": "USB-camera",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:15",
+  "product_name": "Gamepad",
+  "userAction": "add"
+ },
+ {
+  "time": "02 03 2020 09:30:17",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:18",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:20",
+  "product_name": "USB-camera",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:21",
+  "product_name": "Gamepad",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:23",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:24",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:31",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:31",
+  "product_name": "Display",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:38",
+  "product_name": "Mouse",
+  "userAction": "delete"
+ },
+ {
+  "time": "02 03 2020 09:30:39",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:41",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:41",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:44",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:45",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:48",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:49",
+  "product_name": "Notebook",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:54",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:55",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:55",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:56",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:56",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:56",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:57",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:57",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:57",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:58",
+  "product_name": "Phones",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:59",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:59",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:59",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:59",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:30:59",
+  "product_name": "Keyboard",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:00",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:00",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:01",
+  "product_name": "Router",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:02",
+  "product_name": "Gamepad",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:02",
+  "product_name": "Gamepad",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:03",
+  "product_name": "Gamepad",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:03",
+  "product_name": "Gamepad",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:03",
+  "product_name": "USB-camera",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:04",
+  "product_name": "USB-camera",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:04",
+  "product_name": "USB-camera",
+  "userAction": "change"
+ },
+ {
+  "time": "02 03 2020 09:31:05",
+  "product_name": "USB-camera",
+  "userAction": "change"
+ }
+]

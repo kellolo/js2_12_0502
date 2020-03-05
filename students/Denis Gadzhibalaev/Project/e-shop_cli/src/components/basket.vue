@@ -1,7 +1,7 @@
 <template>
 <div class="cart-block-wrapper">
     <div class="cart-block">
-        <item v-for="basketItem of basketItems.contents" :key="basketItem.id_product" :prod="basketItem" @remove="removeProduct"/>
+        <item v-for="basketItem of basketItems.contents" :key="basketItem.id_product" :prod="basketItem" @remove="removeProduct" />
     </div>
     <div v-show= "seenTotalsum" class="total-sum">Total price: {{ basketItems.amount }} $</div>
     </div>
