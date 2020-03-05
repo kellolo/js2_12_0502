@@ -18,28 +18,38 @@ export default {
         itemcart
     },
     methods: {
-        emptyCart(){
-            if(this.items.length === 0){
-
-            }
-            
-        },
         removeItem(item){
-            this.items[this.findIndexItem(item)].quantity>1 ? this.items[this.findIndexItem(item)].quantity-- : this.items.splice(this.findIndexItem(item), 1)
+            let id = +item.id_product
+            let find = this.items.find(el=>+el.id_product===id)
+            if(find.quantity>1){
+                this.$parent.putData(`/api/cart/${id}`, {delta:-1})
+                .then(d=>{
+                    d.result? find.quantity++ : console.log('error')
+                })
+            }else{
+                this.$parent.deleteData(`/api/cart/${id}`)
+                .then(d=>{
+                    d.result? find.items.splice(this.items.indexOf(find), 1) : console.log('error')
+                })
+            }
         },
         findIndexItem(elItem){
             return this.items.findIndex(el=>el.id_product==elItem.id_product)
         },
-        check(elItem){
-           return  this.items.find(el=>el.id_product==elItem.id_product)
-        },
         addProductToCart(product){
-            if(this.check(product)){
-                this.items[this.findIndexItem(product)].quantity++
-                
+            let id = product.id_product
+            let find = this.items.find(item=>+item.id_product===+id)
+            if(find){
+                this.$parent.putData(`/api/cart/${id}`, {delta:1})
+                .then(d=>{
+                    d.result? find.quantity++ : console.log('error')
+                })
             }else{
-                this.$set(product, 'quantity', 1)
-                this.items.push(product)
+                let newProd = Object.assign({}, product, {quantity:1})
+                this.$parent.postData(`/api/cart/`, newProd)
+                .then(d=>{
+                    d.result? this.items.push(newProd) : console.log('error')
+                })
             }
         }
     },

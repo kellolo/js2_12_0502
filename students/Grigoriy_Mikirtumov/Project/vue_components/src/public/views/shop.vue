@@ -37,6 +37,32 @@ export default {
         getData(url) {
             return fetch(url).then(d => d.json())
         },
+        postData(url, data) {
+            return fetch(url, {
+                method: 'POST',
+                headers:{
+                    "content-Type": "aplication/json"
+                },
+                body: JSON.stringify(data) //Новый обьект с товаром который нужно добавить
+            }).then(d => d.json())
+        },
+        deleteData(url) {
+            return fetch(url, {
+                method: 'DELETE',
+                headers:{
+                    "content-Type": "aplication/json"
+                }  
+            }).then(d => d.json())
+        },
+        putData(url, data) {
+            return fetch(url, {
+                method: 'PUT',
+                headers:{
+                    "content-Type": "aplication/json"
+                },
+                body: JSON.stringify(data) //Дельта изменения товара
+            }).then(d => d.json())
+        },
         
     },
 }
