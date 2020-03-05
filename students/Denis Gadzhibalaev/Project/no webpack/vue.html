@@ -28,7 +28,7 @@
                                 <div class="product-desc">
                                     <p class="product-title">{{ basketItem.product_name }}</p>
                                     <p class="product-quantity">Quantity: {{ basketItem.quantity }}</p>
-                                    <p class="product-single-price">{{ basketItem.price }} each</p>
+                                    <p class="product-single-price">{{ basketItem.price }} $ each</p>
                                 </div>
                             </div>
                             <div class="right-block">
@@ -48,7 +48,7 @@
                     <img :src="img" alt="Some img">
                     <div class="desc">
                         <h3>{{ catalogItem.product_name }}</h3>
-                        <p>{{ catalogItem.price }}</p>
+                        <p>{{ catalogItem.price }} $</p>
                         <button @click="addProduct(catalogItem)" class="buy-btn">Купить</button>
                     </div>
                 </div>

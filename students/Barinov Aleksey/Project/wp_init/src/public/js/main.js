@@ -1,9 +1,9 @@
 //заглушки (имитация базы данных)
 const image = 'https://placehold.it/200x150'
 const cartImage = 'https://placehold.it/100x80'
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+const API = 'https://raw.githubusercontent.com/Barinulka/js2_12_0502/master/students/Barinov%20Aleksey/Project/wp_init/src/database'
 //parents abstract
-class List { 
+class List {
     constructor (url, container) {
         this.url = url
         this.container = container
@@ -41,7 +41,7 @@ class Item {
             <div class="desc">
                 <h3>${this.product_name}</h3>
                 <p>${this.price} $</p>
-                <button class="buy-btn" 
+                <button class="buy-btn"
                 name="buy-btn"
                 data-id_product="${this.id_product}"
                 data-product_name="${this.product_name}"
