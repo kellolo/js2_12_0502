@@ -10,7 +10,7 @@
                     </button>
                 </form>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart v-show="showCart" />
+                <cart v-show="showCart" ref="cartReference"/>
             </div>
         </header>
         <main>
@@ -26,16 +26,16 @@ import cart from '../components/cart.vue'
 export default {
     data() {
         return {
-            API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+            //API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses',
+            showCart: false
         }
     },
     components: {
-        catalog,
-        cart
+        catalog, cart
     },
     methods: {
         getData(url) {
-            return fetch(this.API + url).then(d => d.json())
+            return fetch(url).then(d => d.json())
         }
     }
 }

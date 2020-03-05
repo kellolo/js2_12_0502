@@ -6,11 +6,10 @@
 
 <script>
 import item from './catalogItem.vue'
-
 export default {
     data() {
         return {
-            url: '/catalogData.json',
+            url: 'api/catalog',
             items: [],
         }
     },
@@ -20,6 +19,7 @@ export default {
     mounted() {
         this.$parent.getData(this.url)
         .then(data => {this.items = data})
+        //console.log(this)
     }
 }
 </script>

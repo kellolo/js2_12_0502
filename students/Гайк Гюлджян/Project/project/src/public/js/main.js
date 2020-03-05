@@ -1,34 +1,38 @@
+//заглушки (имитация базы данных)
+const image = 'https://placehold.it/200x150'
+const cartImage = 'https://placehold.it/100x80'
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+//parents abstract
 
-let app = new Vue ({
-  el: '#app',
-  data: {
-      items: [],
-      url: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json',
-      image: 'https://via.placeholder.com/200x150',
-      description: 'Product',
-      inStock: false,
-      cart: 0
-  },
-  methods: {
-      //функции, которые изменяют объект или данные data
-      getData (url) {
-          return fetch(url)
-              .then(d => d.json())
-      },
+let app = new Vue({
+    el: '#app',
+    data: {
+        catalogItems: [],
+        cartItems: [],
+        catalogUrl: '/catalogData.json',
+        cartUrl: '/getBasket.json',
+        showCart: false,
+        catalogImg: 'https://placehold.it/200x150',
+        cartImg: 'https://placehold.it/100x80'
+    },
+    methods: {
+        getData(url) {
+            return fetch(API + url).then(d => d.json())
+        },
+        addProduct(item) {
+            console.log('Куплен')
+            console.log(item.product_name)
+        },
+        removeProduct(item) {
+            console.log('Удален')
+            console.log(item.product_name)
+        }
+    },
+    mounted() {
+        this.getData(this.catalogUrl)
+        .then(data => {this.catalogItems = data})
 
-      addToCart () {
-          this.cart += 1
-      }
-  },
-  computed: {
-      //функции, должные возвращать значения
-  },
-  // Хуки жизненного цикла
-  mounted () {
-      //событие, когда vue-компонент встроился в ДОМ-модель
-      this.getData(this.url)
-          .then(product => {
-              this.items = product
-          })
-  }
+        this.getData(this.cartUrl)
+        .then(data => {this.cartItems = data.contents})
+    }
 })
