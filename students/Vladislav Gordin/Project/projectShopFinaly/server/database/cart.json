@@ -1,0 +1,36 @@
+{
+ "amount": 193480,
+ "countGoods": 7,
+ "contents": [
+  {
+   "id_product": 4,
+   "product_name": "Проводная игровая мышь Defender Sky Dragon GM-090L оптика,6 кнопок, 800-3200dpi",
+   "price": 500,
+   "quantity": 1
+  },
+  {
+   "id_product": 3,
+   "product_name": "Игровая клавиатура Defender Werewolf GK-120DL RU,RGB подсветка,19 Anti-Ghost",
+   "price": 1300,
+   "quantity": 1
+  },
+  {
+   "id_product": 2,
+   "product_name": "1 ТБ Внешний жесткий диск Seagate Expansion (STEA1000400), черный",
+   "price": 3200,
+   "quantity": 1
+  },
+  {
+   "id_product": 1,
+   "product_name": "Монитор Samsung C49HG90DMI, черный",
+   "price": 69900,
+   "quantity": 1
+  },
+  {
+   "id_product": 7,
+   "product_name": "Геймпад для смартфона 5 в 1",
+   "price": 490,
+   "quantity": 1
+  }
+ ]
+}
