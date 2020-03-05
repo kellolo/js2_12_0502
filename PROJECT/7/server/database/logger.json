@@ -33,5 +33,15 @@
   "time": "29 02 2020 08:11:10",
   "product_name": "Notebook",
   "userAction": "del"
+ },
+ {
+  "time": "02 03 2020 07:58:58",
+  "product_name": "Phones",
+  "userAction": "del"
+ },
+ {
+  "time": "02 03 2020 07:58:59",
+  "product_name": "Mouse",
+  "userAction": "del"
  }
 ]
