@@ -31,8 +31,8 @@ server.post('/cart', (req, res) => {
 	let path = './server/dataBase/cart.json'
 	fs.readFile(path, 'UTF-8', (err, data) => {
 		if(!err) {
-			let {newCart, name} = cart.add(req, JSON.parse(data))
-			writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'add', name: name})
+			let newCart = cart.add(req, JSON.parse(data))
+			writer(path, JSON.stringify(newCart, null, ' '), res)
 		} else {
 			res.sendStatus(500)
 		}
@@ -42,8 +42,8 @@ server.put('/cart/:id', (req, res) => {
 	let path = './server/dataBase/cart.json'
 	fs.readFile(path, 'UTF-8', (err, data) => {
 		if(!err) {
-			let {newCart, name} = cart.change(req, JSON.parse(data))
-			writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'change', name: name})
+			let newCart = cart.change(req, JSON.parse(data))
+			writer(path, JSON.stringify(newCart, null, ' '), res)
 		} else {
 			res.sendStatus(500)
 		}
@@ -53,8 +53,8 @@ server.delete('/cart/:id', (req, res) => {
 	let path = './server/dataBase/cart.json'
 	fs.readFile(path, 'UTF-8', (err, data) => {
 		if(!err) {
-			let {newCart, name} = cart.delete(req, JSON.parse(data))
-			writer(path, JSON.stringify(newCart, null, ' '), res, {action: 'del', name: name})
+			let newCart = cart.delete(req, JSON.parse(data))
+			writer(path, JSON.stringify(newCart, null, ' '), res)
 		} else {
 			res.sendStatus(500)
 		}

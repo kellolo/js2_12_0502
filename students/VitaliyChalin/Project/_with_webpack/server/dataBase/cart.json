@@ -1,0 +1,26 @@
+{
+ "total": 46600,
+ "quantProducts": 3,
+ "contents": [
+  {
+   "id": 1,
+   "name": "AteloCollagen - Коллагеновый очищающий гель с ателоколлагеном и морскими минералами",
+   "price": 990,
+   "quant": 6
+  },
+  {
+   "id": 3,
+   "name": "AteloCollagen – Разглаживающий морщины коллагеновый крем с ателоколлагеном и морскими минералами",
+   "price": 2030,
+   "img": "https://via.placeholder.com/200x150",
+   "quant": 1
+  },
+  {
+   "id": 8,
+   "name": "Гиалуроновая маска для активного увлажнения кожи / Hyaluron Plus - Hyaluronic mask active moisturizing",
+   "price": 1200,
+   "img": "https://via.placeholder.com/200x150",
+   "quant": 1
+  }
+ ]
+}
