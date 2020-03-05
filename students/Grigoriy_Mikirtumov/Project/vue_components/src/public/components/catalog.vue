@@ -9,7 +9,7 @@ import item from './catalogItem.vue'
 export default {
     data() {
         return {
-            url: '/catalogData.json',
+            url: 'api/catalog',
             items: [],
              
         }
@@ -19,7 +19,11 @@ export default {
     },
     mounted() {
         this.$parent.getData(this.url)
-        .then(data => {this.items = data})
+        .then(data => {
+            this.$root.$children[0].$refs.searchReference.catalogItems = data
+            this.$root.$children[0].$refs.searchReference.filterdElements  = data
+            this.items = data
+            })
     }
 }
 </script>

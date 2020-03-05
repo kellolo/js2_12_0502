@@ -1,0 +1,74 @@
+[
+  {
+    "id_product": 123,
+    "product_name": "Ноутбук",
+    "img": "https://via.placeholder.com/200x150",
+    "price": 45600
+  },
+  {
+    "id_product": 456,
+    "product_name": "Мышка",
+    "img": "https://via.placeholder.com/200x150",
+    "price": 1000
+  },
+  {
+      "id_product": 462,
+      "product_name": "Клавиатура",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 1200
+  },
+  {
+      "id_product": 718,
+      "product_name": "Коврик для мыши",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 400
+  },
+  {
+      "id_product": 292,
+      "product_name": "Веб камера",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 2000
+  },
+  {
+      "id_product": 343,
+      "product_name": "Процессор",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 7500
+  },
+  {
+      "id_product": 420,
+      "product_name": "Материнская плата",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 3700
+  },
+  {
+      "id_product": 506,
+      "product_name": "Оперативная память",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 1300
+  },
+  {
+      "id_product": 386,
+      "product_name": "Блок питания",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 4000
+  },
+  {
+      "id_product": 530,
+      "product_name": "Жёсткий диск",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 4800
+  },
+  {
+      "id_product": 105,
+      "product_name": "Видеокарта",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 12300
+  },
+  {
+      "id_product": 609,
+      "product_name": "Корпус",
+      "img": "https://via.placeholder.com/200x150",
+      "price": 5000
+  }
+]

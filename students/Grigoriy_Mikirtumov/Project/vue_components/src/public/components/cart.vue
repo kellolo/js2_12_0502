@@ -1,10 +1,8 @@
 <template>
-    <div class="cart-wrp">
-        <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-        <div class="cart-block" v-show="showCart"> 
+        <div class="cart-block"> 
+            <span v-if="items.length===0" class="empty_cart_maessage">Корзина пуста</span>
             <itemcart v-for="itemcart of items" :key="itemcart.id_product" :prodCart="itemcart"></itemcart>
         </div>
-    </div>
 </template>
 
 <script>
@@ -12,9 +10,8 @@ import itemcart from './cartItem.vue'
 export default {
     data(){
         return {
-            url:'/getBasket.json',
+            url:'api/cart',
             items: [],
-            showCart: false
         }
     },
      components: {
@@ -22,13 +19,41 @@ export default {
     },
     methods: {
         removeItem(item){
-            console.log("товар удалён")
-            this.items.splice(this.findIndexItem(item), 1)
+            let id = +item.id_product
+            let find = this.items.find(el=>+el.id_product===id)
+            if(find.quantity>1){
+                this.$parent.putData(`/api/cart/${id}`, {delta:-1})
+                .then(d=>{
+                    d.result? find.quantity++ : console.log('error')
+                })
+            }else{
+                this.$parent.deleteData(`/api/cart/${id}`)
+                .then(d=>{
+                    d.result? find.items.splice(this.items.indexOf(find), 1) : console.log('error')
+                })
+            }
         },
         findIndexItem(elItem){
             return this.items.findIndex(el=>el.id_product==elItem.id_product)
         },
+        addProductToCart(product){
+            let id = product.id_product
+            let find = this.items.find(item=>+item.id_product===+id)
+            if(find){
+                this.$parent.putData(`/api/cart/${id}`, {delta:1})
+                .then(d=>{
+                    d.result? find.quantity++ : console.log('error')
+                })
+            }else{
+                let newProd = Object.assign({}, product, {quantity:1})
+                this.$parent.postData(`/api/cart/`, newProd)
+                .then(d=>{
+                    d.result? this.items.push(newProd) : console.log('error')
+                })
+            }
+        }
     },
+    
     mounted() {
         this.$parent.getData(this.url)
         .then(data => {this.items = data.contents})
