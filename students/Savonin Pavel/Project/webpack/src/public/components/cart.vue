@@ -9,7 +9,7 @@ import item from './cartItem.vue'
 export default {
     data() {
         return {
-            url: 'api/cart',
+            url: '/getBasket.json',
             items: [],
         }
     },
@@ -21,7 +21,9 @@ export default {
         .then(data => {this.items = data.contents})
     },
     methods: {
-        
+        addProduct(prod) {
+            console.log('Куплен ' + prod.product_name)
+        },
         removeProduct(val) {
             let find = this.items.find (element => element.id_product == val.id_product);
             if (find.quantity > 1) {
@@ -29,32 +31,7 @@ export default {
             }  else {
                 this.items.splice (this.items.indexOf(find), 1)
             }
-        },
-        makePOSTRequest(url, data) {
-            let xhr;
-
-            if (window.XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-            } else if (window.ActiveXObject) { 
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-
-            /* xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    callback(xhr.responseText);
-                }
-            } */
-
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-            xhr.send(data);
-        },
-        addProduct(prod) {
-            this.makePOSTRequest("api/addToCart", prod);
-            console.log(prod);
-            //console.log(this.api/cart)
-        },
+        }
     }
 }
 </script>

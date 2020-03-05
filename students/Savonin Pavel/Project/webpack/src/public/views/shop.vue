@@ -9,7 +9,7 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <button class="btn-cart" type="button" @click="showCart = !showCart;" >Корзина</button>
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
                 <cart v-show="showCart" ref="cartReference"/>
             </div>
         </header>

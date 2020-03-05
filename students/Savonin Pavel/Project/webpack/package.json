@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "filestream": "^5.0.0",
     "moment": "^2.24.0",
     "vue": "^2.6.11"
   }
