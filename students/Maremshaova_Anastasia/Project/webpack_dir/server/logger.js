@@ -5,7 +5,7 @@ const moment = require('moment');
 let file = './server/database/logger.json'
 
 function logger(name, action) {
-    fs.readFile(file, utf-8, (err, data) =>{
+    fs.readFile(file, 'utf-8', (err, data) =>{
         if (!err){
             let logs = JSON.parse(data);
             logs.push({

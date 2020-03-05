@@ -16,7 +16,7 @@ let basket = {
         let id = +req.params.id
         let find = this._findItem(cart, id);
         cart.contents.splice(cart.contents.indexOf(find), 1);
-        return cart; 
+        return {newCart: cart, name: req.body.product_name}; 
     },
 
     _findItem(cart, id) {
