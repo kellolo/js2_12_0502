@@ -25,7 +25,8 @@ export default {
     },
     methods: {
         addProduct(product){
-            this.$root.$children[0].$refs.cartReference.addProduct(product)
+            
+            this.$parent.$parent.$children[1].addProduct(product)
         }
     },
 }
