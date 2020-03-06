@@ -36,7 +36,7 @@ export default {
         findIndexItem(elItem){
             return this.items.findIndex(el=>el.id_product==elItem.id_product)
         },
-         addProduct(prod) {
+        addProduct(prod) {
             let id = prod.id_product
             let find = this.items.find(item => +item.id_product === +id)
 

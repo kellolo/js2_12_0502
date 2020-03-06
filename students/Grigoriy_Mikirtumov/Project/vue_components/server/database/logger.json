@@ -1,0 +1,207 @@
+[
+ {
+  "time": "06 03 2020 11:20:07",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 11:20:09",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 12:06:21",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:27:18",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:27:23",
+  "product_name": "Мышка",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:42:38",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:42:41",
+  "product_name": "Коврик для мыши",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:42:42",
+  "product_name": "Веб камера",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:42:44",
+  "product_name": "Веб камера",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:42:45",
+  "product_name": "Коврик для мыши",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:42:46",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:47:43",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:47:48",
+  "product_name": "Мышка",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:47:50",
+  "product_name": "Мышка",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:47:51",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:48:54",
+  "product_name": "Коврик для мыши",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:48:56",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 01:49:04",
+  "product_name": "Коврик для мыши",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 01:49:06",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 02:37:13",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 02:37:15",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 02:37:17",
+  "product_name": "Мышка",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 02:37:18",
+  "product_name": "Мышка",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 02:37:20",
+  "product_name": "Клавиатура",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 02:37:22",
+  "product_name": "Клавиатура",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 02:37:24",
+  "product_name": "Коврик для мыши",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 02:37:25",
+  "product_name": "Коврик для мыши",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 03:00:59",
+  "product_name": "Корпус",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 03:09:24",
+  "product_name": "Корпус",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 03:09:25",
+  "product_name": "Ноутбук",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 03:09:26",
+  "product_name": "Ноутбук",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 03:09:28",
+  "product_name": "Мышка",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 03:09:30",
+  "product_name": "Мышка",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 04:10:33",
+  "product_name": "Веб камера",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 04:10:36",
+  "product_name": "Процессор",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 04:10:37",
+  "product_name": "Материнская плата",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 04:10:38",
+  "product_name": "Материнская плата",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 04:10:39",
+  "product_name": "Процессор",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 04:10:40",
+  "product_name": "Веб камера",
+  "userAction": "del"
+ },
+ {
+  "time": "06 03 2020 04:17:11",
+  "product_name": "Мышка",
+  "userAction": "add"
+ },
+ {
+  "time": "06 03 2020 04:17:13",
+  "product_name": "Мышка",
+  "userAction": "del"
+ }
+]
